@@ -87,7 +87,7 @@ il vous suffit ensuite d'atteindre l'url de debug proposé par la console.
 
 ## Environnement de pré-production ##
 
-## Rejoindre ##
+### Rejoindre ###
 
 L'environnement de préproduction est visible à l'adresse : 
 
@@ -97,7 +97,7 @@ L'ensemble des fichiers est listé ici :
 
 - https://preview.c9users.io/haeresis/website
 
-## Démarrer le serveur ##
+### Démarrer le serveur ###
 
 Il est possible que le serveur ne tourne pas, dans ce cas il faut le lancer en vous rendant à l'adresse :
 
@@ -109,9 +109,22 @@ Et en lançant dans la console (onglet "bash") la commande
 $ nodeatlas --webconfig webconfig.staging.json
 ```
 
-## Mettre à jour l'environnement ##
+### Mettre à jour l'environnement ###
 
-Pour mettre à jour l'environnement avec la version que vous souhaitez, utilisez Git.
+Pour mettre à jour l'environnement avec la version que vous souhaitez, utilisez git.
+
+- Par exemple pour mettre à jour avec la dernière version de la branche `develop` :
+
+   ```bash
+$ git checkout develop
+$ git pull
+```
+
+- Par exemple pour récupérer la version du commit `13b55fbdb8b4ba332becb15ebe54187464aae179`
+
+   ```bash
+$ git checkout 13b55fbdb8b4ba332becb15ebe54187464aae179
+```
 
 
 
