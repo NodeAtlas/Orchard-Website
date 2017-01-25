@@ -1,0 +1,21 @@
+{
+	"httpPort": 7777,
+	"stylus": true,
+	"languageCode": "fr-fr",
+	"variation": "common.json",
+	"view": "layout.htm",
+	"routes": {
+		"home_fr-fr": {
+			"url": "/",
+			"view": "index.htm",
+			"variation": "index.json"
+		},
+		"home_en-us": {
+			"url": "/english/",
+			"languageCode": "en-us",
+			"view": "index.htm",
+			"variation": "index.json"
+		}
+	},
+	"_robots": "noindex, nofollow"
+}
