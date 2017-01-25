@@ -38,23 +38,29 @@ Pour modifier le site avec un rendu en temps réel, il vous faudra installer [No
 - [Télécharger Node.js](https://nodejs.org/en/download/)
 - [Télécharger Git](https://git-scm.com/downloads)
 
-puis récupérer le dépôt en local sur votre machine
+puis récupérer le dépôt en local sur votre machine :
 
 ```bash
 $ cd </path/to/workspace/>
 $ git clone https://github.com/Orchard-ID/Website.git
 ```
 
+puis initialisez la branche de développement :
+
+```bash
+git checkout develop
+```
+
 puis installer [NodeAtlas] et les autres module [NPM] dont dépend le projet dans le dossier projet :
 
-```
+```bash
 $ cd Website
 $ npm install
 ```
 
 puis lancez le site avec la commande :
 
-```
+```bash
 $ npm start
 ```
 
@@ -69,7 +75,7 @@ Les version française et internationale du site seront accessible aux adresses 
 
 Vous pouvez également lancez le débogeur [Node.js] dans Chrome avec la commande :
 
-```
+```bash
 $ npm test
 ```
 
@@ -87,14 +93,6 @@ Prochainement...
 
 
 
-## Environnement de pré-production ##
-
-Prochainement...
-
-
-
-
-
-## Environnement de pré-production ##
+## Environnement de production ##
 
 Prochainement...
