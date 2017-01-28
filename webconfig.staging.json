@@ -7,5 +7,6 @@
 	"variation": "common.json",
 	"view": "layout.htm",
 	"routes": "routes.json",
+	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow"
 }

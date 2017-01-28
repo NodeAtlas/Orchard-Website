@@ -9,5 +9,18 @@
 		"languageCode": "en-us",
 		"view": "index.htm",
 		"variation": "index.json"
+	},
+	"error_fr-fr": {
+		"url": "/page-inexistante/",
+		"view": "error.htm",
+		"variation": "error.json",
+		"statusCode": 404
+	},
+	"error_en-us": {
+		"url": "/english/*",
+		"view": "error.htm",
+		"languageCode": "en-us",
+		"variation": "error.json",
+		"statusCode": 404
 	}
 }
