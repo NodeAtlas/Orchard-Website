@@ -1,0 +1,12 @@
+{
+	"httpSecure": true,
+	"httpPort": 7777,
+	"urlPort": 443,
+	"urlHostname": "www.orchard-id.com",
+	"languageCode": "fr-fr",
+	"variation": "common.json",
+	"view": "layout.htm",
+	"routes": "routes.json",
+	"pageNotFound": "error_fr-fr",
+	"_robots": "noindex, nofollow"
+}
