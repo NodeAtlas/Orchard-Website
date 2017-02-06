@@ -132,4 +132,73 @@ $ git checkout 13b55fbdb8b4ba332becb15ebe54187464aae179
 
 ## Environnement de production ##
 
-Prochainement...
+L'environnement de production est visible à l'adresse : 
+
+- http://www.orchard-id.com/
+
+### Redémarrer le serveur ###
+
+Le serveur tourne forcément. Pour le redémarrez il faut repérer dans la liste des applications Node.js de `forever` laquelle est la notre :
+
+```bash
+forever list
+```
+
+Pour la repérer, il faut trouver celle avec `--directory .../orchard-id.com/` et récupérer son code en amont.
+
+Exemple : pour le retour suivant
+
+```bash
+                                                                                                                                                                                                                                                                                                                            pid     id       logfile                                                          uptime
+data: [0] ev-3 /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.nvm/versions/node/v6.9.5/bin/node /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.nvm/versions/node/v6.9.5/lib/node_modules/node-atlas/ --directory /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/orchard-id.com/ --webconfig webconfig.production.json 	24827   24833    /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.forever/ev-3.log 0:2:56:55.421
+```
+
+le site est la ligne `[0]` car on a `--directory .../orchard-id.com/` et le code en amont est `ev-3`.
+
+Il faut alors utiliser
+
+```bash
+forever restart ev-3
+```
+
+**Si le serveur est down** (et que l'entrée ou que l'entrée n'est pas dans forver)
+
+Pour le démarrez utilisez la commande suivante :
+
+```bash
+forever start /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.nvm/versions/node/v6.9.5/lib/node_modules/node-atlas/ --directory /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/orchard-id.com/ --webconfig webconfig.production.json
+```
+
+*Note : la version de Node.js peut être différente.*
+
+### Mettre à jour l'environnement ###
+
+Pour mettre à jour l'environnement avec la dernière version (`master`) prète à tourner, utilisez git.
+
+```bash
+$ git checkout master
+$ git pull
+```
+
+puis redémarrez avec
+
+```bash
+forever restart ev-3
+```
+
+### Serveur frontal ###
+
+L'application Node.js tourne sous son propre serveur HTTP sur le port `7777`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur apache qui tourne sur ce port redirige les demandes. Pour cela on utilise :
+
+```bash
+RewriteEngine On
+RewriteRule "^(.*)$" "http://localhost:7777/$1" [L,P]
+```
+
+on peut également forcer toute les demandes de `orchard-id.com` vers `www.orchard-id.com` avec
+
+```bash
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^orchard-id\.com
+RewriteRule ^(.*)$ http://www.orchard-id.com$1 [R=permanent,L]
+```
