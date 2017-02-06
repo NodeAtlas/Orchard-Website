@@ -10,6 +10,10 @@
 		"view": "index.htm",
 		"variation": "index.json"
 	},
+	"/websocket/": {
+		"view": "websocket.htm",
+		"controller": "websocket.js"
+	},
 	"error_fr-fr": {
 		"url": "/page-inexistante/",
 		"view": "error.htm",
