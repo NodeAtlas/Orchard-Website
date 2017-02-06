@@ -1,2 +1,7 @@
-<p><a href="<?- webconfig.routes[routeKey.split('_')[0] + '_' + common.language.href].url ?>" title="<?- common.language.title ?>"><?- common.language.content ?></a></p>
-<p><?- specific.content ?></p>
+<div class="main">
+	<div class="main--content">
+		<p><a href="<?- webconfig.routes[routeKey.split('_')[0] + '_' + common.language.href].url ?>" title="<?- common.language.title ?>"><?- common.language.content ?></a></p>
+		<h1><?- specific.title ?></h1>
+		<?- specific.content ?>
+	</div>
+</div>
