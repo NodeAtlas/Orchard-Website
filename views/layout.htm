@@ -2,8 +2,8 @@
 <html lang="<?= languageCode ?>">
 	<head>
 		<meta charset="utf-8" />
-		<title><?-specific.title ?> - <?- common.title ?></title>
 		<base href="<?= urlBasePath ?>/" />
+		<title><?-specific.title ?> - <?- common.title ?></title>
 		<meta name="description" content="Site web de la société Orchard ID.">
 		<meta name="robots" content="<?= webconfig._robots ?>" />
 		<meta name="og:url" content="http://www.orchard-id.com/index.html">
@@ -23,6 +23,8 @@
 		<div class="layout">
 			<?- include(routeParameters.view) ?>
 		</div>
+		<script src="socket.io/socket.io.js"></script>
+		<script src="node-atlas/socket.io.js"></script>
 		<script src="javascripts/common.js"></script>
 	</body>
 </html>
