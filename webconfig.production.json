@@ -1,6 +1,7 @@
 {
-	"stylus": true,
 	"httpPort": 7777,
+	"urlPort": 80,
+	"urlHostname": "www.orchard-id.com",
 	"languageCode": "fr-fr",
 	"variation": "common.json",
 	"view": "layout.htm",
