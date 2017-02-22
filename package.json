@@ -5,6 +5,7 @@
   "main": "server.na",
   "scripts": {
     "start": "node server.na --browse",
+    "fr": "node server.fr.na --browse",
     "test": "node --inspect server.na --browse",
     "debug": "node --inspect server.na --browse"
   },

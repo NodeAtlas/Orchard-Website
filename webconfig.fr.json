@@ -1,10 +1,9 @@
 {
 	"stylus": true,
-	"httpPort": 7777,
-	"languageCode": "en-us",
+	"httpPort": 7776,
 	"variation": "common.json",
 	"view": "layout.htm",
-	"routes": "routes.json",
-	"pageNotFound": "error_en-us",
+	"routes": "routes.fr.json",
+	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow"
 }

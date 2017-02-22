@@ -1,0 +1,10 @@
+{
+	"httpPort": 7776,
+	"urlPort": 80,
+	"urlHostname": "www.orchard-id.fr",
+	"variation": "common.json",
+	"view": "layout.htm",
+	"routes": "routes.fr.json",
+	"pageNotFound": "error_fr-fr",
+	"_robots": "noindex, nofollow"
+}
