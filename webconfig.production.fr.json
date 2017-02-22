@@ -1,6 +1,7 @@
 {
+	"httpSecure": true,
 	"httpPort": 7776,
-	"urlPort": 80,
+	"urlPort": 443,
 	"urlHostname": "www.orchard-id.fr",
 	"variation": "common.json",
 	"view": "layout.htm",

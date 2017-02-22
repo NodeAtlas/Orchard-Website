@@ -173,11 +173,11 @@ Le serveur tourne forcément. Pour le redémarrez il faut repérer dans la liste
 forever list
 ```
 
-Pour la repérer, il faut trouver celle avec `--directory .../orchard-id.com/` et récupérer son code en amont.
+Pour la repérer, il faut trouver celle avec `--directory .../orchard-id.com/ --webconfig webconfig.prod.json` et récupérer son code en amont.
 
 #### Version française ####
 
-Repérer plutôt `--directory .../orchard-id.fr/`.
+Repérer plutôt `--directory .../orchard-id.com/ --webconfig webconfig.prod.fr.json`.
 
 Exemple : pour le retour suivant
 
