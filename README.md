@@ -11,7 +11,7 @@
 
 ## Avant-propos ##
 
-Ce dépôt contient l'intégralité du code source permettant de mettre en ligne le site web de Orchard ID. Celui-ci fonctionne avec [NodeAtlas] qui est un module [NPM] tournant sous [Node.js].
+Ce dépôt contient l'intégralité du code source permettant de mettre en ligne le site web de Orchard ID dans ses différences langues. Celui-ci fonctionne avec [NodeAtlas] qui est un module [NPM] tournant sous [Node.js].
 
 Il peut servir d'inspiration pour créer d'autres sites.
 
@@ -71,7 +71,6 @@ ou lancez `server.na` en double cliquant dessus :
 Les version française et internationale du site seront accessible aux adresses suivantes :
 
 - *http://localhost:7777/*
-- *http://localhost:7777/english/*
 
 Vous pouvez également lancez le débogeur [Node.js] dans Chrome avec la commande :
 
@@ -80,6 +79,20 @@ $ npm test
 ```
 
 il vous suffit ensuite d'atteindre l'url de debug proposé par la console.
+
+#### Version française ####
+
+Pour la version française, suivre les mêmes instructions que précédemment sauf que la commande de démarrage est :
+
+```bash
+$ npm run fr
+```
+
+Le fichier de lancement est `server.fr.na`
+
+et que le site tournera à l'adresse :
+
+- *http://localhost:7776/*
 
 
 
@@ -109,6 +122,12 @@ Et en lançant dans la console (onglet "bash") la commande
 $ nodeatlas --webconfig webconfig.staging.json
 ```
 
+#### Version française ####
+
+```bash
+$ nodeatlas --webconfig webconfig.staging.fr.json
+```
+
 ### Mettre à jour l'environnement ###
 
 Pour mettre à jour l'environnement avec la version que vous souhaitez, utilisez git.
@@ -136,7 +155,17 @@ L'environnement de production est visible à l'adresse :
 
 - http://www.orchard-id.com/
 
+#### Version française ####
+
+- http://www.orchard-id.fr/
+
 ### Redémarrer le serveur ###
+
+Tout d'abord il faut se mettre dans l'environnement du serveur avec la commande
+
+```bash
+nvm install 6.9.5
+```
 
 Le serveur tourne forcément. Pour le redémarrez il faut repérer dans la liste des applications Node.js de `forever` laquelle est la notre :
 
@@ -144,7 +173,11 @@ Le serveur tourne forcément. Pour le redémarrez il faut repérer dans la liste
 forever list
 ```
 
-Pour la repérer, il faut trouver celle avec `--directory .../orchard-id.com/` et récupérer son code en amont.
+Pour la repérer, il faut trouver celle avec `--directory .../orchard-id.com/ --webconfig webconfig.prod.json` et récupérer son code en amont.
+
+#### Version française ####
+
+Repérer plutôt `--directory .../orchard-id.com/ --webconfig webconfig.prod.fr.json`.
 
 Exemple : pour le retour suivant
 
@@ -188,17 +221,24 @@ forever restart ev-3
 
 ### Serveur frontal ###
 
-L'application Node.js tourne sous son propre serveur HTTP sur le port `7777`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur apache qui tourne sur ce port redirige les demandes. Pour cela on utilise :
-
-```bash
-RewriteEngine On
-RewriteRule "^(.*)$" "http://localhost:7777/$1" [L,P]
-```
-
-on peut également forcer toute les demandes de `orchard-id.com` vers `www.orchard-id.com` avec
+L'application Node.js tourne sous son propre serveur HTTP sur le port `7777`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur Apache qui tourne redirige les demandes de `orchard-id.com` sur ce port. Pour cela on utilise :
 
 ```bash
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^orchard-id\.com
 RewriteRule ^(.*)$ http://www.orchard-id.com$1 [R=permanent,L]
+RewriteEngine On
+RewriteRule "^(.*)$" "http://localhost:7777/$1" [L,P]
+```
+
+#### Version française ####
+
+Le port étant `7776`, la configuration pour rediriger `orchard-id.fr` est dans `/orchard-id.fr/.htaccess`
+
+```bash
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^orchard-id\.fr
+RewriteRule ^(.*)$ http://www.orchard-id.fr$1 [R=permanent,L]
+RewriteEngine On
+RewriteRule "^(.*)$" "http://localhost:7776/$1" [L,P]
 ```

@@ -1,11 +1,11 @@
 {
-	"home_en-us": {
+	"home_fr-fr": {
 		"url": "/",
 		"view": "index.htm",
 		"variation": "index.json"
 	},
-	"error_en-us": {
-		"url": "/page-not-found/",
+	"error_fr-fr": {
+		"url": "/page-inexistante/",
 		"view": "error.htm",
 		"variation": "error.json",
 		"statusCode": 404
