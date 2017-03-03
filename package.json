@@ -1,11 +1,13 @@
 {
   "name": "website",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Site web de la société Orchard ID",
   "main": "server.na",
   "scripts": {
     "start": "node server.na --browse",
-    "test": "node --inspect server.na --browse"
+    "fr": "node server.fr.na --browse",
+    "test": "node --inspect server.na --browse",
+    "debug": "node --inspect server.na --browse"
   },
   "repository": {
     "type": "git",
@@ -21,22 +23,26 @@
   "bin": {
     "weboid": "server.na"
   },
-  "contributors": [{
-    "name": "Arban Allée",
-    "email": "a.allee@orchard-id.com"
-  }, {
-    "name": "Bruno Lesieur",
-    "email": "b.lesieur@orchard-id.com"
-  }, {
-    "name": "Romain Laurier",
-    "email": "r.laurier@orchard-id.com"
-  }],
+  "contributors": [
+    {
+      "name": "Arban Allée",
+      "email": "a.allee@orchard-id.com"
+    },
+    {
+      "name": "Bruno Lesieur",
+      "email": "b.lesieur@orchard-id.com"
+    },
+    {
+      "name": "Romain Laurier",
+      "email": "r.laurier@orchard-id.com"
+    }
+  ],
   "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/Orchard-ID/Website/issues"
   },
   "dependencies": {
-    "node-atlas": "2.0.0-beta13"
+    "node-atlas": "2.0.0-beta19",
   },
   "files": [
     "assets/*",
