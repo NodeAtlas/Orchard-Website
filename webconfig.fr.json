@@ -1,13 +1,9 @@
 {
 	"stylus": true,
 	"httpPort": 7776,
-	"statics": "statics.json",
-	"controller": "common.js",
 	"variation": "common.json",
 	"view": "layout.htm",
 	"routes": "routes.fr.json",
 	"pageNotFound": "error_fr-fr",
-	"_robots": "noindex, nofollow",
-	"_smtpLoginAuth": "4e66f45e500692dc07fc011ab0d78f5c",
-	"_smtpPasswordAuth": "c1f5b21165b744d26f418e2c5acfe342"
+	"_robots": "noindex, nofollow"
 }

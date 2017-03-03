@@ -2,7 +2,6 @@
 	"stylus": true,
 	"httpPort": 7777,
 	"languageCode": "en-us",
-	"statics": "statics.json",
 	"variation": "common.json",
 	"view": "layout.htm",
 	"routes": "routes.json",

@@ -3,8 +3,6 @@
 	"httpPort": 8080,
 	"urlPort": 443,
 	"urlHostname": "website-haeresis.c9users.io",
-	"controller": "common.js",
-	"statics": "statics.json",
 	"variation": "common.json",
 	"view": "layout.htm",
 	"routes": "routes.fr.json",

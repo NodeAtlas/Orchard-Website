@@ -3,8 +3,6 @@
 	"httpPort": 7776,
 	"urlPort": 443,
 	"urlHostname": "www.orchard-id.fr",
-	"controller": "common.js",
-	"statics": "statics.json",
 	"variation": "common.json",
 	"view": "layout.htm",
 	"routes": "routes.fr.json",
