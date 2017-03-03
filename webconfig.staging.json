@@ -1,0 +1,14 @@
+{
+	"httpSecure": true,
+	"httpPort": 8080,
+	"urlPort": 443,
+	"urlHostname": "website-haeresis.c9users.io",
+	"controller": "common.js",
+	"languageCode": "en-us",
+	"statics": "statics.json",
+	"variation": "common.json",
+	"view": "layout.htm",
+	"routes": "routes.json",
+	"pageNotFound": "error_en-us",
+	"_robots": "noindex, nofollow"
+}

@@ -1,0 +1,13 @@
+{
+	"home_en-us": {
+		"url": "/",
+		"view": "index.htm",
+		"variation": "index.json"
+	},
+	"error_en-us": {
+		"url": "/page-not-found/",
+		"view": "error.htm",
+		"variation": "error.json",
+		"statusCode": 404
+	}
+}
