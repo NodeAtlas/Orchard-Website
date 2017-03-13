@@ -1,6 +1,5 @@
 {
 	"javascripts": {
-		"javascripts/systemjs-plugin-json.min.js": ["javascripts/systemjs-plugin-json.js"],
 		"javascripts/framework.min.js": [
 			"javascripts/socket.io.js",
 			"node-atlas/socket.io.js",

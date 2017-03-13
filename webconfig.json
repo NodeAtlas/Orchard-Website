@@ -4,6 +4,7 @@
 	"variation": "common.json",
 	"controller": "common.js",
 	"view": "layout.htm",
+	"bundles": "bundles.json",
 	"routes": "routes.json",
 	"statics": "statics.json",
 	"pageNotFound": "error_fr-fr",
