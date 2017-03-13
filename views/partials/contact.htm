@@ -2,8 +2,8 @@
 	<div class="contact--content">
 		<h1>{{ specific.title }}</h1>
 		<div v-html="specific.content"></div>
-		<ul v-for="address in specific.addresses">
-			<li v-html="address"></li>
+		<ul>
+			<li v-for="address in specific.addresses" v-html="address"></li>
 		</ul>
 	</div>
 </div>
