@@ -44,7 +44,7 @@
     "url": "https://github.com/Orchard-ID/Orchard-Website/issues"
   },
   "dependencies": {
-    "node-atlas": "2.0.0-beta19",
+    "node-atlas": "2.0.0-beta20"
   },
   "files": [
     "assets/*",
