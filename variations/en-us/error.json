@@ -1,3 +1,6 @@
 {
-	"content": "This page doesn't exist"
+	"error": {
+		"title": "404",
+		"content": "<p>This page doesn't exist</p>"
+	}
 }

@@ -22,14 +22,28 @@
 	</head>
 	<body>
 		<div class="layout">
-			<?- include(routeParameters.view) ?>
+			<nav class="menu">
+				<ul>
+					<? for (var i = 0; i < common.menu.length; i++) { ?>
+					<li>
+						<a is="router-link" to="<?= webconfig.routes[common.menu[i].key].url ?>" title="<?= common.menu[i].title ?>"><?= common.menu[i].title ?></a>
+					</li>
+					<? } ?>
+				</ul>
+			</nav>
+			<div is="transition" name="fade-in-out">
+				<router-view v-bind:common="common"></router-view>
+			</div>
 		</div>
+		<var id="routes" data-routes='<?- JSON.stringify(webconfig.routes) ?>'></var>
 		<? if (webconfig._min) { ?>
 		<script src="javascripts/framework.min.js" data-main="javascripts/main.min.js" id="systemjs"></script>
 		<? } else { ?>
 		<script src="socket.io/socket.io.js"></script>
 		<script src="node-atlas/socket.io.js"></script>
 		<script src="javascripts/system.min.js"></script>
+		<script src="javascripts/vue.js"></script>
+		<script src="javascripts/vue.router.js"></script>
 		<script src="javascripts/common.js"  data-main="javascripts/main.js" id="systemjs"></script>
 		<? } ?>
 	</body>

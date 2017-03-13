@@ -5,5 +5,15 @@
 		"content": "International Version",
 		"href": "http://www.orchard-id.com/",
 		"title": "Voir la version International"
-	}
+	},
+	"menu": [{
+		"title": "Accueil",
+		"key": "home_fr-fr"
+	}, {
+		"title": "Nos projets",
+		"key": "projects_fr-fr"
+	}, {
+		"title": "Nous contacter",
+		"key": "contact_fr-fr"
+	}]
 }

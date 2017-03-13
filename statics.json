@@ -1,3 +1,4 @@
 {
-	"/javascripts/jshashes.js": "node_modules/jshashes/hashes.min.js"
+	"/views-models": "views/",
+	"/variations": "variations/"
 }

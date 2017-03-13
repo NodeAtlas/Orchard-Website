@@ -1,4 +1,6 @@
 {
-	"title": "404",
-	"content": "Cette page n'existe pas"
+	"error": {	
+		"title": "404",
+		"content": "<p>Cette page n'existe pas</p>"
+	}
 }
