@@ -1,4 +1,8 @@
 {
+	"meta": {
+		"title": "Nos projets",
+		"description": "Voici ce sur quoi nous travaillons !"
+	},
 	"projects": {
 		"title": "Nous avons du temps pour votre projet",
 		"content": "<p>même si nous travaillons actuellement sur notre propre identité digital !</p>",

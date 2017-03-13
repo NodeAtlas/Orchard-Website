@@ -1,4 +1,8 @@
 {
+	"meta": {
+		"title": "Our Projects",
+		"description": "This is what we can do now!"
+	},
 	"projects": {
 		"title": "We have time for your project",
 		"content": "<p>even if we work currently on our own digital identity!</p>",

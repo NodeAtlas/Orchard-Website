@@ -23,7 +23,7 @@ exports.changeDom = function (next, locals) {
 				}
 			};
 		renderer.renderToString(new Vue(component), function (error, html) {
-			locals.dom = locals.dom.replace('<router-view v-bind:common="common"></router-view>', '<div is="router-view" v-bind:common="common">' + html.replace(' server-rendered="true"', "") + '</div>');
+			locals.dom = locals.dom.replace(/(<div is="router-view" [-a-zA-Z:='" \/>]+)(<\/div>)/g, '$1' + html.replace(' server-rendered="true"', "") + '$2');
 			next();
 		});
 	});

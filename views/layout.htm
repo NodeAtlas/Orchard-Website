@@ -3,15 +3,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<base href="<?= urlBasePath ?>/" />
-		<title><?-specific.title ?> - <?- common.title ?></title>
-		<meta name="description" content="<?-specific.description ?>">
+		<title><?- specific.meta.title ?> - <?- common.title ?></title>
+		<meta name="description" content="<?-specific.meta.description ?>">
 		<meta name="robots" content="<?= webconfig._robots ?>" />
 		<meta name="og:url" content="<?= urlBasePath ?>/">
 		<meta name="og:locale" content="<?= (languageCode) ? languageCode : 'fr-fr' ?>">
 		<meta name="og:type" content="website">
-		<meta name="og:title" content="<?-specific.title ?> - <?- common.title ?>">
-		<meta name="og:description" content="<?- specific.description ?>">
-		<meta name="og:updated_time" content="<?- +new Date() ?>">
+		<meta name="og:title" content="<?-specific.meta.title ?> - <?- common.title ?>">
+		<meta name="og:description" content="<?- specific.meta.description ?>">
+		<meta name="og:updated_time" content="1489419055787">
 		<!--[if IE]><meta name="viewport" content="width=device-width" /><![endif]-->
 		<!--[if !IE]><!--><meta name="viewport" content="initial-scale=1.0" /><!--<![endif]-->
 		<? if (webconfig._min) { ?>
@@ -26,13 +26,13 @@
 				<ul>
 					<? for (var i = 0; i < common.menu.length; i++) { ?>
 					<li>
-						<a is="router-link" to="<?= webconfig.routes[common.menu[i].key].url ?>" title="<?= common.menu[i].title ?>"><?= common.menu[i].title ?></a>
+						<a is="router-link" to="<?= webconfig.routes[common.menu[i].key].url ?>" href="<?= webconfig.routes[common.menu[i].key].url ?>" title="<?= common.menu[i].title ?>"><?= common.menu[i].title ?></a>
 					</li>
 					<? } ?>
 				</ul>
 			</nav>
 			<div is="transition" name="fade-in-out">
-				<router-view v-bind:common="common"></router-view>
+				<div is="router-view" v-bind:common="common"></div>
 			</div>
 		</div>
 		<var id="routes" data-routes='<?- JSON.stringify(webconfig.routes) ?>'></var>

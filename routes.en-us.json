@@ -6,13 +6,13 @@
 		"_ssr": "partials/home"
 	},
 	"projects_en-us": {
-		"url": "/projects/",
+		"url": "/our-projects/",
 		"view": "projects",
 		"variation": "projects.json",
 		"_ssr": "partials/projects"
 	},
 	"contact_en-us": {
-		"url": "/contact/",
+		"url": "/contact-us/",
 		"view": "contact",
 		"variation": "contact.json",
 		"_ssr": "partials/contact"

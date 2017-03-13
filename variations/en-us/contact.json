@@ -1,4 +1,8 @@
 {
+	"meta": {
+		"title": "Contact Us",
+		"description": "To contact someone at Orchard ID!"
+	},
 	"contact": {
 		"title": "Until our Orchard has grown...",
 		"content": "<p>You could contact us for :</p>",

@@ -1,4 +1,8 @@
 {
+	"meta": {
+		"title": "Welcome!",
+		"description": "Official website of Verger.Digital creators!"
+	},
 	"home": {	
 		"title": "Welcome at www.Orchard-ID.com",
 		"content": "<p>This website is under construction.<br/>Feel free to come back later!</p>"

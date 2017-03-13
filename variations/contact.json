@@ -1,4 +1,8 @@
 {
+	"meta": {
+		"title": "Nous contacter",
+		"description": "Pour contacter quelqu'un chez Orchard ID !"
+	},
 	"contact": {	
 		"title": "En attendant que notre verger pousse",
 		"content": "<p>Vous pouvez nous contacter pour :</p>",
