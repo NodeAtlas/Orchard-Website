@@ -1,17 +1,19 @@
 {
   "name": "website",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Site web de la société Orchard ID",
   "main": "server.na",
   "scripts": {
     "start": "node server.na --browse",
-    "fr": "node server.fr.na --browse",
     "test": "node --inspect server.na --browse",
-    "debug": "node --inspect server.na --browse"
+    "debugen": "node --inspect server.na --browse",
+    "debugfr": "node --inspect server.na --browse",
+    "starten": "node server.na --browse",
+    "startfr": "node server.fr.na --browse"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Orchard-ID/Website.git"
+    "url": "git+https://github.com/Orchard-ID/Orchard-Website.git"
   },
   "keywords": [
     "orchard id",
@@ -39,7 +41,7 @@
   ],
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/Orchard-ID/Website/issues"
+    "url": "https://github.com/Orchard-ID/Orchard-Website/issues"
   },
   "dependencies": {
     "node-atlas": "2.0.0-beta19",
@@ -51,10 +53,13 @@
     "LICENSE",
     "README.md",
     "CHANGELOG.md",
+    "server.fr.na",
     "server.na",
+    "route.fr.json",
+    "route.json",
     "package.json"
   ],
-  "homepage": "https://github.com/Orchard-ID/Website#readme",
+  "homepage": "https://github.com/Orchard-ID/Orchard-Website#readme",
   "engines": {
     "node": ">=4.0.0"
   }
