@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
 		<!--[if IE]><meta name="viewport" content="width=device-width" /><![endif]-->
 		<!--[if !IE]><!--><meta name="viewport" content="initial-scale=1.0" /><!--<![endif]-->
-		<? if (webconfig._min === "true") { ?>
+		<? if (webconfig._min) { ?>
 		<link rel="stylesheet" href="stylesheets/common.min.css">
 		<? } else { ?>
 		<link rel="stylesheet" href="stylesheets/common.css">
@@ -26,7 +26,7 @@
 		<div class="layout">
 			<?- include(routeParameters.view) ?>
 		</div>
-		<? if (webconfig._min === "true") { ?>
+		<? if (webconfig._min) { ?>
 		<script src="javascripts/framework.min.js" data-main="javascripts/main.min.js" id="systemjs"></script>
 		<? } else { ?>
 		<script src="socket.io/socket.io.js"></script>
