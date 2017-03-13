@@ -35,7 +35,7 @@ var lang = document.getElementsByTagName("html")[0].getAttribute("lang"),
 			mode: 'history',
 			base: '/',
 			routes: [{ 
-				path: routes["home_" + lang].url, 
+				path: '', 
 				component: vmHome,
 				props: ['common']
 			}, { 
