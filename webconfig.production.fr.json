@@ -1,4 +1,5 @@
 {
+	"cache": true,
 	"httpSecure": true,
 	"httpPort": 7776,
 	"urlPort": 443,
@@ -7,5 +8,6 @@
 	"view": "layout.htm",
 	"routes": "routes.fr.json",
 	"pageNotFound": "error_fr-fr",
-	"_robots": "noindex, nofollow"
+	"_robots": "noindex, nofollow",
+	"_min": true
 }

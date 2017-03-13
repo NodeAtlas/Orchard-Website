@@ -4,25 +4,33 @@
 		<meta charset="utf-8" />
 		<base href="<?= urlBasePath ?>/" />
 		<title><?-specific.title ?> - <?- common.title ?></title>
-		<meta name="description" content="Site web de la société Orchard ID.">
+		<meta name="description" content="<?-specific.description ?>">
 		<meta name="robots" content="<?= webconfig._robots ?>" />
-		<meta name="og:url" content="http://www.orchard-id.com/index.html">
-		<meta name="og:locale" content="fr-fr">
+		<meta name="og:url" content="<?= urlBasePath ?>/">
+		<meta name="og:locale" content="<?= (languageCode) ? languageCode : 'fr-fr' ?>">
 		<meta name="og:type" content="website">
-		<meta name="og:title" content="Bienvenue sur orchard-id.com">
-		<meta name="og:description" content="Ce site est actuellement en construction.">
-		<meta name="og:updated_time" content="1486378417">
-		<link rel="stylesheet" href="//static.sharedbox.com/assets/font-awesome/4.3.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+		<meta name="og:title" content="<?-specific.title ?> - <?- common.title ?>">
+		<meta name="og:description" content="<?- specific.description ?>">
+		<meta name="og:updated_time" content="<?- +new Date() ?>">
 		<!--[if IE]><meta name="viewport" content="width=device-width" /><![endif]-->
 		<!--[if !IE]><!--><meta name="viewport" content="initial-scale=1.0" /><!--<![endif]-->
+		<? if (webconfig._min) { ?>
+		<link rel="stylesheet" href="stylesheets/common.min.css">
+		<? } else { ?>
 		<link rel="stylesheet" href="stylesheets/common.css">
+		<? } ?>
 	</head>
 	<body>
 		<div class="layout">
 			<?- include(routeParameters.view) ?>
 		</div>
+		<? if (webconfig._min) { ?>
+		<script src="javascripts/framework.min.js" data-main="javascripts/main.min.js" id="systemjs"></script>
+		<? } else { ?>
 		<script src="socket.io/socket.io.js"></script>
 		<script src="node-atlas/socket.io.js"></script>
+		<script src="javascripts/system.min.js"></script>
+		<script src="javascripts/common.js"  data-main="javascripts/main.js" id="systemjs"></script>
+		<? } ?>
 	</body>
 </html>
