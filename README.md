@@ -94,6 +94,26 @@ et que le site tournera à l'adresse :
 
 - *http://localhost:7777/*
 
+### Rechargement à Chaud ###
+
+Vous pouvez utiliser conjointement browserSync et Nodemon pour recharger votre navigateur pour une modification d'un fichier frontal ou recharger votre serveur + votre navigateur pour une modification d'un fichier de serveur en lançant le site avec cette commande :
+
+```bash
+npm run watchfr
+```
+
+Le site ssera disponible à l'adresse *http://localhost:57776/*
+
+#### Version internationale ####
+
+La commande sera
+
+```bash
+npm run watchen
+```
+
+et le site sera disponible à l'adresse *http://localhost:57777/*
+
 
 
 
