@@ -11,31 +11,31 @@ var lang = document.getElementsByTagName("html")[0].getAttribute("lang"),
 		}
 	},
 	vmHome = Vue.component('home', function (resolve) {
-		var template = require("views-models/partials/home.htm!text"),
+		var template = require("views-models/home.htm!text"),
 			specific = require("variations/home.json!json");
-		resolve(require('views-models/partials/home.js')(specific, template, mixin));
+		resolve(require('views-models/home.js')(specific, template, mixin));
 	}),
 	vmProjects = Vue.component('projects', function (resolve) {
-		var template = require("views-models/partials/projects.htm!text"),
+		var template = require("views-models/projects.htm!text"),
 			specific = require("variations/projects.json!json");
-		resolve(require('views-models/partials/projects.js')(specific, template, mixin));
+		resolve(require('views-models/projects.js')(specific, template, mixin));
 	}),
 	vmContact = Vue.component('contact', function (resolve) {
-		var template = require("views-models/partials/contact.htm!text"),
+		var template = require("views-models/contact.htm!text"),
 			specific = require("variations/contact.json!json");
-		resolve(require('views-models/partials/contact.js')(specific, template, mixin));
+		resolve(require('views-models/contact.js')(specific, template, mixin));
 	}),
 	vmError = Vue.component('error', function (resolve) {
-		var template = require("views-models/partials/error.htm!text"),
+		var template = require("views-models/error.htm!text"),
 			specific = require("variations/error.json!json");
-		resolve(require('views-models/partials/error.js')(specific, template, mixin));
+		resolve(require('views-models/error.js')(specific, template, mixin));
 	}),
 	vm = new Vue({
 		router: new VueRouter({
 			mode: 'history',
 			base: '/',
 			routes: [{ 
-				path: '', 
+				path: routes["home_" + lang].url, 
 				component: vmHome,
 				props: ['common']
 			}, { 

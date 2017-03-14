@@ -6,8 +6,8 @@ exports.changeDom = function (next, locals) {
 		renderer = renderers.createRenderer(),
 		fs = NA.modules.fs,
 		path = NA.modules.path,
-		view = path.join(NA.serverPath, NA.webconfig.viewsRelativePath, locals.routeParameters._ssr + ".htm"),
-		model = path.join(NA.serverPath, NA.webconfig.viewsRelativePath, locals.routeParameters._ssr + ".js");
+		view = path.join(NA.serverPath, NA.webconfig.viewsRelativePath, locals.routeParameters.view + ".htm"),
+		model = path.join(NA.serverPath, NA.webconfig.viewsRelativePath, locals.routeParameters.view + ".js");
 
 	global.Vue = Vue;
 

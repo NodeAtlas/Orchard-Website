@@ -23,10 +23,11 @@
 	<body>
 		<div class="layout">
 			<nav class="menu">
-				<ul>
+				<ul><? var url; ?>
 					<? for (var i = 0; i < common.menu.length; i++) { ?>
 					<li>
-						<a is="router-link" to="<?= webconfig.routes[common.menu[i].key].url ?>" href="<?= webconfig.routes[common.menu[i].key].url ?>" title="<?= common.menu[i].title ?>"><?= common.menu[i].title ?></a>
+						<? url = webconfig.routes[common.menu[i].key].url; ?>
+						<a is="router-link" to="<?= url ?>" href="<?= url ?>" title="<?= common.menu[i].title ?>"<?- (url === "/") ? " exact" : "" ?>><?= common.menu[i].title ?></a>
 					</li>
 					<? } ?>
 				</ul>
