@@ -15,7 +15,7 @@
 		<!--[if IE]><meta name="viewport" content="width=device-width" /><![endif]-->
 		<!--[if !IE]><!--><meta name="viewport" content="initial-scale=1.0" /><!--<![endif]-->
 		<? if (webconfig._min) { ?>
-		<link rel="stylesheet" href="stylesheets/common.min.css">
+		<link rel="stylesheet" href="stylesheets/common.min.css?v=0.2.2">
 		<? } else { ?>
 		<link rel="stylesheet" href="stylesheets/common.css">
 		<? } ?>
@@ -41,7 +41,7 @@
 		</div>
 		<var id="routes" data-routes='<?- JSON.stringify(webconfig.routes) ?>'></var>
 		<? if (webconfig._min) { ?>
-		<script src="javascripts/framework.min.js" data-main="javascripts/main.min.js" id="systemjs"></script>
+		<script src="javascripts/framework.min.js?v=0.2.2" data-main="javascripts/main.min.js" id="systemjs"></script>
 		<? } else { ?>
 		<script src="socket.io/socket.io.js"></script>
 		<script src="node-atlas/socket.io.js"></script>
