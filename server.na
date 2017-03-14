@@ -1,3 +1,1 @@
-require("node-atlas")().run({
-	"webconfig": "webconfig.fr.json"
-});
+require("node-atlas")().start();

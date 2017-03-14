@@ -9,7 +9,9 @@
     "debugen": "node --inspect server.na --browse",
     "debugfr": "node --inspect server.na --browse",
     "starten": "node server.na --browse",
-    "startfr": "node server.fr.na --browse"
+    "startfr": "node server.fr.na --browse",
+    "watchen": "gulp --gulpfile gulpfile.en-us.js",
+    "watchfr": "gulp"
   },
   "repository": {
     "type": "git",
@@ -47,6 +49,11 @@
     "node-atlas": "2.0.0-beta21",
     "vue": "2.2.3",
     "vue-server-renderer": "2.2.3"
+  },
+  "devDependencies": {
+    "browser-sync": "2.18.x",
+    "gulp": "3.9.x",
+    "gulp-nodemon": "2.2.x"
   },
   "files": [
     "assets/*",
