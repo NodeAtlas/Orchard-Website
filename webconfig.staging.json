@@ -3,11 +3,12 @@
 	"httpPort": 8080,
 	"urlPort": 443,
 	"urlHostname": "website-haeresis.c9users.io",
-	"languageCode": "en-us",
 	"variation": "common.json",
+	"controller": "common.js",
 	"view": "layout.htm",
+	"statics": "statics.json",
 	"routes": "routes.json",
-	"pageNotFound": "error_en-us",
+	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow",
 	"_min": true
 }

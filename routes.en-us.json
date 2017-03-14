@@ -1,21 +1,21 @@
 {
-	"home_fr-fr": {
+	"home_en-us": {
 		"url": "/",
 		"view": "home",
 		"variation": "home.json"
 	},
-	"projects_fr-fr": {
-		"url": "/nos-projets/",
+	"projects_en-us": {
+		"url": "/our-projects/",
 		"view": "projects",
 		"variation": "projects.json"
 	},
-	"contact_fr-fr": {
-		"url": "/nous-contacter/",
+	"contact_en-us": {
+		"url": "/contact-us/",
 		"view": "contact",
 		"variation": "contact.json"
 	},
-	"error_fr-fr": {
-		"url": "/page-inexistante/",
+	"error_en-us": {
+		"url": "/page-not-found/",
 		"view": "error",
 		"variation": "error.json",
 		"statusCode": 404

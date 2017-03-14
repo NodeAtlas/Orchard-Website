@@ -4,15 +4,16 @@
 		"transports": ["polling"]
 	},
 	"httpSecure": true,
-	"httpPort": 7776,
+	"httpPort": 7777,
 	"urlPort": 443,
-	"urlHostname": "www.orchard-id.fr",
+	"urlHostname": "www.orchard-id.com",
+	"languageCode": "en-us",
 	"variation": "common.json",
 	"controller": "common.js",
 	"view": "layout.htm",
-	"statics": "statics.json",
-	"routes": "routes.json",
-	"pageNotFound": "error_fr-fr",
+	"statics": "statics.en-us.json",
+	"routes": "routes.en-us.json",
+	"pageNotFound": "error_en-us",
 	"_robots": "noindex, nofollow",
 	"_min": true
 }

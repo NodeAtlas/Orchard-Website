@@ -1,9 +1,20 @@
 {
 	"title": "Orchard ID Website",
 	"description": "Website of Orchard ID Company",
+	"copyright": "Website make with <a href='https://fr.vuejs.org/' target='_blank'>Vue</a> and <a href='https://node-atlas.js.org/' target='_blank'>NodeAtlas</a>",
 	"language": {
 		"content": "Version française",
 		"href": "http://www.orchard-id.fr/",
 		"title": "Go to the French Version"
-	}
+	},
+	"menu": [{
+		"title": "Home",
+		"key": "home_en-us"
+	}, {
+		"title": "Projects",
+		"key": "projects_en-us"
+	}, {
+		"title": "Contact",
+		"key": "contact_en-us"
+	}]
 }

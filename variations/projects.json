@@ -1,0 +1,15 @@
+{
+	"meta": {
+		"title": "Nos projets",
+		"description": "Voici ce sur quoi nous travaillons !"
+	},
+	"projects": {
+		"title": "Nous avons du temps pour votre projet",
+		"content": "<p>même si nous travaillons actuellement sur notre propre identité digital !</p>",
+		"projects": [
+			"<a href='https://www.orchard-id.com' target='_blank'>https://www.orchard-id.com</a>",
+			"<a href='https://www.orchard-id.fr' target='_blank'>https://www.orchard-id.fr</a>",
+			"<a href='https://verger.digital' target='_blank'>https://verger.digital</a>"
+		]
+	}
+}

@@ -1,4 +1,10 @@
 {
-	"title": "404",
-	"content": "Cette page n'existe pas"
+	"meta": {
+		"title": "Erreur 404",
+		"description": "Cette page n'existe pas !"
+	},
+	"error": {	
+		"title": "Erreur 404",
+		"content": "<p>Cette page n'existe pas.</p>"
+	}
 }

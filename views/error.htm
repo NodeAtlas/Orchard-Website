@@ -1,2 +1,6 @@
-<h1><?- specific.title ?></h1>
-<p><?- specific.content ?></p>
+<div class="error">
+	<div class="error--content">
+		<h1>{{ specific.title }}</h1>
+		<div v-html="specific.content"></div>
+	</div>
+</div>

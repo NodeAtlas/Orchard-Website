@@ -3,33 +3,51 @@
 	<head>
 		<meta charset="utf-8" />
 		<base href="<?= urlBasePath ?>/" />
-		<title><?-specific.title ?> - <?- common.title ?></title>
-		<meta name="description" content="<?-specific.description ?>">
+		<title><?- specific.meta.title ?> - <?- common.title ?></title>
+		<meta name="description" content="<?-specific.meta.description ?>">
 		<meta name="robots" content="<?= webconfig._robots ?>" />
 		<meta name="og:url" content="<?= urlBasePath ?>/">
 		<meta name="og:locale" content="<?= (languageCode) ? languageCode : 'fr-fr' ?>">
 		<meta name="og:type" content="website">
-		<meta name="og:title" content="<?-specific.title ?> - <?- common.title ?>">
-		<meta name="og:description" content="<?- specific.description ?>">
-		<meta name="og:updated_time" content="<?- +new Date() ?>">
+		<meta name="og:title" content="<?-specific.meta.title ?> - <?- common.title ?>">
+		<meta name="og:description" content="<?- specific.meta.description ?>">
+		<meta name="og:updated_time" content="1489419055787">
 		<!--[if IE]><meta name="viewport" content="width=device-width" /><![endif]-->
 		<!--[if !IE]><!--><meta name="viewport" content="initial-scale=1.0" /><!--<![endif]-->
 		<? if (webconfig._min) { ?>
-		<link rel="stylesheet" href="stylesheets/common.min.css">
+		<link rel="stylesheet" href="stylesheets/common.min.css?v=0.2.2">
 		<? } else { ?>
 		<link rel="stylesheet" href="stylesheets/common.css">
 		<? } ?>
 	</head>
 	<body>
 		<div class="layout">
-			<?- include(routeParameters.view) ?>
+			<nav class="menu">
+				<ul><? var url; ?>
+					<? for (var i = 0; i < common.menu.length; i++) { ?>
+					<li>
+						<? url = webconfig.routes[common.menu[i].key].url; ?>
+						<a is="router-link" to="<?= url ?>" href="<?= url ?>" title="<?= common.menu[i].title ?>"<?- (url === "/") ? " exact" : "" ?>><?= common.menu[i].title ?></a>
+					</li>
+					<? } ?>
+				</ul>
+			</nav>
+			<div is="transition" name="fade-in-out">
+				<div is="router-view" v-bind:common="common"></div>
+			</div>
+			<footer class="footer">
+				<?- common.copyright ?>
+			</footer>
 		</div>
+		<var id="routes" data-routes='<?- JSON.stringify(webconfig.routes) ?>'></var>
 		<? if (webconfig._min) { ?>
-		<script src="javascripts/framework.min.js" data-main="javascripts/main.min.js" id="systemjs"></script>
+		<script src="javascripts/framework.min.js?v=0.2.2" data-main="javascripts/main.min.js" id="systemjs"></script>
 		<? } else { ?>
 		<script src="socket.io/socket.io.js"></script>
 		<script src="node-atlas/socket.io.js"></script>
 		<script src="javascripts/system.min.js"></script>
+		<script src="javascripts/vue.js"></script>
+		<script src="javascripts/vue.router.js"></script>
 		<script src="javascripts/common.js"  data-main="javascripts/main.js" id="systemjs"></script>
 		<? } ?>
 	</body>
