@@ -14,13 +14,6 @@ var ua = document.body.getAttribute('data-ua'),
 						location: location.href,
 						page: to.path
 					});
-
-					console.log(ua);
-					console.log({
-						title: vm.meta.title,
-						location: location.href,
-						page: to.path
-					});
 				}
 			});
 		}
