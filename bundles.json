@@ -1,6 +1,7 @@
 {
 	"javascripts": {
 		"javascripts/framework.min.js": [
+			"javascripts/ga.js",
 			"javascripts/socket.io.js",
 			"node-atlas/socket.io.js",
 			"javascripts/system.min.js",

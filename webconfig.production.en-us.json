@@ -15,5 +15,6 @@
 	"routes": "routes.en-us.json",
 	"pageNotFound": "error_en-us",
 	"_robots": "noindex, nofollow",
-	"_min": true
+	"_min": true,
+	"_ua": "UA-91358693-2"
 }

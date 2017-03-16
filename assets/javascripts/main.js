@@ -1,12 +1,27 @@
 /* jshint browser: true */
-/* global NA, Vue, VueRouter, require */
+/* global NA, ga, Vue, VueRouter, require */
 
-var lang = document.getElementsByTagName("html")[0].getAttribute("lang"),
+var ua = document.body.getAttribute('data-ua'),
+	lang = document.getElementsByTagName("html")[0].getAttribute("lang"),
 	routes = JSON.parse(document.getElementById("routes").getAttribute("data-routes")),
 	mixin = {
 		beforeRouteEnter: function (to, from, next) {
 			next(function (vm) {
 				document.title = vm.meta.title;
+				if (ua) {
+					ga('send', 'pageview', to.path, {
+						title: vm.meta.title,
+						location: location.href,
+						page: to.path
+					});
+
+					console.log(ua);
+					console.log({
+						title: vm.meta.title,
+						location: location.href,
+						page: to.path
+					});
+				}
 			});
 		}
 	},
@@ -30,34 +45,39 @@ var lang = document.getElementsByTagName("html")[0].getAttribute("lang"),
 			specific = require("variations/error.json!json");
 		resolve(require('views-models/error.js')(specific, template, mixin));
 	}),
-	vm = new Vue({
-		router: new VueRouter({
-			mode: 'history',
-			base: '/',
-			routes: [{ 
-				path: routes["home_" + lang].url, 
-				component: vmHome,
-				props: ['common']
-			}, { 
-				path: routes["projects_" + lang].url, 
-				component: vmProjects,
-				props: ['common']
-			}, { 
-				path: routes["contact_" + lang].url, 
-				component: vmContact,
-				props: ['common']
-			}, { 
-				path: '/*', 
-				component: vmError,
-				props: ['common']
-			}]
-		}),
-		el: '.layout',
-		data: {
-			common: require("variations/common.json!json")
-		}
-	});
+	vm;
 
+if (ua) {
+	ga('create', ua, 'auto');
+}
+
+vm = new Vue({
+	router: new VueRouter({
+		mode: 'history',
+		base: '/',
+		routes: [{
+			path: routes["home_" + lang].url, 
+			component: vmHome,
+			props: ['common']
+		}, { 
+			path: routes["projects_" + lang].url, 
+			component: vmProjects,
+			props: ['common']
+		}, { 
+			path: routes["contact_" + lang].url, 
+			component: vmContact,
+			props: ['common']
+		}, { 
+			path: '/*', 
+			component: vmError,
+			props: ['common']
+		}]
+	}),
+	el: '.layout',
+	data: {
+		common: require("variations/common.json!json")
+	}
+});
 
 NA.socket.emit("init-app");
 NA.socket.on("init-app", function (me) {

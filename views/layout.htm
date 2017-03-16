@@ -11,7 +11,7 @@
 		<meta name="og:type" content="website">
 		<meta name="og:title" content="<?-specific.meta.title ?> - <?- common.title ?>">
 		<meta name="og:description" content="<?- specific.meta.description ?>">
-		<meta name="og:updated_time" content="1489419055787">
+		<meta name="og:updated_time" content="1489664973843">
 		<!--[if IE]><meta name="viewport" content="width=device-width" /><![endif]-->
 		<!--[if !IE]><!--><meta name="viewport" content="initial-scale=1.0" /><!--<![endif]-->
 		<? if (webconfig._min) { ?>
@@ -20,7 +20,7 @@
 		<link rel="stylesheet" href="stylesheets/common.css">
 		<? } ?>
 	</head>
-	<body>
+	<body data-ua='<?= webconfig._ua ?>'>
 		<div class="layout">
 			<nav class="menu">
 				<ul><? var url; ?>
@@ -48,7 +48,7 @@
 		<script src="javascripts/system.min.js"></script>
 		<script src="javascripts/vue.js"></script>
 		<script src="javascripts/vue.router.js"></script>
-		<script src="javascripts/common.js"  data-main="javascripts/main.js" id="systemjs"></script>
+		<script src="javascripts/common.js" data-main="javascripts/main.js" id="systemjs"></script>
 		<? } ?>
 	</body>
 </html>

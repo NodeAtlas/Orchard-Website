@@ -14,5 +14,6 @@
 	"routes": "routes.json",
 	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow",
-	"_min": true
+	"_min": true,
+	"_ua": "UA-91358693-3"
 }
