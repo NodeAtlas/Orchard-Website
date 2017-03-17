@@ -1,5 +1,5 @@
 /* jshint node: true, esversion: 6 */
-exports.changeDom = function (next, locals, request, response) {
+exports.changeDom = function (next, locals) {
 	var NA = this,
 		Vue = require("vue"),
 		renderers = require("vue-server-renderer"),
@@ -12,10 +12,7 @@ exports.changeDom = function (next, locals, request, response) {
 	global.Vue = Vue;
 
 	fs.readFile(view, "utf-8", function (error, view) {
-		var layoutSections = locals.dom.split(/<div is="router-view" v-bind:common="common"><\/div>/g),
-			preAppHTML = layoutSections[0],
-			postAppHTML = layoutSections[1],
-			name = locals.routeParameters.view,
+		var name = locals.routeParameters.view,
 			component = {
 				template: "<" + name + " v-bind:common='common'></" + name + ">",
 				components: {
@@ -24,17 +21,11 @@ exports.changeDom = function (next, locals, request, response) {
 				data: {
 					common: locals.common
 				}
-			},
-			stream = renderer.renderToStream(new Vue(component));
-
-		response.write(preAppHTML + '<div is="router-view" v-bind:common="common">');
-
-		stream.on('data', function (chunk) {
-			response.write(chunk);
-  		});
-
-  		stream.on('end', function () {
-    		response.end(postAppHTML + '</div>');
+			};
+			
+		renderer.renderToString(new Vue(component), function (error, html) {
+			locals.dom = locals.dom.replace(/(<div is="router-view" [-a-zA-Z:='" \/>]+)(<\/div>)/g, '$1' + html.replace(' server-rendered="true"', "") + '$2');
+			next();
   		});
 	});
 };
