@@ -70,7 +70,7 @@ ou lancez `server.na` en double cliquant dessus :
 
 Les version française et internationale du site seront accessible aux adresses suivantes :
 
-- *http://localhost:7776/*
+- *http://localhost:7778/*
 
 Vous pouvez également lancez le débogeur [Node.js] dans Chrome avec la commande :
 
@@ -102,7 +102,7 @@ Vous pouvez utiliser conjointement browserSync et Nodemon pour recharger votre n
 npm run watchfr
 ```
 
-Le site sera disponible à l'adresse *http://localhost:57776/*
+Le site sera disponible à l'adresse *http://localhost:57778/*
 
 #### Version internationale ####
 
@@ -224,7 +224,7 @@ forever restart ev-3
 
 ### Serveur frontal ###
 
-L'application Node.js tourne sous son propre serveur HTTP sur le port `7776`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur Apache qui tourne redirige les demandes de `orchard-id.fr` sur ce port. Pour cela on utilise le gist `orchard-id.fr`.
+L'application Node.js tourne sous son propre serveur HTTP sur le port `7778`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur Apache qui tourne redirige les demandes de `orchard-id.fr` sur ce port. Pour cela on utilise le gist `orchard-id.fr`.
 
 La configuration pour rediriger `orchard-id.fr` est dans le dossier server `/orchard-id.fr/.htaccess`
 
