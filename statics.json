@@ -1,4 +1,5 @@
 {
 	"/views-models": "views/",
-	"/variations": "variations/"
+	"/variations": "variations/",
+	"/routes.json": "routes.json"
 }

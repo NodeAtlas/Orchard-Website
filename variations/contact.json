@@ -7,9 +7,9 @@
 		"title": "En attendant que notre verger pousse",
 		"content": "<p>Vous pouvez nous contacter pour :</p>",
 		"addresses": [
-			"Une création d'identité digital : <a href='mailto:romain@orchard-id.com'>romain@orchard-id.com</a>",
-			"Une création de site web : <a href='mailto:alban@orchard-id.com'>bruno@orchard-id.com</a>",
-			"Une création de d'application web : <a href='mailto:bruno@orchard-id.com'>alban@orchard-id.com</a>",
+			"Une création d'identité digitale : <a href='mailto:romain@orchard-id.com'>romain@orchard-id.com</a>",
+			"Une création de site web : <a href='mailto:alban@orchard-id.com'>alban@orchard-id.com</a>",
+			"Une création d'application web : <a href='mailto:bruno@orchard-id.com'>bruno@orchard-id.com</a>",
 			"Toutes autres raisons : <a href='mailto:hello@orchard-id.com'>hello@orchard-id.com</a>"
 		]
 	}

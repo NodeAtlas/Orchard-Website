@@ -3,11 +3,13 @@
 	"httpPort": 7776,
 	"variation": "common.json",
 	"controller": "common.js",
+	"languageCode": "fr-fr",
 	"view": "layout.htm",
 	"bundles": "bundles.json",
 	"routes": "routes.json",
 	"statics": "statics.json",
 	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow",
-	"_min": false
+	"_min": false,
+	"_lang": "fr-fr"
 }
