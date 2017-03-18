@@ -1,0 +1,14 @@
+<div class="layout">
+	<nav class="menu">
+		<ul>
+			<li v-for="item in common.menu">
+				<router-link v-if="webconfig.routes[item.key].url === '/'" v-bind:to="webconfig.routes[item.key].url" v-bind:href="webconfig.routes[item.key].url" v-bind:title="item.title" exact>{{ item.title }}</router-link>
+				<router-link v-else v-bind:to="webconfig.routes[item.key].url" v-bind:href="webconfig.routes[item.key].url" v-bind:title="item.title" exact>{{ item.title }}</router-link>
+			</li>
+		</ul>
+	</nav>
+	<transition name="fade-in-out">
+		<router-view v-bind:common="common"></router-view>
+	</transition>
+	<footer class="footer" v-html="common.copyright"></footer>
+</div>

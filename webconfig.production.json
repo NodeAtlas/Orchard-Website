@@ -7,6 +7,7 @@
 	"httpPort": 7776,
 	"urlPort": 443,
 	"urlHostname": "www.orchard-id.fr",
+	"languageCode": "en-us",
 	"variation": "common.json",
 	"controller": "common.js",
 	"view": "layout.htm",

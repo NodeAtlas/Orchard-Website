@@ -46,9 +46,10 @@
     "url": "https://github.com/Orchard-ID/Orchard-Website/issues"
   },
   "dependencies": {
-    "node-atlas": "2.0.0-beta21",
+    "node-atlas": "2.0.0-beta22",
     "vue": "2.2.3",
-    "vue-server-renderer": "2.2.3"
+    "vue-server-renderer": "2.2.3",
+    "vue-router": "2.3.0"
   },
   "devDependencies": {
     "browser-sync": "2.18.x",

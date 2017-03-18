@@ -21,25 +21,7 @@
 		<? } ?>
 	</head>
 	<body data-ua='<?= webconfig._ua ?>'>
-		<div class="layout">
-			<nav class="menu">
-				<ul><? var url; ?>
-					<? for (var i = 0; i < common.menu.length; i++) { ?>
-					<li>
-						<? url = webconfig.routes[common.menu[i].key].url; ?>
-						<a is="router-link" to="<?= url ?>" href="<?= url ?>" title="<?= common.menu[i].title ?>"<?- (url === "/") ? " exact" : "" ?>><?= common.menu[i].title ?></a>
-					</li>
-					<? } ?>
-				</ul>
-			</nav>
-			<div is="transition" name="fade-in-out">
-				<div is="router-view" v-bind:common="common"></div>
-			</div>
-			<footer class="footer">
-				<?- common.copyright ?>
-			</footer>
-		</div>
-		<var id="routes" data-routes='<?- JSON.stringify(webconfig.routes) ?>'></var>
+		<div class="layout"></div>
 		<? if (webconfig._min) { ?>
 		<script src="javascripts/framework.min.js?v=0.2.2" data-main="javascripts/main.min.js" id="systemjs"></script>
 		<? } else { ?>

@@ -3,7 +3,7 @@
 
 var ua = document.body.getAttribute('data-ua'),
 	lang = document.getElementsByTagName("html")[0].getAttribute("lang"),
-	routes = JSON.parse(document.getElementById("routes").getAttribute("data-routes")),
+	routes = require("routes.json!json"),
 	mixin = {
 		beforeRouteEnter: function (to, from, next) {
 			next(function (vm) {
@@ -66,11 +66,16 @@ vm = new Vue({
 			props: ['common']
 		}]
 	}),
-	el: '.layout',
+	template: require("views-models/app.htm!text"),
 	data: {
-		common: require("variations/common.json!json")
+		common: require("variations/common.json!json"),
+		webconfig: {
+			routes: routes
+		}
 	}
 });
+
+vm.$mount('.layout');
 
 NA.socket.emit("init-app");
 NA.socket.on("init-app", function (me) {
