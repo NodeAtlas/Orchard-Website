@@ -3,7 +3,7 @@
 	"httpPort": 8080,
 	"urlPort": 443,
 	"urlHostname": "website-haeresis.c9users.io",
-	"languageCode": "en-us",
+	"languageCode": "fr-fr",
 	"variation": "common.json",
 	"controller": "common.js",
 	"view": "layout.htm",
