@@ -94,7 +94,7 @@ et que le site tournera à l'adresse :
 
 - *http://localhost:7777/*
 
-### Rechargement à Chaud ###
+### Rechargement à chaud ###
 
 Vous pouvez utiliser conjointement browserSync et Nodemon pour recharger votre navigateur pour une modification d'un fichier frontal ou recharger votre serveur + votre navigateur pour une modification d'un fichier de serveur en lançant le site avec cette commande :
 
@@ -102,7 +102,7 @@ Vous pouvez utiliser conjointement browserSync et Nodemon pour recharger votre n
 npm run watchfr
 ```
 
-Le site ssera disponible à l'adresse *http://localhost:57776/*
+Le site sera disponible à l'adresse *http://localhost:57776/*
 
 #### Version internationale ####
 
@@ -193,36 +193,19 @@ Le serveur tourne forcément. Pour le redémarrez il faut repérer dans la liste
 forever list
 ```
 
-Pour la repérer, il faut trouver celle avec `--path .../orchard-id.com/ --webconfig webconfig.prod.json` et récupérer son code en amont.
-
-#### Version internationale ####
-
-Repérer plutôt `--path .../orchard-id.com/ --webconfig webconfig.prod.en-us.json`.
-
-Exemple : pour le retour suivant
-
-```bash
-                                                                                                                                                                                                                                                                                                                            pid     id       logfile                                                          uptime
-data: [0] ev-3 /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.nvm/versions/node/v6.9.5/bin/node /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.nvm/versions/node/v6.9.5/lib/node_modules/node-atlas/ --path /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/orchard-id.com/ --webconfig webconfig.production.json 	24827   24833    /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.forever/ev-3.log 0:2:56:55.421
-```
-
-le site est la ligne `[0]` car on a `--path .../orchard-id.com/` et le code en amont est `ev-3`.
-
-Il faut alors utiliser
+Si le code de l'application est `ev-3`, il faut alors utiliser
 
 ```bash
 forever restart ev-3
 ```
 
-**Si le serveur est down** (et que l'entrée ou que l'entrée n'est pas dans forver)
+**Si le serveur est down** (et que l'entrée ou que l'entrée n'est pas dans forever)
 
 Pour le démarrez utilisez la commande suivante :
 
 ```bash
-forever start /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/.nvm/versions/node/v6.9.5/lib/node_modules/node-atlas/ --path /home/clients/2005ddd98a72fd1b0e0f75fcf662b8a9/orchard-id.com/ --webconfig webconfig.production.json
+forever start <path-to-node-atlas> --path <path-to-orchard-id> --webconfig webconfig.production.json
 ```
-
-*Note : la version de Node.js peut être différente.*
 
 ### Mettre à jour l'environnement ###
 
@@ -241,14 +224,12 @@ forever restart ev-3
 
 ### Serveur frontal ###
 
-L'application Node.js tourne sous son propre serveur HTTP sur le port `7776`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur Apache qui tourne redirige les demandes de `orchard-id.fr` sur ce port. Pour cela on utilise :
-
-- https://gist.github.com/Haeresis/d0efda97e3f9ede133341e0363a0c7b7
+L'application Node.js tourne sous son propre serveur HTTP sur le port `7776`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur Apache qui tourne redirige les demandes de `orchard-id.fr` sur ce port. Pour cela on utilise le gist `orchard-id.fr`.
 
 La configuration pour rediriger `orchard-id.fr` est dans le dossier server `/orchard-id.fr/.htaccess`
 
 #### Version internationale ####
 
-La configuration pour rediriger `orchard-id.fr` est dans le dossier server `/orchard-id.com/.htaccess`
+Dans ce cas on utilise le gist `orchard-id.com`.
 
-- https://gist.github.com/Haeresis/f38b6b52d687bca9bbc599db6ff06ab5
+La configuration pour rediriger `orchard-id.fr` est dans le dossier server `/orchard-id.com/.htaccess`
