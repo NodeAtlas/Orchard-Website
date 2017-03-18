@@ -45,10 +45,10 @@ exports.changeDom = function (next, locals, request, response) {
 
 			stream.on('data', function (chunk) {
 				response.write(chunk);
-	  		});
+			});
 
 	  		stream.on('end', function () {
-	    		response.end(postAppHTML);
+				response.end(postAppHTML);
 	  		});
 		});
 	});
