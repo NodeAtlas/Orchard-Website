@@ -243,22 +243,12 @@ forever restart ev-3
 
 L'application Node.js tourne sous son propre serveur HTTP sur le port `7776`. Pour qu'il puisse répondre publiquement sur Internet par le port 80, il faut que le serveur Apache qui tourne redirige les demandes de `orchard-id.fr` sur ce port. Pour cela on utilise :
 
-```bash
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^orchard-id\.fr
-RewriteRule ^(.*)$ http://www.orchard-id.fr$1 [R=permanent,L]
-RewriteEngine On
-RewriteRule "^(.*)$" "http://localhost:7776/$1" [L,P]
-```
+- https://gist.github.com/Haeresis/d0efda97e3f9ede133341e0363a0c7b7
+
+La configuration pour rediriger `orchard-id.fr` est dans le dossier server `/orchard-id.fr/.htaccess`
 
 #### Version internationale ####
 
-Le port étant `7777`, la configuration pour rediriger `orchard-id.com` est dans `/orchard-id.com/.htaccess`
+La configuration pour rediriger `orchard-id.fr` est dans le dossier server `/orchard-id.com/.htaccess`
 
-```bash
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^orchard-id\.com
-RewriteRule ^(.*)$ http://www.orchard-id.com$1 [R=permanent,L]
-RewriteEngine On
-RewriteRule "^(.*)$" "http://localhost:7777/$1" [L,P]
-```
+- https://gist.github.com/Haeresis/f38b6b52d687bca9bbc599db6ff06ab5
