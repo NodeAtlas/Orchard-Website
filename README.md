@@ -139,13 +139,13 @@ Il est possible que le serveur ne tourne pas, dans ce cas il faut le lancer en v
 Et en lançant dans la console (onglet "bash") la commande
 
 ```bash
-$ nodeatlas --webconfig webconfig.staging.json
+$ node-atlas --webconfig webconfig.staging.json
 ```
 
 #### Version internationale ####
 
 ```bash
-$ nodeatlas --webconfig webconfig.staging.en-us.json
+$ node-atlas --webconfig webconfig.staging.en-us.json
 ```
 
 ### Mettre à jour l'environnement ###
