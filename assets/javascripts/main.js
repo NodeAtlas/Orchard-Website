@@ -23,16 +23,6 @@ var ua = document.body.getAttribute('data-ua'),
 			specific = require("variations/home.json!json");
 		resolve(require('views-models/home.js')(specific, template, mixin));
 	}),
-	vmProjects = Vue.component('projects', function (resolve) {
-		var template = require("views-models/projects.htm!text"),
-			specific = require("variations/projects.json!json");
-		resolve(require('views-models/projects.js')(specific, template, mixin));
-	}),
-	vmContact = Vue.component('contact', function (resolve) {
-		var template = require("views-models/contact.htm!text"),
-			specific = require("variations/contact.json!json");
-		resolve(require('views-models/contact.js')(specific, template, mixin));
-	}),
 	vmError = Vue.component('error', function (resolve) {
 		var template = require("views-models/error.htm!text"),
 			specific = require("variations/error.json!json");
@@ -51,14 +41,6 @@ vm = new Vue({
 		routes: [{
 			path: routes["home_" + lang].url, 
 			component: vmHome,
-			props: ['common']
-		}, { 
-			path: routes["projects_" + lang].url, 
-			component: vmProjects,
-			props: ['common']
-		}, { 
-			path: routes["contact_" + lang].url, 
-			component: vmContact,
 			props: ['common']
 		}, { 
 			path: '/*', 

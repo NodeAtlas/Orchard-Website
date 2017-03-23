@@ -3,8 +3,13 @@
 		"title": "Erreur 404",
 		"description": "Cette page n'existe pas !"
 	},
-	"error": {	
+	"body": {	
 		"title": "Erreur 404",
-		"content": "<p>Cette page n'existe pas.</p>"
+		"content": "<p>Cette page n'existe pas.</p>",
+		"link": {
+			"href": "/",
+			"title": "Retour à l'accueil",
+			"content": "Retour à l'accueil"
+		}
 	}
 }

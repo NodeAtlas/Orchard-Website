@@ -1,6 +1,10 @@
 <div class="error">
+	<header class="error--logo">
+		<h1><img src="media/images/logo.svg" alt="Orchard ID"></h1>
+	</header>
 	<div class="error--content">
-		<h1>{{ specific.title }}</h1>
+		<h1 v-html="specific.title"></h1>
 		<div v-html="specific.content"></div>
+		<p><router-link v-bind:to="specific.link.href" title="specific.link.title" v-html="specific.link.content"></router-link></p>
 	</div>
 </div>
