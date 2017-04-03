@@ -8,8 +8,8 @@ gulp.task('default', ['browser-sync']);
 gulp.task('browser-sync', ['nodemon'], function() {
 	browserSync.init(null, {
 		proxy: "http://localhost:7777",
-        files: ["views/**", "assets/**", "variations/**"],
-        port: 57777,
+		files: ["views/**", "assets/**", "variations/**"],
+		port: 57777,
 	});
 });
 gulp.task('nodemon', function (next) {

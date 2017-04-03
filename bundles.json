@@ -1,19 +1,19 @@
 {
 	"javascripts": {
 		"javascripts/framework.min.js": [
-			"javascripts/ga.js",
-			"javascripts/socket.io.js",
+			"javascripts/vendor/ga.min.js",
+			"../node_modules/socket.io-client/dist/socket.io.min.js",
 			"node-atlas/socket.io.js",
-			"javascripts/system.min.js",
-			"javascripts/vue.min.js",
-			"javascripts/vue.router.min.js",
+			"../node_modules/systemjs/dist/system.js",
+			"../node_modules/vue/dist/vue.min.js",
+			"../node_modules/vue-router/dist/vue-router.min.js",
 			"javascripts/common.js"
 		],
 		"javascripts/main.min.js": ["javascripts/main.js"]
-    },
-    "stylesheets": {
+	},
+	"stylesheets": {
 		"stylesheets/common.min.css": [
 			"stylesheets/common.css"
 		]
-    }
+	}
 }

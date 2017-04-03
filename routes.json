@@ -4,16 +4,6 @@
 		"view": "home",
 		"variation": "home.json"
 	},
-	"projects_fr-fr": {
-		"url": "/nos-projets/",
-		"view": "projects",
-		"variation": "projects.json"
-	},
-	"contact_fr-fr": {
-		"url": "/nous-contacter/",
-		"view": "contact",
-		"variation": "contact.json"
-	},
 	"error_fr-fr": {
 		"url": "/page-inexistante/",
 		"view": "error",

@@ -1,4 +1,8 @@
 {
+	"/socket.io/socket.io.js": "node_modules/socket.io-client/dist/socket.io.js",
+	"/javascripts/vue.js": "node_modules/vue/dist/vue.js",
+	"/javascripts/vue.router.js": "node_modules/vue-router/dist/vue-router.js",
+	"/javascripts/system.js": "node_modules/systemjs/dist/system.js",
 	"/views-models": "views/",
 	"/variations": "variations/en-us/",
 	"/routes.json": "routes.en-us.json"

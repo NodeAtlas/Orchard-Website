@@ -4,16 +4,6 @@
 		"view": "home",
 		"variation": "home.json"
 	},
-	"projects_en-us": {
-		"url": "/our-projects/",
-		"view": "projects",
-		"variation": "projects.json"
-	},
-	"contact_en-us": {
-		"url": "/contact-us/",
-		"view": "contact",
-		"variation": "contact.json"
-	},
 	"error_en-us": {
 		"url": "/page-not-found/",
 		"view": "error",

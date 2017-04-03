@@ -1,10 +1,15 @@
 {
 	"meta": {
 		"title": "404 Error",
-		"description": "This page does'n exist!"
+		"description": "This page doesn't exist!"
 	},
-	"error": {
+	"body": {	
 		"title": "404 Error",
-		"content": "<p>This page doesn't exist.</p>"
+		"content": "<p>This page doesn't exist.</p>",
+		"link": {
+			"href": "/",
+			"title": "Back to Home",
+			"content": "Back to Home"
+		}
 	}
 }
