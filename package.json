@@ -11,7 +11,8 @@
     "starten": "node server.na --browse",
     "startfr": "node server.fr.na --browse",
     "watchen": "gulp --gulpfile gulpfile.en-us.js",
-    "watchfr": "gulp"
+    "watchfr": "gulp",
+    "postinstall": "node_modules/node-atlas/ --generate"
   },
   "repository": {
     "type": "git",
