@@ -37,7 +37,7 @@ if (ua) {
 vm = new Vue({
 	router: new VueRouter({
 		mode: 'history',
-		base: '/test/',
+		base: '/',
 		routes: [{
 			path: routes["home_" + lang].url, 
 			component: vmHome,
