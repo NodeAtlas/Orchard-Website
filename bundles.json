@@ -9,7 +9,9 @@
 			"../node_modules/vue-router/dist/vue-router.min.js",
 			"javascripts/common.js"
 		],
-		"javascripts/main.min.js": ["javascripts/main.js"]
+		"javascripts/main.min.js": ["javascripts/main.js"],
+		"javascripts/systemjs-plugin-json.min.js": ["javascripts/systemjs-plugin-json.js"],
+		"javascripts/systemjs-plugin-text.min.js": ["javascripts/systemjs-plugin-text.js"]
     },
     "stylesheets": {
 		"stylesheets/common.min.css": [

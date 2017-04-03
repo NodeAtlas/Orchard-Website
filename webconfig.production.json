@@ -11,6 +11,8 @@
 	"variation": "common.json",
 	"controller": "common.js",
 	"view": "layout.htm",
+	"bundles": "bundles.json",
+	"stylus": {"files": "stylus.json"},
 	"statics": "statics.json",
 	"routes": "routes.json",
 	"pageNotFound": "error_fr-fr",

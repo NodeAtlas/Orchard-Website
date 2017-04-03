@@ -12,7 +12,7 @@
     "startfr": "node server.fr.na --browse",
     "watchen": "gulp --gulpfile gulpfile.en-us.js",
     "watchfr": "gulp",
-    "postinstall": "node_modules/node-atlas/ --generate"
+    "postinstall": "node node_modules/node-atlas/ --generate --webconfig webconfig.production.json"
   },
   "repository": {
     "type": "git",
