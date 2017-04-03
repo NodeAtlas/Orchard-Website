@@ -1,17 +1,16 @@
 {
 	"javascripts": {
 		"javascripts/framework.min.js": [
-			"javascripts/ga.js",
+			"javascripts/vendor/ga.js",
 			"../node_modules/socket.io-client/dist/socket.io.min.js",
 			"node-atlas/socket.io.js",
 			"../node_modules/systemjs/dist/system-production.js",
 			"../node_modules/vue/dist/vue.min.js",
 			"../node_modules/vue-router/dist/vue-router.min.js",
+			"../node_modules/traceur/dist/commonjs/traceur.js",
 			"javascripts/common.js"
 		],
-		"javascripts/main.min.js": ["javascripts/main.js"],
-		"javascripts/systemjs-plugin-json.min.js": ["javascripts/systemjs-plugin-json.js"],
-		"javascripts/systemjs-plugin-text.min.js": ["javascripts/systemjs-plugin-text.js"]
+		"javascripts/main.min.js": ["javascripts/main.js"]
     },
     "stylesheets": {
 		"stylesheets/common.min.css": [
