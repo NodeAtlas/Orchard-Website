@@ -1,10 +1,11 @@
 {
 	"stylus": {
-        "files": "stylus.json"
-    },
+		"files": "stylus.json"
+	},
 	"httpPort": 7776,
 	"languageCode": "fr-fr",
 	"variation": "common.json",
+	"urlRelativeSubPath": "test",
 	"controller": "common.js",
 	"view": "layout.htm",
 	"bundles": "bundles.json",

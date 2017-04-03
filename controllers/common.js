@@ -53,3 +53,14 @@ exports.changeDom = function (next, locals, request, response) {
 		});
 	});
 };
+
+exports.setSockets = function () {
+	var NA = this,
+		io = NA.io;
+
+    io.on('connection', function (socket) {
+        socket.on('test', function (data) {
+            socket.emit("test", data);
+        });
+    });
+};

@@ -4,17 +4,16 @@
 			"javascripts/vendor/ga.min.js",
 			"../node_modules/socket.io-client/dist/socket.io.min.js",
 			"node-atlas/socket.io.js",
-			"../node_modules/systemjs/dist/system-production.js",
+			"../node_modules/systemjs/dist/system.js",
 			"../node_modules/vue/dist/vue.min.js",
 			"../node_modules/vue-router/dist/vue-router.min.js",
-			"../node_modules/traceur/dist/commonjs/traceur.js",
 			"javascripts/common.js"
 		],
 		"javascripts/main.min.js": ["javascripts/main.js"]
-    },
-    "stylesheets": {
+	},
+	"stylesheets": {
 		"stylesheets/common.min.css": [
 			"stylesheets/common.css"
 		]
-    }
+	}
 }
