@@ -1,3 +1,10 @@
+## 0.4.0 ##
+
+Feature:
+
+- Packaging enhanced.
+
+
 ## 0.3.0 ##
 
 Feature:

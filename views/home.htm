@@ -1,7 +1,34 @@
 <div class="home">
-	<div class="home--content">
-		<p><a v-bind:href="common.language.href" v-bind:title="common.language.title">{{ common.language.content }}</a></p>
-		<h1>{{ specific.title }}</h1>
+	<header class="home--logo">
+		<h1><img src="media/images/logo.svg" alt="Orchard ID"></h1>
+	</header>
+	<nav class="home--navigation">
+		<ul>
+			<li v-bind:class="{ 'is-selected': common.menu[0] }"><a href="https://www.orchard-id.fr" title="Site Internet de Orchard ID">Fr</a></li>
+			<li v-bind:class="{ 'is-selected': common.menu[1] }"><a href="https://www.orchard-id.com" title="Website of Orchard ID">En</a></li>
+		</ul>
+	</nav>
+	<article class="home--content">
+		<h1><img src="media/images/title.svg" v-bind:alt="specific.title"></h1>
 		<div v-html="specific.content"></div>
-	</div>
+	</article>
+	<footer class="home--infos">
+		<div class="home--infos--identity">
+			Orchard ID S.A.S.<br>
+			4 rue Saint-François de Salles<br>
+			74000 Annecy<br>
+			France
+		</div>
+		<ul class="home--infos--contacts">
+			<li>+33 6 66 86 92 78</li>
+			<li><a href="mailto:hello@orchard-id.com" title="Contacter Orchard ID">hello@orchard-id.com</a></li>
+			<li><a href="https://www.orchard-id.com" title="Site Internet de Orchard ID">www.orchard-id.com</a></li>
+		</ul>
+		<ul class="home--infos--networks">
+			<li><a href="https://www.linkedin.com/company/orchard-id" title="Orchard ID @ LinkedIn">LinkedIn</a></li>
+			<li><a href="https://plus.google.com/b/101265063888841351659/101265063888841351659" title="Orchard ID @ Google+">Google+</a></li>
+			<li><a href="https://www.behance.net/rlaurier66ec" title="Orchard ID @ Behance">Behance</a></li>
+			<li><a href="https://github.com/orchard-id" title="Orchard ID @ Github">Github</a></li>
+		</ul>
+	</footer>
 </div>

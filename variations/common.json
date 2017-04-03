@@ -1,20 +1,5 @@
 {
 	"title": "Site web de Orchard ID",
 	"description": "Site web de la société Orchard ID",
-	"copyright": "Site réalisé avec amour à l'aide de <a href='https://fr.vuejs.org/' target='_blank'>Vue</a> et <a href='https://node-atlas.js.org/' target='_blank'>NodeAtlas</a>",
-	"language": {
-		"content": "International Version",
-		"href": "http://www.orchard-id.com/",
-		"title": "Voir la version International"
-	},
-	"menu": [{
-		"title": "Accueil",
-		"key": "home_fr-fr"
-	}, {
-		"title": "Nos projets",
-		"key": "projects_fr-fr"
-	}, {
-		"title": "Nous contacter",
-		"key": "contact_fr-fr"
-	}]
+	"menu": ["is-selected", ""]
 }

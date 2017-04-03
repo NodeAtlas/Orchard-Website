@@ -1,10 +1,10 @@
 {
 	"meta": {
-		"title": "Welcome!",
-		"description": "Official website of Verger.Digital creators!"
+		"title": "Welcome at Orchard ID!",
+		"description": "Orchard ID is a collaborative communication agency guiding you for your communication strategy."
 	},
-	"home": {	
-		"title": "Welcome at www.Orchard-ID.com",
-		"content": "<p>This website is under construction.<br/>Feel free to come back later!</p>"
+	"body": {	
+		"title": "Orchard ID",
+		"content": "<p>Bonjour.</p><p>We are a collaborative and freedom-form communication agency guiding you from the idea inside of you to the implementation of communication strategy for all media which will make sense for your brand.</p>"
 	}
 }

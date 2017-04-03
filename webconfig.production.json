@@ -11,10 +11,14 @@
 	"variation": "common.json",
 	"controller": "common.js",
 	"view": "layout.htm",
+	"bundles": "bundles.json",
+	"stylus": { 
+		"files": "stylus.json"
+	},
 	"statics": "statics.json",
 	"routes": "routes.json",
 	"pageNotFound": "error_fr-fr",
-	"_robots": "noindex, nofollow",
+	"_robots": "index, follow",
 	"_min": true,
 	"_ua": "UA-91358693-3"
 }

@@ -1,10 +1,10 @@
 {
 	"meta": {
-		"title": "Bienvenue !",
-		"description": "Site officiel des créateurs du Verger.Digital !"
+		"title": "Bienvenue chez Orchard ID !",
+		"description": "Orchard ID est une agence de communication collaborative qui vous accompagne dans votre stratégie de communication."
 	},
-	"home": {	
-		"title": "Bienvenue sur www.Orchard-ID.fr",
-		"content": "<p>Ce site est actuellement en construction.<br/>N'hésitez pas à venir le visiter prochainement !</p>"
+	"body": {	
+		"title": "Orchard ID",
+		"content": "<p>Hello.</p><p>Nous sommes une agence de communication collaborative et libérée vous accompagnant de l'idée qui sommeille en vous à la mise en oeuvre d'une stratégie de communication sur l'ensemble des supports qui feront sens pour votre marque.</p>"
 	}
 }

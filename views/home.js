@@ -7,7 +7,7 @@ module.exports = function (specific, template, mixin) {
 	    data: function () {
 	    	return {
 	    		meta: specific.meta,
-	    		specific: specific.home
+	    		specific: specific.body
 		    };
 	  	}
 	};
