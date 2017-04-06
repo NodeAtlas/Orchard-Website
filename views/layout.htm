@@ -31,7 +31,7 @@
 	<body data-ua='<?= webconfig._ua ?>'>
 		<div class="layout"></div>
 		<? if (webconfig._min) { ?>
-		<script src="javascripts/framework.<?= webconfig.version ?>.min.js" data-main="javascripts/main.min.js" id="systemjs"></script>
+		<script src="javascripts/framework.<?= webconfig.version ?>.min.js" data-main="javascripts/main.<?= webconfig.version ?>.min.js" id="systemjs"></script>
 		<? } else { ?>
 		<script src="socket.io/socket.io.js"></script>
 		<script src="node-atlas/socket.io.js"></script>
