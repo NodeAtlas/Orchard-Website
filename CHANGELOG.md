@@ -1,3 +1,10 @@
+## 0.5.0 ##
+
+Feature:
+
+- Number version into ressources name.
+
+
 ## 0.4.0 ##
 
 Feature:
