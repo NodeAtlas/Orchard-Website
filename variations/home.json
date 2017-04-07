@@ -5,6 +5,6 @@
 	},
 	"body": {	
 		"title": "Orchard ID",
-		"content": "<p>Hello.</p><p>Nous sommes une agence de communication collaborative et libérée vous accompagnant, de l'idée qui sommeille en vous à la mise en œuvre d'une stratégie de communication, sur l'ensemble des supports qui feront sens pour votre marque.</p>"
+		"content": "<p>Hello.</p><p>Nous sommes une agence de communication collaborative et libérée vous accompagnant, de l'idée qui sommeille en vous à la mise en œuvre d'une stratégie de communication, sur l'ensemble des supports qui feront sens pour votre marque.</p><p><a href='https://github.com/Orchard-ID/Orchard-DocumentsPublics/raw/master/Pdf/presentation-web.pdf' target='_blank'>En savoir plus<img src='media/images/arrow.svg' alt='En savoir plus' class='arrow'></a></p>"
 	}
 }
