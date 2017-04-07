@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Site web de la société Orchard ID",
   "main": "server.na",
   "scripts": {
@@ -47,7 +47,7 @@
     "url": "https://github.com/Orchard-ID/Orchard-Website/issues"
   },
   "dependencies": {
-    "node-atlas": "2.0.0-beta22",
+    "node-atlas": "2.0.0-beta31",
     "vue": "2.2.x",
     "vue-server-renderer": "2.2.x",
     "vue-router": "2.3.x",

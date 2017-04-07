@@ -1,3 +1,10 @@
+## 0.6.0 ##
+
+Update:
+
+- Design enhancement (font, spacing, links).
+
+
 ## 0.5.0 ##
 
 Feature:

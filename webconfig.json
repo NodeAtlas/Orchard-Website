@@ -12,5 +12,5 @@
 	"routes": "routes.json",
 	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow",
-	"_min": true
+	"_min": false
 }
