@@ -20,6 +20,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Regular';
+    src: url('../media/fonts/regular-light.eot?#iefix') format('embedded-opentype'),
+         url('../media/fonts/regular-light.otf')  format('opentype'),
+         url('../media/fonts/regular-light.woff') format('woff'), 
+         url('../media/fonts/regular-light.ttf')  format('truetype'),
+         url('../media/fonts/regular-light.svg#regular-light') format('svg');
+    font-weight: lighter;
+    font-style: normal;
+}
+
 html,
 body
     font-size 62.5%
@@ -27,7 +38,8 @@ body
 body
     margin 0
     padding 0
-    font-size 2rem
+    font-size 1.8rem
+    font-weight lighter
     color #4f4f4f
     font-family Regular, Arial, sans-serif
     width 100%
@@ -84,12 +96,11 @@ a:hover
         -moz-box-sizing border-box
         box-sizing border-box
         position absolute
-        right 3.2rem
-        top 3.2rem
-        font-size 2rem 
+        left 3.2rem
+        top 2rem
+        font-size 1.8rem 
         
         @media (min-width 768px)
-            left 3.2rem
             font-size 1.2rem
         
         .is-selected
@@ -115,6 +126,7 @@ a:hover
         -moz-box-sizing border-box
         box-sizing border-box
         padding-top 20px 
+        display none
 
         img
             max-width 180px
@@ -133,7 +145,8 @@ a:hover
             -ms-transform translate(-50%, -50%)
             -o-transform translate(-50%, -50%)
             transform translate(-50%, -50%)
-            
+            display block
+
             img
                 padding 0
                 max-width none
@@ -142,16 +155,19 @@ a:hover
         -webkit-box-sizing border-box
         -moz-box-sizing border-box
         box-sizing border-box
-        
+        padding 7rem 0rem 2rem
+
         img
-            max-width 220px
-            display block
-            margin 0 auto
-            padding 0 3.0rem
+            max-width 210px
         
         h1
         p
-            padding 0 3.0rem 
+            padding 0 3.0rem
+
+        .arrow 
+            max-width 3.2rem
+            vertical-align middle
+            margin 0 0.8rem
         
         @media (min-width 768px)
             position absolute
@@ -165,9 +181,7 @@ a:hover
             transform translate(-50%, -50%)
             
             img
-                display inline-block
                 max-width none
-                padding 0
             
             p
                 padding 0  
@@ -188,7 +202,7 @@ a:hover
             padding 0
             position absolute
             left 3.2rem
-            bottom 3.2rem
+            bottom 2rem
             
         &--identity       
         &--contacts
@@ -200,6 +214,17 @@ a:hover
             margin-top 2.4em 
             margin-right 2.4rem
             
+        &--networks
+            clear left
+            @media (min-width 768px)
+                clear none
+
+        &--contacts
+            margin-right 1rem
+            @media (min-width 768px)
+                margin-right 2.4rem
+
+
 .fade-in-out-enter,
 .fade-in-out-leave-to
     @media (min-width 768px)
