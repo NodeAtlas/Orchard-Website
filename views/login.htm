@@ -1,0 +1,31 @@
+<div class="login">
+	<header class="login--logo">
+		<h1><img src="media/images/logo.svg" alt="Orchard ID"></h1>
+	</header>
+	<div class="login--content">
+		<h1 v-html="specific.title"></h1>
+		<div v-html="specific.content"></div>
+		<form class="login--form" action="" method="post">
+			<div class="field email" v-bind:class="{ invalid: !checkEmail(email) && email !== undefined }">
+				<label for="login-form--email" v-html="specific.email.label.content"></label>
+				<input type="text" id="login-form--email" class="login-form--email" name="email" v-bind:placeholder="specific.email.label.placeholder" v-model="email">
+	           	<div v-if="email === '' && email !== undefined" v-html="specific.email.error.empty"></div>
+	           	<div v-if="!checkEmail(email) && email !== undefined" v-html="specific.email.error.badFormat"></div>
+			</div>
+
+			<div class="field password" v-bind:class="{ invalid: !password && password !== undefined }">
+				<label for="login-form--password" v-html="specific.password.label.content"></label>
+				<input type="password" id="login-form--password" class="login-form--password" name="password" v-bind:placeholder="specific.password.label.placeholder" v-model="password">
+				<div v-if="password === '' && password !== undefined" v-html="specific.password.error.empty"></div>
+			</div>
+
+			<div class="submit">
+				<label><button v-bind:class="{ invalid: !check() }" class="login-form--button" v-html="specific.button.label.content"></button></label>
+				<div v-if="false" class="errors">
+					<div class="empty" v-html="specific.button.error.empty"></div>
+				</div>
+			</div>
+		</form>
+		<p><router-link v-bind:to="specific.link.href" title="specific.link.title" v-html="specific.link.content"></router-link></p>
+	</div>
+</div>

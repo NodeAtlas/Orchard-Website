@@ -4,6 +4,11 @@
 		"view": "home",
 		"variation": "home.json"
 	},
+	"login_en-us": {
+		"url": "/login/",
+		"view": "login",
+		"variation": "login.json"
+	},
 	"error_en-us": {
 		"url": "/page-not-found/",
 		"view": "error",

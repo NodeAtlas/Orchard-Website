@@ -1,0 +1,42 @@
+{
+	"meta": {
+		"title": "Connexion",
+		"description": "Page de connexion à l'espace membre."
+	},
+	"body": {	
+		"title": "Page de connexion",
+		"content": "<p>Veillez entrer vos identifiants pour vous authentifier.</p>",
+		"link": {
+			"href": "/",
+			"title": "Retour à l'accueil",
+			"content": "Retour à l'accueil"
+		},
+		"email": {
+			"label": {
+				"content": "Email :",
+				"placeholder": "Email"
+			},
+			"error": {
+				"empty": "Le champ email est vide.",
+				"badFormat": "Le champ email est incorrecte."
+			}
+		},
+		"password": {
+			"label": {
+				"content": "Mot de passe :",
+				"placeholder": "Mot de passe"
+			},
+			"error": {
+				"empty": "Le champ password est vide"
+			}
+		},
+		"button": {
+			"label": {
+				"content": "Connexion"
+			},
+			"error": {
+				"empty": "Les email/mot de passe sont invalides."
+			}
+		}
+	}
+}

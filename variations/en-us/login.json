@@ -1,0 +1,15 @@
+{
+	"meta": {
+		"title": "Login",
+		"description": "Log in page to member section."
+	},
+	"body": {	
+		"title": "Login Page",
+		"content": "<p>Please enter your account iformations for authentication.</p>",
+		"link": {
+			"href": "/",
+			"title": "Back to Home",
+			"content": "Back to Home"
+		}
+	}
+}

@@ -4,6 +4,11 @@
 		"view": "home",
 		"variation": "home.json"
 	},
+	"login_fr-fr": {
+		"url": "/connexion/",
+		"view": "login",
+		"variation": "login.json"
+	},
 	"error_fr-fr": {
 		"url": "/page-inexistante/",
 		"view": "error",
