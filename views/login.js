@@ -1,4 +1,5 @@
-/* jshint node: true */
+/* jshint node: true, esversion: 6 */
+/* global NA, Hashes */
 module.exports = function (specific, template, mixin) {
 	return {
 	    template: template,
@@ -9,26 +10,39 @@ module.exports = function (specific, template, mixin) {
 	    		meta: specific.meta,
 	    		specific: specific.body,
 	    		email: undefined,
-				password: undefined
+				password: undefined,
+				error: undefined
 		    };
 	  	},
 		methods: {
-			checkEmail: function (email) {
+			isEmail: function (email) {
 				var regex = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
 				return regex.test(email);
 			},
-			check: function () {
-				return this.checkEmail && this.checkEmail(this.email) && this.password;
+			isAuthenticable: function () {
+				return this.isEmail && this.isEmail(this.email) && this.password;
 			},
-			sendLogin: function () {
-				if (this.check()) {
-					console.log("Done");
-					/*NA.socket.emit("email", { 
+			doAuthentication: function () {
+				if (this.isAuthenticable()) {
+					NA.socket.emit('authentication', { 
 						email: this.email, 
 						password: new Hashes.SHA1().hex(this.password)
-					});*/
+					});
+					NA.socket.once('authentication', (data) => {
+						if (data) {
+							this.common.me = data;
+						} else {
+							this.error = true;
+						}
+					});
 				}
 			},
+			doUnauthentication: function () {
+				NA.socket.emit('unauthentication');
+				NA.socket.once('unauthentication', () => {
+					this.common.me = {};
+				});
+			}
 		}
 	};
 };

@@ -2,12 +2,13 @@
 	"javascripts": {
 		"javascripts/framework.{version}.min.js": [
 			"javascripts/vendor/ga.min.js",
+			"../node_modules/jshashes/hashes.min.js",
 			"../node_modules/socket.io-client/dist/socket.io.min.js",
 			"node-atlas/socket.io.js",
 			"../node_modules/systemjs/dist/system.js",
 			"../node_modules/vue/dist/vue.min.js",
 			"../node_modules/vue-router/dist/vue-router.min.js",
-			"javascripts/common.js"
+			"javascripts/boot.js"
 		],
 		"javascripts/main.{version}.min.js": ["javascripts/main.js"]
 	},

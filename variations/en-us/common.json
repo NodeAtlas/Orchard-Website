@@ -1,5 +1,6 @@
 {
 	"title": "Orchard ID Website",
 	"description": "Website of Orchard ID Company",
-	"menu": ["", "is-selected"]
+	"menu": ["", "is-selected"],
+	"me": {}
 }

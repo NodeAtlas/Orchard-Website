@@ -1,4 +1,11 @@
 /* jshint node: true, esversion: 6 */
+exports.setModules = function () {
+	var NA = this;
+
+	NA.models = {};
+	NA.models.User = require("../models/connectors/user.js");
+};
+
 exports.changeDom = function (next, locals, request, response) {
 	var NA = this,
 		Vue = require("vue"),
@@ -56,11 +63,42 @@ exports.changeDom = function (next, locals, request, response) {
 
 exports.setSockets = function () {
 	var NA = this,
-		io = NA.io;
+        io = NA.io;
 
-    io.on('connection', function (socket) {
-        socket.on('test', function (data) {
-            socket.emit("test", data);
+    NA.sockets = [];
+
+	io.on('connection', function (socket) {
+        var session = socket.request.session;
+
+	    debug(NA, socket);
+
+        socket.on('initialization', function () {
+        	if (session.user) {
+                socket.emit('initialization', session.user.publics);
+            }
         });
+
     });
 };
+
+function debug(NA, socket) {
+	NA.sockets.push(socket);
+    console.log("====================");
+    console.log('Connect!');
+    NA.sockets.forEach(function (item) {
+        console.log(item.id, item.request.sessionID);
+    });
+    console.log("====================");
+
+	socket.on('disconnect', function() {
+        var index = NA.sockets.indexOf(socket);
+            
+        NA.sockets.splice(index, 1);
+        console.log("====================");
+        console.log('Disconnect!');
+        NA.sockets.forEach(function (item) {
+            console.log(item.id, item.request.sessionID);
+        });
+        console.log("====================");
+    });
+}

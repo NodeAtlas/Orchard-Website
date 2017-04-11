@@ -68,6 +68,7 @@ a:hover
         background -ms-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
         background linear-gradient(to bottom, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
 
+.login
 .error
 .home
     -webkit-box-sizing border-box
@@ -177,7 +178,6 @@ a:hover
 
             h1
                 padding 0
-                width 70%
         
     &--infos
         -webkit-box-sizing border-box
@@ -215,6 +215,11 @@ a:hover
                 clear none
                 margin-bottom 0 
 
+.home
+    &--content
+        @media (min-width 768px)
+            h1
+                width 70%
 
 .fade-in-out-enter,
 .fade-in-out-leave-to

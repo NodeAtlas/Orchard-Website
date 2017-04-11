@@ -1,15 +1,50 @@
 {
 	"meta": {
-		"title": "Login",
+		"title": "Log in/out",
 		"description": "Log in page to member section."
 	},
 	"body": {	
-		"title": "Login Page",
-		"content": "<p>Please enter your account iformations for authentication.</p>",
+		"title": "Log Page",
+		"content": {
+			"unauthenticated": "<p>Please enter your account informations for sign in.</p>",
+			"authenticated": "<p>Click on button below to sign out you.</p>"
+		},
 		"link": {
 			"href": "/",
 			"title": "Back to Home",
-			"content": "Back to Home"
+			"content": "Back to Home<img src='media/images/arrow.svg' alt='Retour à l'accueil' class='arrow'>"
+		},
+		"email": {
+			"label": {
+				"content": "Email:",
+				"placeholder": "Email"
+			},
+			"error": {
+				"empty": "The email field is empty.",
+				"badFormat": "The email field has a bad format."
+			}
+		},
+		"password": {
+			"label": {
+				"content": "Password:",
+				"placeholder": "Password"
+			},
+			"error": {
+				"empty": "The password field is empty."
+			}
+		},
+		"button": {
+			"label": {
+				"content": "Sign in"
+			},
+			"error": {
+				"empty": "The email/password are wrongs."
+			}
+		},
+		"cancel": {
+			"label": {
+				"content": "Sign out"
+			}
 		}
 	}
 }
