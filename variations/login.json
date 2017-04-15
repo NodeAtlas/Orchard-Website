@@ -3,7 +3,7 @@
 		"title": "Connexion / Déconnexion",
 		"description": "Page de connexion à l'espace membre."
 	},
-	"body": {	
+	"body": {
 		"title": "Espace membres",
 		"content": {
 			"unauthenticated": "<p>Veillez entrer vos identifiants pour vous authentifier.</p>",

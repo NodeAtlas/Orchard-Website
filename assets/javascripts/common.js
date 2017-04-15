@@ -1,9 +1,14 @@
-/* jshint browser: true */
+/* jshint browser: true, esversion: 6 */
 /* global NA, ga, Vue, VueRouter, require */
 
 var ua = document.body.getAttribute('data-ua'),
 	lang = document.getElementsByTagName("html")[0].getAttribute("lang"),
-	routes = require("routes.json!json"),
+	template = require("views-models/app.htm!text"),
+	model = require("views-models/app.js"),
+	common = require("variations/common.json!json"),
+	webconfig = {
+		routes: require("routes.json!json")
+	},
 	mixin = {
 		beforeRouteEnter: function (to, from, next) {
 			next(function (vm) {
@@ -33,42 +38,46 @@ var ua = document.body.getAttribute('data-ua'),
 			specific = require("variations/error.json!json");
 		resolve(require('views-models/error.js')(specific, template, mixin));
 	}),
+	router = new VueRouter({
+		mode: 'history',
+		base: '/',
+		routes: [{
+			path: webconfig.routes["home_" + lang].url,
+			component: vmHome,
+			props: ['common']
+		}, {
+			path: webconfig.routes["login_" + lang].url,
+			component: vmLogin,
+			props: ['common', 'me']
+		}, {
+			path: '/*',
+			component: vmError,
+			props: ['common']
+		}]
+	}),
 	vm;
 
 if (ua) {
 	ga('create', ua, 'auto');
 }
 
-vm = new Vue({
-	router: new VueRouter({
-		mode: 'history',
-		base: '/',
-		routes: [{
-			path: routes["home_" + lang].url, 
-			component: vmHome,
-			props: ['common']
-		}, {
-			path: routes["login_" + lang].url, 
-			component: vmLogin,
-			props: ['common', 'me']
-		}, { 
-			path: '/*', 
-			component: vmError,
-			props: ['common']
-		}]
-	}),
-	template: require("views-models/app.htm!text"),
-	data: {
-		common: require("variations/common.json!json"),
-		webconfig: {
-			routes: routes
-		}
-	}
-});
+vm = new Vue(model(common, template, router, webconfig));
 
 vm.$mount('.layout');
 
 NA.socket.emit('initialization');
-NA.socket.on('initialization', function (data) {
-	vm.common.me = data;
+NA.socket.on('initialization', function (sessionID, me, chat) {
+	vm.common.me = me;
+	vm.common.sessionID = sessionID;
+	vm.chat.channels = chat.chatChannels;
+	vm.chat.channels.sort((a, b) => a > b);
+	vm.chat.currentChannel = chat.currentChannel;
+	vm.chat.nameExist = chat.chatName;
+	vm.chat.name = chat.chatName;
+	vm.chat.emailExist = chat.chatEmail;
+	vm.chat.email = chat.chatEmail;
+	vm.chat.phoneExist = chat.chatPhone;
+	vm.chat.phone = chat.chatPhone;
 });
+
+require("javascripts/modules/chat.js")(vm);

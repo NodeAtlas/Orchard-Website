@@ -1,80 +1,76 @@
 {
-  "name": "website",
-  "version": "0.6.0",
-  "description": "Site web de la société Orchard ID",
-  "main": "server.na",
-  "scripts": {
-    "start": "node server.na --browse",
-    "test": "node --inspect server.na --browse",
-    "debugen": "node --inspect server.na --browse",
-    "debugfr": "node --inspect server.na --browse",
-    "starten": "node server.na --browse",
-    "startfr": "node server.fr.na --browse",
-    "watchen": "gulp --gulpfile gulpfile.en-us.js",
-    "watchfr": "gulp",
-    "postinstall": "node node_modules/node-atlas/ --generate --webconfig webconfig.production.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Orchard-ID/Orchard-Website.git"
-  },
-  "keywords": [
-    "orchard id",
-    "website",
-    "nodejs",
-    "node-atlas"
-  ],
-  "author": "Orchard ID Team",
-  "bin": {
-    "weboid": "server.na"
-  },
-  "contributors": [
-    {
-      "name": "Arban Allée",
-      "email": "a.allee@orchard-id.com"
-    },
-    {
-      "name": "Bruno Lesieur",
-      "email": "b.lesieur@orchard-id.com"
-    },
-    {
-      "name": "Romain Laurier",
-      "email": "r.laurier@orchard-id.com"
-    }
-  ],
-  "license": "GPL-2.0",
-  "bugs": {
-    "url": "https://github.com/Orchard-ID/Orchard-Website/issues"
-  },
-  "dependencies": {
-    "node-atlas": "2.0.0-beta33",
-    "vue": "2.2.x",
-    "vue-server-renderer": "2.2.x",
-    "vue-router": "2.3.x",
-    "systemjs": "0.20.x",
-    "traceur": "0.0.x",
-    "jshashes": "1.0.x"
-  },
-  "devDependencies": {
-    "browser-sync": "2.18.x",
-    "gulp": "3.9.x",
-    "gulp-nodemon": "2.2.x"
-  },
-  "files": [
-    "assets/*",
-    "variations/*",
-    "views/*",
-    "LICENSE",
-    "README.md",
-    "CHANGELOG.md",
-    "server.fr.na",
-    "server.na",
-    "route.fr.json",
-    "route.json",
-    "package.json"
-  ],
-  "homepage": "https://github.com/Orchard-ID/Orchard-Website#readme",
-  "engines": {
-    "node": ">=4.0.0"
-  }
+	"name": "website",
+	"version": "0.7.0",
+	"description": "Site web de la société Orchard ID",
+	"main": "server.na",
+	"scripts": {
+		"start": "node server.na --browse",
+		"test": "node --inspect server.na --browse",
+		"debugen": "node --inspect server.en-us.na --browse",
+		"debugfr": "node --inspect server.na --browse",
+		"starten": "node server.en-us.na --browse",
+		"startfr": "node server.na --browse",
+		"watchen": "gulp --gulpfile gulpfile.en-us.js",
+		"watchfr": "gulp",
+		"postinstall": "node node_modules/node-atlas/ --generate --webconfig webconfig.production.json"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Orchard-ID/Orchard-Website.git"
+	},
+	"keywords": [
+		"orchard id",
+		"website",
+		"nodejs",
+		"node-atlas"
+	],
+	"author": "Orchard ID Team",
+	"bin": {
+		"weboid": "server.na"
+	},
+	"contributors": [{
+		"name": "Arban Allée",
+		"email": "a.allee@orchard-id.com"
+	}, {
+		"name": "Bruno Lesieur",
+		"email": "b.lesieur@orchard-id.com"
+	}, {
+		"name": "Romain Laurier",
+		"email": "r.laurier@orchard-id.com"
+	}],
+	"license": "GPL-2.0",
+	"bugs": {
+		"url": "https://github.com/Orchard-ID/Orchard-Website/issues"
+	},
+	"dependencies": {
+		"node-atlas": "2.0.0-beta35",
+		"vue": "2.2.x",
+		"vue-server-renderer": "2.2.x",
+		"vue-router": "2.3.x",
+		"systemjs": "0.20.x",
+		"traceur": "0.0.x",
+		"jshashes": "1.0.x"
+	},
+	"devDependencies": {
+		"browser-sync": "2.18.x",
+		"gulp": "3.9.x",
+		"gulp-nodemon": "2.2.x"
+	},
+	"files": [
+		"assets/*",
+		"variations/*",
+		"views/*",
+		"LICENSE",
+		"README.md",
+		"CHANGELOG.md",
+		"server.fr.na",
+		"server.na",
+		"route.fr.json",
+		"route.json",
+		"package.json"
+	],
+	"homepage": "https://github.com/Orchard-ID/Orchard-Website#readme",
+	"engines": {
+		"node": ">=4.0.0"
+	}
 }

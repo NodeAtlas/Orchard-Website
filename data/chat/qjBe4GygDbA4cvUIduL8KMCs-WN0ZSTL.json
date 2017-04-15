@@ -1,0 +1,28 @@
+{
+	"messages": [
+		{
+			"user": "",
+			"message": "Posez vos questions et quelqu'un viendra y répondre !",
+			"special": "message",
+			"date": 1492269317129
+		},
+		{
+			"user": "",
+			"message": "Posez vos questions et quelqu'un viendra y répondre !",
+			"special": "message",
+			"date": 1492269320610
+		},
+		{
+			"user": "",
+			"message": "Comment vous appelez-vous ?",
+			"special": "name",
+			"date": 1492269325129
+		},
+		{
+			"user": "",
+			"message": "Comment vous appelez-vous ?",
+			"special": "name",
+			"date": 1492269328611
+		}
+	]
+}

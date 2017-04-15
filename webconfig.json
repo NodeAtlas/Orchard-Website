@@ -1,6 +1,7 @@
 {
 	"stylus": {
-		"files": "stylus.json"
+		"files": "stylus.json",
+		"autoprefix": true
 	},
 	"httpPort": 7776,
 	"languageCode": "fr-fr",
