@@ -70,7 +70,7 @@ NA.socket.on('initialization', function (sessionID, me, chat) {
 	vm.common.me = me;
 	vm.common.sessionID = sessionID;
 	vm.chat.channels = chat.chatChannels;
-	vm.chat.channels.sort((a, b) => a > b);
+	vm.chat.channels.sort(window.sortChannels);
 	vm.chat.currentChannel = chat.currentChannel;
 	vm.chat.nameExist = chat.chatName;
 	vm.chat.name = chat.chatName;
