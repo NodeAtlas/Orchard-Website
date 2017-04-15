@@ -8,77 +8,34 @@
 				<h1>Orchard Instant Discussion</h1>
 				<p>Posez vos questions ici et nous répondrons avant la fin de votre épisode de Game of Thrones</p>
 			</header>
-			<!--<div>
-				<label for="chat--myname">Quel est ton nom ?</label>
-				<input v-model="chat.name" type="text">
-				<button>Valider</button>
-			</div>
-			<div>
-				<label for="chat--myemail">Quel est ton email ?</label>
-				<input v-model="chat.email" type="text">
-				<button>Valider</button>
-			</div>
-			<div>
-				<label for="chat--myphone">Quel est ton numéro ?</label>
-				<input v-model="chat.phone" type="text">
-				<button>Valider</button>
-			</div>-->
 			<div v-if="common.me.id" class="chat--channelbox">
 				<h2>Toutes les conversations</h2>
 				<ul>
 					<li v-for="channel in chat.channels" class="chat--channel" v-bind:class="{ 'is-active': channel.state, 'is-current': chat.currentChannel === channel.name }">
-						<span v-on:click="changeChannel(channel.name)" class="chat--channelbox--state">{{ channel.name.substring(0, 8) }}</span>
+						<span v-on:click="changeChannel(channel.name)" class="chat--channelbox--state">{{ (common.me.firstname && common.sessionID === channel.name) ? common.me.firstname : ((channel.user) ? channel.user : channel.name.substring(0, 8)) }}</span>
 						<span class="chat--channelbox--remove" v-if="!channel.state" v-on:click="removeChannel(channel.name)">X</span>
 					</li>
 				</ul>
-				<h2>Discussion avec {{ chat.currentChannel.substring(0, 8) }}</h2>
+				<h2 v-if="common.sessionID === chat.currentChannel">C'est vous ({{ chat.currentChannel.substring(0, 8) }}) !</h2>
+				<h3 v-else>Session : {{ chat.currentChannel.substring(0, 8) }}</h3>
 			</div>
 			<div class="chat--messagebox">
 				<div v-if="chat.messages.length > 0">
 					<ul>
-						<li v-for="message in chat.messages" class="chat--message" v-bind:class="{ 'is-reversed': !message.user && !message.special, 'is-hidden': common.me.id && message.special }">
+						<li v-for="message in chat.messages" class="chat--message" v-bind:class="{ 'is-reversed': !message.auth && !message.special }">
 							<time v-html="message.date"></time>
 							<div class="chat--user">{{ (message.special) ? "Orchard ID" : ((message.user) ? message.user : (chat.name) ? chat.name : common.meName) }}</div>
 							<div v-html="message.message"></div>
-							<div class="chat--special" v-if="message.special === 'name' && !chat.nameExist">
+							<div class="chat--special" v-if="message.special === 'name' && !chat.nameExist && !common.me.id">
 								<input v-on:keyup.enter="sendName" placeholder="Votre prénom" v-model="chat.name" type="text">
 								<button v-on:click="sendName">Valider</button>
 							</div>
-							<div class="chat--special" v-if="message.special === 'email' && !chat.emailExist">
+							<div class="chat--special" v-if="message.special === 'email' && !chat.emailExist && !common.me.id">
 								<input placeholder="Votre email" v-model="chat.email" type="text"> et/ou
 								<input placeholder="Votre numéro" v-model="chat.phone" type="text">
 								<button v-on:click="sendEmail">Valider</button>
 							</div>
 						</li>
-						<!--
-						<li class="chat--message">
-							<img src="img/avatars/5.png" class="online" alt="">
-							<div class="message-text">
-								<p>
-									<time v-html="new Date()"></time>
-									<a href="javascript:void(0);" class="username">Alban</a>
-									Bonjour, souhaitez-vous quelques informations sur Dougs pour comprendre comment notre cabinet d'expertise-comptable en ligne peut vous simplifier la vie ?
-								</p>
-								<p class="chat-file row">
-									<b class="pull-left col-sm-6"> <i class="fa fa-file"></i> report-2013-demographic-report-annual-earnings.xls </b>
-									<span class="col-sm-6 pull-right"> <a href="javascript:void(0);" class="btn btn-xs btn-default">cancel</a> <a href="javascript:void(0);" class="btn btn-xs btn-success">save</a> </span>
-								</p>
-								<p class="chat-file row">
-									<b class="pull-left col-sm-6"> <i class="fa fa-ok txt-color-green"></i> tobacco-report-2012.doc </b>
-									<span class="col-sm-6 pull-right"> <a href="javascript:void(0);" class="btn btn-xs btn-primary">open</a> </span>
-								</p>
-							</div>
-						</li>
-						<li class="chat--message">
-							<img src="img/avatars/sunny.png" class="online" alt="">
-							<div class="message-text">
-								<p>
-									<time>2014-01-13</time>
-									<a href="javascript:void(0);" class="username">Moi</a>
-									Haha! Yeah I know what you mean. Thanks for the file Sadi! <i class="fa fa-smile-o txt-color-orange"></i>
-								</p>
-							</div>
-						</li>-->
 					</ul>
 				</div>
 				<div v-else>
@@ -102,7 +59,7 @@
 					<div class="chat--sendbox--controls--options">
 						<label for="chat--sendbox--controls--withenter">
 							<input v-model="chat.enterState" type="checkbox" name="withenter" id="chat--sendbox--controls--withenter" class="chat--sendbox--controls--withenter">
-							Appuyer sur <strong> Entrer </strong> pour envoyer
+							Appuyer sur <strong>Entrer</strong> pour envoyer
 						</label>
 					</div>
 				</div>

@@ -1,4 +1,4 @@
-/* global System */
+/* global System, Vue */
 System.config({
 	defaultExtension: true,
 	baseURL: document.getElementsByTagName("base")[0].getAttribute("href"),
@@ -10,3 +10,16 @@ System.config({
 	}
 });
 System.import(document.getElementById("systemjs").getAttribute("data-main"));
+
+window.scrollToBottom = function (vm) {
+	var area = document.getElementsByClassName("chat--messagebox")[0];
+	if (area && vm.chat.state) {
+		Vue.nextTick(function () {
+			area.scrollTop = area.scrollHeight;
+		});
+	}
+};
+
+window.sortChannels = function (a, b) {
+	return (a && a.name) > (b && b.name);
+};

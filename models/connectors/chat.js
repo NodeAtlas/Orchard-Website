@@ -1,5 +1,5 @@
 /* globals exports */
-exports.addMessage = function (user, phrase, file, special, next) {
+exports.addMessage = function (user, phrase, file, special, auth, next) {
 	var NA = this,
 		fs = NA.modules.fs,
 		path = NA.modules.path,
@@ -17,12 +17,13 @@ exports.addMessage = function (user, phrase, file, special, next) {
 			user: user,
 			message: phrase,
 			special: special,
+			auth: auth,
 			date: (+new Date())
 		};
 
 		content.messages.push(message);
 
-		fs.writeFile(pathfile, JSON.stringify(content, undefined, '    '), function () {
+		fs.writeFile(pathfile, JSON.stringify(content, undefined, '	'), function () {
 			next(message);
 		});
 	});
@@ -32,15 +33,29 @@ exports.changeName = function (name, file, next) {
 	var NA = this,
 		fs = NA.modules.fs,
 		path = NA.modules.path,
-		pathfile = path.join(NA.serverPath, "data/chat/" + file + ".json");
+		pathfile = path.join(NA.serverPath, "data/chat/" + file + ".json"),
+		channelfile = path.join(NA.serverPath, "data/channels.json");
 
 	fs.readFile(pathfile, "utf-8", function (err, result) {
-		var content = JSON.parse(result);
+		fs.readFile(channelfile, "utf-8", function (err, chans) {
+			var content = JSON.parse(result),
+				channels = JSON.parse(chans),
+				current;
 
-		content.name = name;
+			content.name = name;
 
-		fs.writeFile(pathfile, JSON.stringify(content, undefined, '    '), function () {
-			next(name);
+			channels.channels.forEach(function (channel) {
+				if (channel.name === file) {
+					channel.user = name;
+					current = channel;
+				}
+			});
+
+			fs.writeFile(pathfile, JSON.stringify(content, undefined, '	'), function () {
+				fs.writeFile(channelfile, JSON.stringify(channels, undefined, '	'), function () {
+					next(name, current);
+				});
+			});
 		});
 	});
 };
@@ -57,7 +72,7 @@ exports.changeEmail = function (email, phone, file, next) {
 		content.email = email;
 		content.phone = phone;
 
-		fs.writeFile(pathfile, JSON.stringify(content, undefined, '    '), function () {
+		fs.writeFile(pathfile, JSON.stringify(content, undefined, '	'), function () {
 			next(email, phone);
 		});
 	});
@@ -85,24 +100,25 @@ exports.addChannel = function (session, sessions, next) {
 			date: (+new Date())
 		};
 
-		content.channels.forEach(function (channel) {
+		content.channels.forEach(function (chan) {
 			isLeft = true;
 
 			sessions.forEach(function (session) {
-				if (session.request.sessionID === channel.name) {
+				if (session.request.sessionID === chan.name) {
 					isLeft = false;
 					return;
 				}
 			});
 
 			if (isLeft) {
-				channel.state = false;
+				chan.state = false;
 			}
 
-			if (channel.name === session) {
+			if (chan.name === session) {
 				isExist = true;
-				channel.state = true;
-				channel.date = (+new Date());
+				chan.state = true;
+				chan.date = (+new Date());
+				channel = chan;
 			}
 		});
 
@@ -110,7 +126,7 @@ exports.addChannel = function (session, sessions, next) {
 			content.channels.push(channel);
 		}
 
-		fs.writeFile(pathfile, JSON.stringify(content, undefined, '    '), function () {
+		fs.writeFile(pathfile, JSON.stringify(content, undefined, '	'), function () {
 			next(channel);
 		});
 	});
@@ -137,14 +153,14 @@ exports.removeChannel = function (session, next) {
 		});
 
 		fs.unlink("data/chat/" + session + ".json", function () {
-			fs.writeFile(pathfile, JSON.stringify(content, undefined, '    '), function () {
+			fs.writeFile(pathfile, JSON.stringify(content, undefined, '	'), function () {
 				next();
 			});
 		});
 	});
 };
 
-exports.sleepChannel = function (session, next) {
+exports.sleepChannel = function (session, state, next) {
 	var NA = this,
 		fs = NA.modules.fs,
 		path = NA.modules.path,
@@ -160,13 +176,13 @@ exports.sleepChannel = function (session, next) {
 
 		content.channels.forEach(function (current) {
 			if (current.name === session) {
-				current.state = false;
+				current.state = state;
 				current.date = (+new Date());
 				channel = current;
 			}
 		});
 
-		fs.writeFile(pathfile, JSON.stringify(content, undefined, '    '), function () {
+		fs.writeFile(pathfile, JSON.stringify(content, undefined, '	'), function () {
 			next(channel);
 		});
 	});

@@ -1,20 +1,28 @@
 /* jshint node: true, esversion: 6 */
-/* global NA, Vue */
+/* global NA */
 module.exports = function (vm) {
-	function scrollToBottom(vm) {
-		var area = document.getElementsByClassName("chat--messagebox")[0];
-		if (area && vm.chat.state) {
-			Vue.nextTick(function () {
-				area.scrollTop = area.scrollHeight;
-			});
-		}
-	}
 
 	NA.socket.on('chat--send-message', function (message, currentChannel) {
 		if (currentChannel === vm.chat.currentChannel) {
 			vm.chat.messages.push(message);
 		}
-		scrollToBottom(vm);
+		window.scrollToBottom(vm);
+	});
+
+	NA.socket.on('chat--send-name', function (name, channel) {
+		vm.chat.nameExist = name;
+		vm.chat.channels.forEach(function (current, index) {
+			if (current.name === channel.name) {
+				vm.chat.channels.splice(index, 1);
+			}
+		});
+		vm.chat.channels.push(channel);
+		vm.chat.channels.sort(window.sortChannels);
+	});
+
+	NA.socket.on('chat--send-email', function (email, phone) {
+		vm.chat.emailExist = email;
+		vm.chat.phoneExist = phone;
 	});
 
 	NA.socket.on('chat--send-channel', function (channel) {
@@ -24,17 +32,19 @@ module.exports = function (vm) {
 			}
 		});
 		vm.chat.channels.push(channel);
-		vm.chat.channels.sort((a, b) => a < b);
+		vm.chat.channels.sort(window.sortChannels);
 	});
 
 	NA.socket.on('chat--sleep-channel', function (channel) {
-		vm.chat.channels.forEach(function (current, index) {
-			if (current.name === channel.name) {
-				vm.chat.channels.splice(index, 1);
-			}
-		});
+		if (channel) {
+			vm.chat.channels.forEach(function (current, index) {
+				if (channel.name === current.name) {
+					vm.chat.channels.splice(index, 1);
+				}
+			});
+		}
 		vm.chat.channels.push(channel);
-		vm.chat.channels.sort((a, b) => a < b);
+		vm.chat.channels.sort(window.sortChannels);
 	});
 
 	NA.socket.on('chat--remove-channel', function (channel) {
@@ -52,7 +62,7 @@ module.exports = function (vm) {
 			vm.changeChannel(vm.chat.channels[0].name);
 		}
 
-		scrollToBottom(vm);
-		vm.chat.channels.sort((a, b) => a < b);
+		window.scrollToBottom(vm);
+		vm.chat.channels.sort(window.sortChannels);
 	});
 };

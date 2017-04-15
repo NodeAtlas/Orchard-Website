@@ -71,12 +71,12 @@ exports.setSockets = function () {
 			sessionID = socket.request.sessionID;
 
 		NA.sockets.push(socket);
-		console.log("====================");
+		/*console.log("====================");
 		console.log('Connect!');
 		NA.sockets.forEach(function (item) {
 			console.log(item.id, item.request.sessionID);
 		});
-		console.log("====================");
+		console.log("====================");*/
 
 		socket.on('initialization', function () {
 			var user = (session.user) ? session.user.publics : {},
@@ -84,11 +84,14 @@ exports.setSockets = function () {
 				chatName = session.chatName,
 				chatEmail = session.chatEmail,
 				chatPhone = session.chatPhone;
-			socket.emit('initialization', user, {
-				currentChannel: currentChannel,
-				chatName: chatName,
-				chatEmail: chatEmail,
-				chatPhone: chatPhone
+			Chat.listChannels.call(NA, function (channels) {
+				socket.emit('initialization', sessionID, user, {
+					currentChannel: currentChannel,
+					chatName: chatName,
+					chatEmail: chatEmail,
+					chatPhone: chatPhone,
+					chatChannels: channels
+				});
 			});
 		});
 
@@ -98,18 +101,18 @@ exports.setSockets = function () {
 				sessionID = socket.request.sessionID;
 
 			NA.sockets.splice(index, 1);
-			console.log("====================");
-			console.log('Disconnect!');
+			/*console.log("====================");
+			console.log('Disconnect!');*/
 			NA.sockets.forEach(function (item) {
-				console.log(item.id, item.request.sessionID);
+				//console.log(item.id, item.request.sessionID);
 				if (item.request.sessionID === sessionID) {
 					removed = false;
 				}
 			});
-			console.log("====================");
+			//console.log("====================");
 
 			if (removed) {
-				Chat.sleepChannel.call(NA, sessionID, function (channel) {
+				Chat.sleepChannel.call(NA, sessionID, false, function (channel) {
 					socket.broadcast.emit('chat--sleep-channel', channel);
 				});
 			}
