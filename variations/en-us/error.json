@@ -3,7 +3,7 @@
 		"title": "404 Error",
 		"description": "This page doesn't exist!"
 	},
-	"body": {	
+	"body": {
 		"title": "404 Error",
 		"content": "<p>This page doesn't exist.</p>",
 		"link": {

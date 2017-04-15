@@ -12,8 +12,9 @@
 	"controller": "common.js",
 	"view": "layout.htm",
 	"bundles": "bundles.json",
-	"stylus": { 
-		"files": "stylus.json"
+	"stylus": {
+		"files": "stylus.json",
+		"autoprefix": true
 	},
 	"statics": "statics.json",
 	"routes": "routes.json",

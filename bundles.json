@@ -10,7 +10,7 @@
 			"../node_modules/vue-router/dist/vue-router.min.js",
 			"javascripts/boot.js"
 		],
-		"javascripts/main.{version}.min.js": ["javascripts/main.js"]
+		"javascripts/common.{version}.min.js": ["javascripts/common.js"]
 	},
 	"stylesheets": {
 		"stylesheets/common.{version}.min.css": [

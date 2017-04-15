@@ -3,7 +3,7 @@
 		"title": "Log in/out",
 		"description": "Log in page to member section."
 	},
-	"body": {	
+	"body": {
 		"title": "Log Page",
 		"content": {
 			"unauthenticated": "<p>Please enter your account informations for sign in.</p>",
