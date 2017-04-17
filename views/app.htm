@@ -2,5 +2,5 @@
 	<transition name="fade-in-out">
 		<router-view v-bind:common="common"></router-view>
 	</transition>
-	<chat v-bind:common="common"></chat>
+	<chat ref="chat" v-bind:common="common"></chat>
 </div>

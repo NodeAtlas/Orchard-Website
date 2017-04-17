@@ -1,4 +1,4 @@
-/* global System, Vue */
+/* global System */
 System.config({
 	defaultExtension: true,
 	baseURL: document.getElementsByTagName("base")[0].getAttribute("href"),

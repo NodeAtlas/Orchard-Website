@@ -75,8 +75,7 @@ module.exports = function (vm) {
 		labelNextChannel = vm.common.chat.channels[0].name.substring(0, 8);
 		if (vm.common.chat.currentChannel === channel) {
 			alert(`La discussion ${labelChannel} a été fermée. Vous êtes maintenant avec ${labelNextChannel}.`);
-			console.log(vm.$children[1].changeChannel);
-			vm.$children[1].changeChannel(vm.common.chat.channels[0].name);
+			vm.$refs.chat.changeChannel(vm.common.chat.channels[0].name);
 		}
 
 		window.scrollToBottom(vm);

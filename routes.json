@@ -11,7 +11,7 @@
 		"variation": "login.json"
 	},
 	"error_fr-fr": {
-		"url": "/page-inexistante/",
+		"url": "/*",
 		"view": "error",
 		"variation": "error.json",
 		"statusCode": 404

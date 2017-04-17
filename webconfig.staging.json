@@ -14,7 +14,6 @@
 	},
 	"statics": "statics.json",
 	"routes": "routes.json",
-	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow",
 	"_min": true
 }

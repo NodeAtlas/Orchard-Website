@@ -18,7 +18,6 @@
 	},
 	"statics": "statics.en-us.json",
 	"routes": "routes.en-us.json",
-	"pageNotFound": "error_en-us",
 	"_robots": "index, follow",
 	"_min": true,
 	"_ua": "UA-91358693-2"

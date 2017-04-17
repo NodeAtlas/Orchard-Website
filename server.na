@@ -1,1 +1,2 @@
-require("node-atlas")().start();
+global.NA = new require("node-atlas")();
+global.NA.start();
