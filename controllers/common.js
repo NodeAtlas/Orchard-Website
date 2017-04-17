@@ -5,6 +5,9 @@ exports.setModules = function () {
 	NA.models = {};
 	NA.models.User = require("../models/connectors/user.js");
 	NA.models.Chat = require("../models/connectors/chat.js");
+
+	NA.components = {};
+	NA.components.chat = require("./components/chat.js");
 };
 
 exports.changeDom = function (next, locals, request, response) {
@@ -61,7 +64,7 @@ exports.changeDom = function (next, locals, request, response) {
 exports.setSockets = function () {
 	var NA = this,
 		io = NA.io,
-		path = NA.modules.path;
+		chat = NA.components.chat;
 
 	io.on('connection', function (socket) {
 		var session = socket.request.session,
@@ -73,5 +76,5 @@ exports.setSockets = function () {
 		});
 	});
 
-	require(path.join(NA.serverPath, NA.webconfig.controllersRelativePath, "components/chat.js")).setSockets.call(NA);
+	chat.setSockets.call(NA);
 };

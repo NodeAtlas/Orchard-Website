@@ -2,7 +2,5 @@
 	"title": "Orchard ID Website",
 	"description": "Website of Orchard ID Company",
 	"menu": ["", "is-selected"],
-	"me": {},
-	"sessionID": "",
 	"meName": "Me"
 }

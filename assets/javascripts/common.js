@@ -59,7 +59,7 @@ var ua = document.body.getAttribute('data-ua'),
 
 window.scrollToBottom = function (vm) {
 	var area = document.getElementsByClassName("chat--messagebox")[0];
-	if (area && vm.chat.state) {
+	if (area && vm.common.chat.state) {
 		Vue.nextTick(function () {
 			area.scrollTop = area.scrollHeight;
 		});
