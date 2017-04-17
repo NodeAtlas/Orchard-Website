@@ -2,6 +2,7 @@
 /* global NA, Hashes */
 module.exports = function (specific, template, mixin) {
 	return {
+		name: 'login',
 		template: template,
 		mixins: (mixin) ? [mixin] : undefined,
 		props: ['common'],

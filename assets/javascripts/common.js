@@ -65,19 +65,11 @@ vm = new Vue(model(common, template, router, webconfig));
 
 vm.$mount('.layout');
 
-NA.socket.emit('initialization');
-NA.socket.on('initialization', function (sessionID, me, chat) {
+NA.socket.emit('app--init');
+
+NA.socket.on('app--init', function (sessionID, me) {
 	vm.common.me = me;
 	vm.common.sessionID = sessionID;
-	vm.chat.channels = chat.chatChannels;
-	vm.chat.channels.sort(window.sortChannels);
-	vm.chat.currentChannel = chat.currentChannel;
-	vm.chat.nameExist = chat.chatName;
-	vm.chat.name = chat.chatName;
-	vm.chat.emailExist = chat.chatEmail;
-	vm.chat.email = chat.chatEmail;
-	vm.chat.phoneExist = chat.chatPhone;
-	vm.chat.phone = chat.chatPhone;
 });
 
-require("javascripts/modules/chat.js")(vm);
+require("javascripts/components/chat.js")(vm);

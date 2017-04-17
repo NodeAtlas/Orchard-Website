@@ -2,6 +2,20 @@
 /* global NA */
 module.exports = function (vm) {
 
+	NA.socket.emit('chat--init');
+
+	NA.socket.on('chat--init', function (chat) {
+		vm.chat.channels = chat.chatChannels;
+		vm.chat.channels.sort(window.sortChannels);
+		vm.chat.currentChannel = chat.currentChannel;
+		vm.chat.nameExist = chat.chatName;
+		vm.chat.name = chat.chatName;
+		vm.chat.emailExist = chat.chatEmail;
+		vm.chat.email = chat.chatEmail;
+		vm.chat.phoneExist = chat.chatPhone;
+		vm.chat.phone = chat.chatPhone;
+	});
+
 	NA.socket.on('chat--send-message', function (message, currentChannel) {
 		if (currentChannel === vm.chat.currentChannel) {
 			vm.chat.messages.push(message);
@@ -26,13 +40,15 @@ module.exports = function (vm) {
 	});
 
 	NA.socket.on('chat--send-channel', function (channel) {
-		vm.chat.channels.forEach(function (current, index) {
-			if (current.name === channel.name) {
-				vm.chat.channels.splice(index, 1);
-			}
-		});
-		vm.chat.channels.push(channel);
-		vm.chat.channels.sort(window.sortChannels);
+		if (vm.chat.state) {
+			vm.chat.channels.forEach(function (current, index) {
+				if (current.name === channel.name) {
+					vm.chat.channels.splice(index, 1);
+				}
+			});
+			vm.chat.channels.push(channel);
+			vm.chat.channels.sort(window.sortChannels);
+		}
 	});
 
 	NA.socket.on('chat--sleep-channel', function (channel) {

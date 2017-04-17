@@ -61,63 +61,17 @@ exports.changeDom = function (next, locals, request, response) {
 exports.setSockets = function () {
 	var NA = this,
 		io = NA.io,
-		path = NA.modules.path,
-		Chat = NA.models.Chat;
-
-	NA.sockets = [];
+		path = NA.modules.path;
 
 	io.on('connection', function (socket) {
 		var session = socket.request.session,
 			sessionID = socket.request.sessionID;
 
-		NA.sockets.push(socket);
-		/*console.log("====================");
-		console.log('Connect!');
-		NA.sockets.forEach(function (item) {
-			console.log(item.id, item.request.sessionID);
+		socket.on('app--init', function () {
+			var user = (session.user) ? session.user.publics : {};
+				socket.emit('app--init', sessionID, user);
 		});
-		console.log("====================");*/
-
-		socket.on('initialization', function () {
-			var user = (session.user) ? session.user.publics : {},
-				currentChannel = (session.currentChannel) ? session.currentChannel : sessionID,
-				chatName = session.chatName,
-				chatEmail = session.chatEmail,
-				chatPhone = session.chatPhone;
-			Chat.listChannels.call(NA, function (channels) {
-				socket.emit('initialization', sessionID, user, {
-					currentChannel: currentChannel,
-					chatName: chatName,
-					chatEmail: chatEmail,
-					chatPhone: chatPhone,
-					chatChannels: channels
-				});
-			});
-		});
-
-		socket.on('disconnect', function() {
-			var index = NA.sockets.indexOf(socket),
-				removed = true,
-				sessionID = socket.request.sessionID;
-
-			NA.sockets.splice(index, 1);
-			/*console.log("====================");
-			console.log('Disconnect!');*/
-			NA.sockets.forEach(function (item) {
-				//console.log(item.id, item.request.sessionID);
-				if (item.request.sessionID === sessionID) {
-					removed = false;
-				}
-			});
-			//console.log("====================");
-
-			if (removed) {
-				Chat.sleepChannel.call(NA, sessionID, false, function (channel) {
-					socket.broadcast.emit('chat--sleep-channel', channel);
-				});
-			}
-		});
-
-		require(path.join(NA.serverPath, NA.webconfig.controllersRelativePath, "modules/chat.js")).sockets.call(NA, socket, session, sessionID);
 	});
+
+	require(path.join(NA.serverPath, NA.webconfig.controllersRelativePath, "components/chat.js")).setSockets.call(NA);
 };

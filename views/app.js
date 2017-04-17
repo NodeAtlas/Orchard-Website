@@ -3,6 +3,7 @@
 module.exports = function (common, template, router, webconfig) {
 
 	return {
+		name: 'App',
 		template: template,
 		router: router,
 		data: {
