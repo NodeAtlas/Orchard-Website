@@ -1,7 +1,7 @@
 {
 	"javascripts": {
 		"javascripts/framework.{version}.min.js": [
-			"javascripts/vendor/ga.min.js",
+			"javascripts/vendors/ga.min.js",
 			"../node_modules/jshashes/hashes.min.js",
 			"../node_modules/socket.io-client/dist/socket.io.min.js",
 			"node-atlas/socket.io.js",

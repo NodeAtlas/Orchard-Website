@@ -1,9 +1,9 @@
 {
 	"/socket.io/socket.io.js": "node_modules/socket.io-client/dist/socket.io.js",
-	"/javascripts/vendor/jshashes.js": "node_modules/jshashes/hashes.min.js",
-	"/javascripts/vendor/vue.js": "node_modules/vue/dist/vue.js",
-	"/javascripts/vendor/vue.router.js": "node_modules/vue-router/dist/vue-router.js",
-	"/javascripts/vendor/system.js": "node_modules/systemjs/dist/system.js",
+	"/javascripts/vendors/jshashes.js": "node_modules/jshashes/hashes.min.js",
+	"/javascripts/vendors/vue.js": "node_modules/vue/dist/vue.js",
+	"/javascripts/vendors/vue.router.js": "node_modules/vue-router/dist/vue-router.js",
+	"/javascripts/vendors/system.js": "node_modules/systemjs/dist/system.js",
 	"/views-models": "views/",
 	"/variations": "variations/",
 	"/routes.json": "routes.json"
