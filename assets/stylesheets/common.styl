@@ -233,7 +233,21 @@ a:hover
 			max-width 210px
 
 		h1
+			font-family inherit
+			font-weight lighter
+			font-size 4rem
+			line-height 1em
+			color #000
+			&::after
+				content ""
+				display block
+				border-top 1px solid #000
+				width 2rem
+				margin-top 1.4rem
+
+		h1
 		p
+		form
 			padding 0 3.0rem
 
 		.arrow
@@ -255,10 +269,9 @@ a:hover
 			img
 				max-width none
 
-			p
-				padding 0
-
 			h1
+			p
+			form
 				padding 0
 
 	&--infos
@@ -299,9 +312,51 @@ a:hover
 
 .home
 	&--content
+		h1
+			&::after
+				display none
+
+
 		@media (min-width 768px)
 			h1
 				width 70%
+
+.login
+	&--form
+		.field
+			label
+				display none
+		input
+			border 0
+			border-bottom 1px solid #95989A
+			font-family inherit
+			font-size inherit
+			padding .6rem 0
+			margin-bottom 1.4rem
+			display block
+			width 100%
+			&:focus
+				outline -webkit-focus-ring-color auto 0
+				color #00A00C
+				border-color #00A00C
+		button
+			font-family inherit
+			font-size inherit
+			color inherit
+			border 1px solid #95989A
+			background-color inherit
+			padding .6rem 2rem 
+			margin-top 1.8rem
+			margin-bottom 4rem
+			opacity .7
+			&:hover
+				opacity 1
+			&.invalid 
+				opacity .2
+				cursor not-allowed
+			&:focus
+				outline -webkit-focus-ring-color auto 0
+
 
 .fade-in-out-enter
 .fade-in-out-leave-to

@@ -9,7 +9,7 @@
 		"link": {
 			"href": "/",
 			"title": "Retour à l'accueil",
-			"content": "Retour à l'accueil"
+			"content": "Retour à l'accueil<img src='media/images/arrow.svg' alt='Retour à l'accueil' class='arrow'>"
 		}
 	}
 }

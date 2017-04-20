@@ -11,7 +11,7 @@
 					<label for="login-form--email" v-html="specific.email.label.content"></label>
 					<input type="text" id="login-form--email" class="login-form--email" name="email" v-bind:placeholder="specific.email.label.placeholder" v-model="email">
 					<div v-if="email === '' && email !== undefined" v-html="specific.email.error.empty"></div>
-					<div v-if="!isEmail(email) && email !== undefined" v-html="specific.email.error.badFormat"></div>
+					<div v-if="!isEmail(email) && email !== undefined && email !== ''" v-html="specific.email.error.badFormat"></div>
 				</div>
 
 				<div class="field password" v-bind:class="{ invalid: !password && password !== undefined }">

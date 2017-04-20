@@ -20,7 +20,7 @@
 				"placeholder": "Email"
 			},
 			"error": {
-				"empty": "Le champ email est vide.",
+				"empty": "Le champ Email est vide.",
 				"badFormat": "Le champ Email est incorrecte."
 			}
 		},
