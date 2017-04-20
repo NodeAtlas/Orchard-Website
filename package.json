@@ -1,6 +1,6 @@
 {
 	"name": "website",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"description": "Site web de la société Orchard ID",
 	"main": "server.na",
 	"scripts": {
@@ -48,7 +48,6 @@
 		"vue-server-renderer": "2.2.x",
 		"vue-router": "2.3.x",
 		"systemjs": "0.20.x",
-		"axios": "0.16.x",
 		"traceur": "0.0.x",
 		"jshashes": "1.0.x"
 	},

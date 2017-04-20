@@ -4,7 +4,6 @@
 	"/javascripts/vendors/vue.js": "node_modules/vue/dist/vue.js",
 	"/javascripts/vendors/vue.router.js": "node_modules/vue-router/dist/vue-router.js",
 	"/javascripts/vendors/system.js": "node_modules/systemjs/dist/system.js",
-	"/javascripts/vendors/axios.js": "node_modules/axios/dist/axios.js",
 	"/views-models": "views/",
 	"/variations": "variations/",
 	"/routes.json": "routes.json"
