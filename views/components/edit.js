@@ -5,11 +5,12 @@ module.exports = function (template) {
 
 	return {
 		name: "edit",
-		props: ['common', 'global', 'json', 'current'],
+		props: ['json', 'current', 'options'],
 		template: template,
 		data: function () {
 			return {
 				edit: {
+					state: false,
 					isInit: false
 				}
 			};
@@ -21,7 +22,7 @@ module.exports = function (template) {
 					container,
 					self = this;
 
-				this.global.edit.state = !this.global.edit.state;
+				this.edit.state = !this.edit.state;
 
 				if (!this.edit.isInit) {
 					this.edit.isInit = true;
@@ -33,7 +34,7 @@ module.exports = function (template) {
 					jsonEditorCSS.href = 'stylesheets/vendors/jsoneditor.css';
 					jsonEditorCSS.rel = 'stylesheet';
 					jsonEditorJS.addEventListener('load', () => {
-						container = document.getElementsByClassName('edit--editbox')[0];
+						container = this.$el.getElementsByClassName('edit--editbox')[0];
 		 				editor = new JSONEditor(container, {
 		 					indentation: 4,
 		 					sortObjectKeys: false,

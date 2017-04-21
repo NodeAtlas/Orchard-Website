@@ -6,5 +6,6 @@
 	"/javascripts/vendors/system.js": "node_modules/systemjs/dist/system.js",
 	"/views-models": "views/",
 	"/variations": "variations/en-us/",
-	"/routes.json": "routes.en-us.json"
+	"/routes.json": "routes.en-us.json",
+	"/options.json": "options.en-us.json"
 }

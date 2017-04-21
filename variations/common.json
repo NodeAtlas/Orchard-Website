@@ -1,13 +1,25 @@
 {
 	"title": "Site web de Orchard ID",
 	"description": "Site web de la société Orchard ID",
-	"menu": ["is-selected", ""],
+	"languages": [{
+		"title": "Site Internet de Orchard ID",
+		"content": "Fr"
+	}, {
+		"title": "Website of Orchard ID",
+		"content": "En"
+	}],
 	"me": "Moi",
 	"separator": "et/ou",
 	"edit": {
 		"button": {
 			"on": "Fermer",
-			"off": "Édition global"
+			"off": "Édition globale"
+		}
+	},
+	"editSpecific": {
+		"button": {
+			"on": "Fermer",
+			"off": "Édition locale"
 		}
 	},
 	"chat": {

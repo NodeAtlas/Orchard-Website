@@ -21,10 +21,11 @@ module.exports = function (common, template, router, webconfig) {
 		data: {
 			common: common,
 			global: {
+				webconfig: webconfig,
 				me: {},
 				sessionID: "",
 				edit: {
-					state: undefined
+					global: true
 				},
 				chat: {
 					messages: [],
@@ -39,7 +40,6 @@ module.exports = function (common, template, router, webconfig) {
 					phoneExist: undefined
 				}
 			},
-			webconfig: webconfig
 		}
 	};
 };

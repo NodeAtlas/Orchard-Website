@@ -42,6 +42,7 @@ exports.changeDom = function (next, locals, request, response) {
 				}),
 				common = Object.assign(locals.common, { isServer: true }),
 				webconfig = {
+					options: require(path.join(NA.serverPath, NA.webconfig._options)),
 					routes: NA.webconfig.routes
 				},
 				stream = renderer.renderToStream(new Vue(require(appModel)(common, template, router, webconfig)));

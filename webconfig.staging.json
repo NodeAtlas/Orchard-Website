@@ -15,5 +15,6 @@
 	"statics": "statics.json",
 	"routes": "routes.json",
 	"_robots": "noindex, nofollow",
+	"_options": "options.json",
 	"_min": true
 }

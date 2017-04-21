@@ -4,8 +4,8 @@
 	</header>
 	<nav class="home--navigation">
 		<ul>
-			<li v-bind:class="{ 'is-selected': common.menu[0] }"><a href="https://www.orchard-id.fr" title="Site Internet de Orchard ID">Fr</a></li>
-			<li v-bind:class="{ 'is-selected': common.menu[1] }"><a href="https://www.orchard-id.com" title="Website of Orchard ID">En</a></li>
+			<li v-bind:class="{ 'is-selected': global.webconfig.options.menu[0] }"><a href="https://www.orchard-id.fr" v-bind:title="common.languages[0].title" v-html="common.languages[0].content"></a></li>
+			<li v-bind:class="{ 'is-selected': global.webconfig.options.menu[1] }"><a href="https://www.orchard-id.com" v-bind:title="common.languages[1].title" v-html="common.languages[1].content"></a></li>
 		</ul>
 	</nav>
 	<article class="home--content">
@@ -32,4 +32,5 @@
 			<li><a href="https://github.com/orchard-id" title="Orchard ID @ Github">Github</a></li>
 		</ul>
 	</footer>
+	<edit v-if="!common.isServer" v-bind:json="specific" v-bind:current="common.editSpecific"></edit>
 </div>

@@ -7,6 +7,7 @@ var ua = document.body.getAttribute('data-ua'),
 	},
 	common = require("variations/common.json!json"),
 	webconfig = {
+		options: require("options.json!json"),
 		routes: require("routes.json!json")
 	},
 	mixin = {

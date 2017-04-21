@@ -69,13 +69,15 @@ a:hover
 		background linear-gradient(to bottom, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
 
 .edit
+	&.is-global
+		right 0
 	font-size .8em
 	position absolute
 	top 0
-	right 0
-	width 470px
+	right 104px
 	text-align right
 	&--editbox
+		width 470px
 		background-color #fff
 		opacity .8
 		height 300px
@@ -88,7 +90,6 @@ a:hover
 	position absolute
 	bottom 0
 	right 0
-	width 370px
 	text-align right
 
 	&--special
@@ -159,6 +160,7 @@ a:hover
 		padding 8px
 		text-align left
 		border 1px solid #000
+		width 370px
 
 	&--sendbox--controls--withenter
 		font-size 1rem

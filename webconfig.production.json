@@ -20,5 +20,6 @@
 	"routes": "routes.json",
 	"_robots": "index, follow",
 	"_min": true,
+	"_options": "options.json",
 	"_ua": "UA-91358693-3"
 }

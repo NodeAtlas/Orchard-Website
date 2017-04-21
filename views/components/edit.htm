@@ -1,7 +1,7 @@
-<aside class="edit">
-	<div v-show="global.edit.state" class="edit--editbox"></div>
+<aside class="edit" v-bind:class="{ 'is-global': options && options.global }">
+	<div v-show="edit.state" class="edit--editbox"></div>
 	<button v-on:click="toggleEdit" class="edit--start">
-		<span v-show="!global.edit.state" v-html="current.button.off"></span>
-		<span v-show="global.edit.state" v-html="current.button.on"></span>
+		<span v-show="!edit.state" v-html="current.button.off"></span>
+		<span v-show="edit.state" v-html="current.button.on"></span>
 	</button>
 </aside>
