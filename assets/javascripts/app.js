@@ -4,7 +4,7 @@ module.exports = function (vm) {
 	NA.socket.emit('app--init');
 
 	NA.socket.on('app--init', function (sessionID, me) {
-		vm.common.me = me;
-		vm.common.sessionID = sessionID;
+		vm.global.me = me;
+		vm.global.sessionID = sessionID;
 	});
 };

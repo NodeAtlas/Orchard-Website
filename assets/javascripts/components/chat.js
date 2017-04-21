@@ -5,80 +5,80 @@ module.exports = function (vm) {
 	NA.socket.emit('chat--init');
 
 	NA.socket.on('chat--init', function (chat) {
-		vm.common.chat.channels = chat.chatChannels;
-		vm.common.chat.channels.sort(window.sortChannels);
-		vm.common.chat.currentChannel = chat.currentChannel;
-		vm.common.chat.name = chat.chatName;
-		vm.common.chat.nameExist = chat.chatName;
-		vm.common.chat.email = chat.chatEmail;
-		vm.common.chat.emailExist = chat.chatEmail;
-		vm.common.chat.phone = chat.chatPhone;
-		vm.common.chat.phoneExist = chat.chatPhone;
+		vm.global.chat.channels = chat.chatChannels;
+		vm.global.chat.channels.sort(window.sortChannels);
+		vm.global.chat.currentChannel = chat.currentChannel;
+		vm.global.chat.name = chat.chatName;
+		vm.global.chat.nameExist = chat.chatName;
+		vm.global.chat.email = chat.chatEmail;
+		vm.global.chat.emailExist = chat.chatEmail;
+		vm.global.chat.phone = chat.chatPhone;
+		vm.global.chat.phoneExist = chat.chatPhone;
 	});
 
 	NA.socket.on('chat--send-message', function (message, currentChannel) {
-		if (currentChannel === vm.common.chat.currentChannel) {
-			vm.common.chat.messages.push(message);
+		if (currentChannel === vm.global.chat.currentChannel) {
+			vm.global.chat.messages.push(message);
 		}
 		window.scrollToBottom(vm);
 	});
 
 	NA.socket.on('chat--send-name', function (name, channel) {
-		vm.common.chat.nameExist = name;
-		vm.common.chat.channels.forEach(function (current, index) {
+		vm.global.chat.nameExist = name;
+		vm.global.chat.channels.forEach(function (current, index) {
 			if (current.name === channel.name) {
-				vm.common.chat.channels.splice(index, 1);
+				vm.global.chat.channels.splice(index, 1);
 			}
 		});
-		vm.common.chat.channels.push(channel);
-		vm.common.chat.channels.sort(window.sortChannels);
+		vm.global.chat.channels.push(channel);
+		vm.global.chat.channels.sort(window.sortChannels);
 	});
 
 	NA.socket.on('chat--send-email', function (email, phone) {
-		vm.common.chat.emailExist = email;
-		vm.common.chat.phoneExist = phone;
+		vm.global.chat.emailExist = email;
+		vm.global.chat.phoneExist = phone;
 	});
 
 	NA.socket.on('chat--send-channel', function (channel) {
-		if (vm.common.chat.state) {
-			vm.common.chat.channels.forEach(function (current, index) {
+		if (vm.global.chat.state) {
+			vm.global.chat.channels.forEach(function (current, index) {
 				if (current.name === channel.name) {
-					vm.common.chat.channels.splice(index, 1);
+					vm.global.chat.channels.splice(index, 1);
 				}
 			});
-			vm.common.chat.channels.push(channel);
-			vm.common.chat.channels.sort(window.sortChannels);
+			vm.global.chat.channels.push(channel);
+			vm.global.chat.channels.sort(window.sortChannels);
 		}
 	});
 
 	NA.socket.on('chat--sleep-channel', function (channel) {
 		if (channel) {
-			vm.common.chat.channels.forEach(function (current, index) {
+			vm.global.chat.channels.forEach(function (current, index) {
 				if (channel.name === current.name) {
-					vm.common.chat.channels.splice(index, 1);
+					vm.global.chat.channels.splice(index, 1);
 				}
 			});
 		}
-		vm.common.chat.channels.push(channel);
-		vm.common.chat.channels.sort(window.sortChannels);
+		vm.global.chat.channels.push(channel);
+		vm.global.chat.channels.sort(window.sortChannels);
 	});
 
 	NA.socket.on('chat--remove-channel', function (channel) {
 		var labelChannel = channel.substring(0, 8),
 			labelNextChannel;
 
-		vm.common.chat.channels.forEach(function (current, index) {
+		vm.global.chat.channels.forEach(function (current, index) {
 			if (current.name === channel) {
-				vm.common.chat.channels.splice(index, 1);
+				vm.global.chat.channels.splice(index, 1);
 			}
 		});
-		labelNextChannel = vm.common.chat.channels[0].name.substring(0, 8);
-		if (vm.common.chat.currentChannel === channel) {
+		labelNextChannel = vm.global.chat.channels[0].name.substring(0, 8);
+		if (vm.global.chat.currentChannel === channel) {
 			alert(`La discussion ${labelChannel} a été fermée. Vous êtes maintenant avec ${labelNextChannel}.`);
-			vm.$refs.chat.changeChannel(vm.common.chat.channels[0].name);
+			vm.$refs.chat.changeChannel(vm.global.chat.channels[0].name);
 		}
 
 		window.scrollToBottom(vm);
-		vm.common.chat.channels.sort(window.sortChannels);
+		vm.global.chat.channels.sort(window.sortChannels);
 	});
 };

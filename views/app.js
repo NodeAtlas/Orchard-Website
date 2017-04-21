@@ -19,7 +19,8 @@ module.exports = function (common, template, router, webconfig) {
 			'chat': chat.model(common, chat.view)
 		},
 		data: {
-			common: Object.assign({}, common, {
+			common: common,
+			global: {
 				me: {},
 				sessionID: "",
 				chat: {
@@ -34,7 +35,7 @@ module.exports = function (common, template, router, webconfig) {
 					emailExist: undefined,
 					phoneExist: undefined
 				}
-			}),
+			},
 			webconfig: webconfig
 		}
 	};

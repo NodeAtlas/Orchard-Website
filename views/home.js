@@ -4,7 +4,7 @@ module.exports = function (specific, template, mixin) {
 		name: 'home',
 		template: template,
 		mixins: (mixin) ? [mixin] : undefined,
-		props: ['common'],
+		props: ['common', 'global'],
 		data: function () {
 			return {
 				meta: specific.meta,

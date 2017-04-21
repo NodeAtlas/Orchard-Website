@@ -3,7 +3,7 @@
 module.exports = function (common, template) {
 	return {
 		name: "chat",
-		props: ['common'],
+		props: ['common', 'global'],
 		template: template,
 		data: function () {
 			return {
@@ -16,10 +16,10 @@ module.exports = function (common, template) {
 		},
 		methods: {
 			changeChannel: function (channel) {
-				this.common.chat.currentChannel = channel;
-				NA.socket.emit('chat--change-channel', this.common.chat.currentChannel);
+				this.global.chat.currentChannel = channel;
+				NA.socket.emit('chat--change-channel', this.global.chat.currentChannel);
 				NA.socket.once('chat--change-channel', (messages) => {
-					this.common.chat.messages = messages;
+					this.global.chat.messages = messages;
 					window.scrollToBottom(this);
 				});
 			},
@@ -27,15 +27,15 @@ module.exports = function (common, template) {
 				NA.socket.emit('chat--remove-channel', channel);
 			},
 			toggleChat: function () {
-				this.common.chat.state = !this.common.chat.state;
+				this.global.chat.state = !this.global.chat.state;
 				window.scrollToBottom(this);
 				if (!this.chat.isInit) {
 					this.chat.isInit = true;
-					NA.socket.emit('chat--init-message', this.common.chat.currentChannel);
+					NA.socket.emit('chat--init-message', this.global.chat.currentChannel);
 					NA.socket.once('chat--init-message', (messages, channels) => {
-						this.common.chat.channels = channels;
-						this.common.chat.channels.sort(window.sortChannels);
-						this.common.chat.messages = messages;
+						this.global.chat.channels = channels;
+						this.global.chat.channels.sort(window.sortChannels);
+						this.global.chat.messages = messages;
 						window.scrollToBottom(this);
 					});
 				}
@@ -47,7 +47,7 @@ module.exports = function (common, template) {
 					this.chat.message = this.chat.message.replace(/\n|\r/g, "<br>");
 				}
 				if (this.chat.message) {
-					NA.socket.emit('chat--send-message', this.common.chat.name, this.chat.message, this.common.chat.currentChannel);
+					NA.socket.emit('chat--send-message', this.global.chat.name, this.chat.message, this.global.chat.currentChannel);
 					NA.socket.once('chat--send-message', () => {
 						window.scrollToBottom(this);
 						this.chat.message = "";
@@ -55,14 +55,14 @@ module.exports = function (common, template) {
 				}
 			},
 			sendName: function () {
-				this.common.chat.name = this.common.chat.name.replace(/\n|\r/g, "");
-				if (this.common.chat.name) {
-					NA.socket.emit('chat--send-name', this.common.chat.name, this.common.chat.currentChannel);
+				this.global.chat.name = this.global.chat.name.replace(/\n|\r/g, "");
+				if (this.global.chat.name) {
+					NA.socket.emit('chat--send-name', this.global.chat.name, this.global.chat.currentChannel);
 				}
 			},
 			sendEmail: function () {
-				if (this.common.chat.email || this.common.chat.phone) {
-					NA.socket.emit('chat--send-email', this.common.chat.email, this.common.chat.phone, this.common.chat.currentChannel);
+				if (this.global.chat.email || this.global.chat.phone) {
+					NA.socket.emit('chat--send-email', this.global.chat.email, this.global.chat.phone, this.global.chat.currentChannel);
 				}
 			}
 		}

@@ -37,7 +37,7 @@ exports.changeDom = function (next, locals, request, response) {
 					routes: [{
 						path: locals.routeParameters.url,
 						component: component,
-						props: ['common']
+						props: ['common', 'global']
 					}]
 				}),
 				common = locals.common,

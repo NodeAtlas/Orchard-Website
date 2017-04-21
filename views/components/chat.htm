@@ -1,34 +1,34 @@
 <aside class="chat" data-name="Moi">
-	<div v-if="common.chat.state" class="chat--chatbox">
+	<div v-if="global.chat.state" class="chat--chatbox">
 		<header class="chat--overview">
 			<h1>Orchard Instant Discussion</h1>
 			<p>Posez vos questions ici et nous répondrons avant la fin de votre épisode de Game of Thrones</p>
 		</header>
-		<div v-if="common.me.id" class="chat--channelbox">
+		<div v-if="global.me.id" class="chat--channelbox">
 			<h2>Toutes les conversations</h2>
 			<ul>
-				<li v-for="channel in common.chat.channels" class="chat--channel" v-bind:class="{ 'is-active': channel.state, 'is-current': common.chat.currentChannel === channel.name }">
-					<span v-on:click="changeChannel(channel.name)" class="chat--channelbox--state">{{ (common.me.firstname && common.sessionID === channel.name) ? common.me.firstname : ((channel.user) ? channel.user : channel.name.substring(0, 8)) }}</span>
+				<li v-for="channel in global.chat.channels" class="chat--channel" v-bind:class="{ 'is-active': channel.state, 'is-current': global.chat.currentChannel === channel.name }">
+					<span v-on:click="changeChannel(channel.name)" class="chat--channelbox--state">{{ (global.me.firstname && global.sessionID === channel.name) ? global.me.firstname : ((channel.user) ? channel.user : channel.name.substring(0, 8)) }}</span>
 					<span class="chat--channelbox--remove" v-if="!channel.state" v-on:click="removeChannel(channel.name)">X</span>
 				</li>
 			</ul>
-			<h2 v-if="common.sessionID === common.chat.currentChannel">C'est vous ({{ common.chat.currentChannel.substring(0, 8) }}) !</h2>
-			<h3 v-else>Session : {{ common.chat.currentChannel.substring(0, 8) }}</h3>
+			<h2 v-if="global.sessionID === global.chat.currentChannel">C'est vous ({{ global.chat.currentChannel.substring(0, 8) }}) !</h2>
+			<h3 v-else>Session : {{ global.chat.currentChannel.substring(0, 8) }}</h3>
 		</div>
 		<div class="chat--messagebox">
-			<div v-if="common.chat.messages.length > 0">
+			<div v-if="global.chat.messages.length > 0">
 				<ul>
-					<li v-for="message in common.chat.messages" class="chat--message" v-bind:class="{ 'is-reversed': !message.auth && !message.special }">
+					<li v-for="message in global.chat.messages" class="chat--message" v-bind:class="{ 'is-reversed': !message.auth && !message.special }">
 						<time v-html="message.date"></time>
-						<div class="chat--user">{{ (message.special) ? "Orchard ID" : ((message.user) ? message.user : (common.chat.name) ? common.chat.name : common.meName) }}</div>
+						<div class="chat--user">{{ (message.special) ? "Orchard ID" : ((message.user) ? message.user : (global.chat.name) ? global.chat.name : common.meName) }}</div>
 						<div v-html="message.message"></div>
-						<div class="chat--special" v-if="message.special === 'name' && !common.chat.nameExist && !common.me.id">
-							<input v-on:keyup.enter="sendName" placeholder="Votre prénom" v-model="common.chat.name" type="text">
+						<div class="chat--special" v-if="message.special === 'name' && !global.chat.nameExist && !global.me.id">
+							<input v-on:keyup.enter="sendName" placeholder="Votre prénom" v-model="global.chat.name" type="text">
 							<button v-on:click="sendName">Valider</button>
 						</div>
-						<div class="chat--special" v-if="message.special === 'email' && !common.chat.emailExist && !common.me.id">
-							<input placeholder="Votre email" v-model="common.chat.email" type="text"> et/ou
-							<input placeholder="Votre numéro" v-model="common.chat.phone" type="text">
+						<div class="chat--special" v-if="message.special === 'email' && !global.chat.emailExist && !global.me.id">
+							<input placeholder="Votre email" v-model="global.chat.email" type="text"> et/ou
+							<input placeholder="Votre numéro" v-model="global.chat.phone" type="text">
 							<button v-on:click="sendEmail">Valider</button>
 						</div>
 					</li>
@@ -62,7 +62,7 @@
 		</footer>
 	</div>
 	<button v-on:click="toggleChat" class="chat--start">
-		<span v-if="!common.chat.state">Une question ?</span>
+		<span v-if="!global.chat.state">Une question ?</span>
 		<span v-else>Fermer</span>
 	</button>
 </aside>

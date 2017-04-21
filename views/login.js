@@ -5,7 +5,7 @@ module.exports = function (specific, template, mixin) {
 		name: 'login',
 		template: template,
 		mixins: (mixin) ? [mixin] : undefined,
-		props: ['common'],
+		props: ['common', 'global'],
 		data: function () {
 			return {
 				meta: specific.meta,
@@ -31,7 +31,7 @@ module.exports = function (specific, template, mixin) {
 					});
 					NA.socket.once('authentication', (data) => {
 						if (data) {
-							this.common.me = data;
+							this.global.me = data;
 						} else {
 							this.error = true;
 						}
@@ -41,7 +41,7 @@ module.exports = function (specific, template, mixin) {
 			doUnauthentication: function () {
 				NA.socket.emit('unauthentication');
 				NA.socket.once('unauthentication', () => {
-					this.common.me = {};
+					this.global.me = {};
 				});
 			}
 		}

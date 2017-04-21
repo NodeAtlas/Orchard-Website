@@ -30,7 +30,7 @@ var ua = document.body.getAttribute('data-ua'),
 
 window.scrollToBottom = function (vm) {
 	var area = document.getElementsByClassName("chat--messagebox")[0];
-	if (area && vm.common.chat.state) {
+	if (area && vm.global.chat.state) {
 		Vue.nextTick(function () {
 			area.scrollTop = area.scrollHeight;
 		});
@@ -43,22 +43,27 @@ window.sortChannels = function (a, b) {
 
 keys.forEach(function (key) {
 	var route = {},
-		name = key.split('_')[0];
+		name = key.split('_')[0],
+		model,
+		specific,
+		template;
 
 	route.path = webconfig.routes[key].url;
+
 	route.component = Vue.component(name, function (resolve) {
 		Promise.all([
 			System.import('views-models/' + name + '.js'),
 			System.import('variations/' + name + '.json!json'),
 			System.import('views-models/' + name + '.htm!text')
 		]).then(function (files) {
-			var model = files[0],
-				specific = files[1],
-				template = files[2];
+			model = files[0];
+			specific = files[1];
+			template = files[2];
 			resolve(model(specific, template, mixin));
 		});
 	});
-	route.props = ['common'];
+
+	route.props = ['common', 'global'];
 
 	routes.push(route);
 });
