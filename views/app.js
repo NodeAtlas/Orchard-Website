@@ -16,13 +16,16 @@ module.exports = function (common, template, router, webconfig) {
 		template: template,
 		router: router,
 		components: {
-			'chat': chat.model(common, chat.view)
+			'chat': chat.model(chat.view)
 		},
 		data: {
 			common: common,
 			global: {
 				me: {},
 				sessionID: "",
+				edit: {
+					state: undefined
+				},
 				chat: {
 					messages: [],
 					state: undefined,

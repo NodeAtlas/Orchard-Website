@@ -1,6 +1,6 @@
 /* jshint node: true, esversion: 6 */
 /* global NA */
-module.exports = function (common, template) {
+module.exports = function (template) {
 	return {
 		name: "chat",
 		props: ['common', 'global'],

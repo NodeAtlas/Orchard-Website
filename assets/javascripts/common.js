@@ -28,6 +28,23 @@ var ua = document.body.getAttribute('data-ua'),
 	router,
 	vm;
 
+Vue.directive('edit', {
+	bind: function (el, binding, vnode) {
+		el.addEventListener('click', function () {
+			console.log(el);
+			console.log(binding);
+			console.log(vnode);
+		}, false);
+	}
+});
+
+Vue.component('edit', function (resolve) {
+	var model = require('views-models/components/edit.js'),
+		template = require('views-models/components/edit.htm!text');
+
+	resolve(model(template));
+});
+
 window.scrollToBottom = function (vm) {
 	var area = document.getElementsByClassName("chat--messagebox")[0];
 	if (area && vm.global.chat.state) {

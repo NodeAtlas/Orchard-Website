@@ -40,7 +40,7 @@ exports.changeDom = function (next, locals, request, response) {
 						props: ['common', 'global']
 					}]
 				}),
-				common = locals.common,
+				common = Object.assign(locals.common, { isServer: true }),
 				webconfig = {
 					routes: NA.webconfig.routes
 				},
