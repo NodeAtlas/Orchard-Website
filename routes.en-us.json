@@ -5,13 +5,13 @@
 		"variation": "home.json"
 	},
 	"login_en-us": {
-		"url": "/login/",
+		"url": "/members-area/",
 		"view": "login",
 		"controller": "login.js",
 		"variation": "login.json"
 	},
 	"error_en-us": {
-		"url": "/page-not-found/",
+		"url": "/*",
 		"view": "error",
 		"variation": "error.json",
 		"statusCode": 404

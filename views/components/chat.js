@@ -1,5 +1,5 @@
 /* jshint node: true, esversion: 6 */
-/* global NA */
+/* global NA, Vue */
 module.exports = function (template) {
 	return {
 		name: "chat",
@@ -28,7 +28,6 @@ module.exports = function (template) {
 			},
 			toggleChat: function () {
 				this.global.chat.state = !this.global.chat.state;
-				window.scrollToBottom(this);
 				if (!this.chat.isInit) {
 					this.chat.isInit = true;
 					NA.socket.emit('chat--init-message', this.global.chat.currentChannel);
@@ -39,6 +38,9 @@ module.exports = function (template) {
 						window.scrollToBottom(this);
 					});
 				}
+				Vue.nextTick(() => {
+					window.scrollToBottom(this);
+				});
 			},
 			sendMessage: function () {
 				if (this.chat.enterState) {

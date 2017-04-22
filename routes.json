@@ -5,7 +5,7 @@
 		"variation": "home.json"
 	},
 	"login_fr-fr": {
-		"url": "/connexion/",
+		"url": "/espace-membres/",
 		"view": "login",
 		"controller": "login.js",
 		"variation": "login.json"

@@ -10,12 +10,6 @@ exports.setSockets = function () {
 			sessionID = socket.request.sessionID;
 
 		sockets.push(socket);
-		/*console.log("====================");
-		console.log('Connect!');
-		sockets.forEach(function (item) {
-			console.log(item.id, item.request.sessionID);
-		});
-		console.log("====================");*/
 
 		socket.on('chat--init', function () {
 			var currentChannel = (session.currentChannel) ? session.currentChannel : sessionID,
@@ -133,15 +127,11 @@ exports.setSockets = function () {
 				sessionID = socket.request.sessionID;
 
 			sockets.splice(index, 1);
-			/*console.log("====================");
-			console.log('Disconnect!');*/
 			sockets.forEach(function (item) {
-				//console.log(item.id, item.request.sessionID);
 				if (item.request.sessionID === sessionID) {
 					removed = false;
 				}
 			});
-			//console.log("====================");
 
 			if (removed) {
 				Chat.sleepChannel.call(NA, sessionID, false, function (channel) {

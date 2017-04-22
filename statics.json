@@ -1,6 +1,7 @@
 {
 	"/socket.io/socket.io.js": "node_modules/socket.io-client/dist/socket.io.js",
 	"/javascripts/vendors/jshashes.js": "node_modules/jshashes/hashes.min.js",
+	"/javascripts/vendors/velocity.js": "node_modules/velocity-animate/velocity.js",
 	"/javascripts/vendors/vue.js": "node_modules/vue/dist/vue.js",
 	"/javascripts/vendors/vue.router.js": "node_modules/vue-router/dist/vue-router.js",
 	"/javascripts/vendors/system.js": "node_modules/systemjs/dist/system.js",

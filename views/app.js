@@ -12,7 +12,7 @@ module.exports = function (common, template, router, webconfig) {
 	}
 
 	return {
-		name: 'App',
+		name: 'app',
 		template: template,
 		router: router,
 		components: {
@@ -25,7 +25,8 @@ module.exports = function (common, template, router, webconfig) {
 				me: {},
 				sessionID: "",
 				edit: {
-					global: true
+					global: true,
+					isLoaded: false
 				},
 				chat: {
 					messages: [],

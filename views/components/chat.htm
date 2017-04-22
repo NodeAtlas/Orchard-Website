@@ -1,66 +1,70 @@
 <aside class="chat">
-	<div v-if="global.chat.state" class="chat--chatbox">
-		<header class="chat--overview">
-			<h1 v-html="common.chat.title"></h1>
-			<div v-html="common.chat.description"></div>
-		</header>
-		<div v-if="global.me.id" class="chat--channelbox">
-			<h2 v-html="common.chat.allDiscussions"></h2>
-			<ul>
-				<li v-for="channel in global.chat.channels" class="chat--channel" v-bind:class="{ 'is-active': channel.state, 'is-current': global.chat.currentChannel === channel.name }">
-					<span v-on:click="changeChannel(channel.name)" class="chat--channelbox--state">{{ (global.me.firstname && global.sessionID === channel.name) ? global.me.firstname : ((channel.user) ? channel.user : channel.name.substring(0, 8)) }}</span>
-					<span class="chat--channelbox--remove" v-if="!channel.state" v-on:click="removeChannel(channel.name)">X</span>
-				</li>
-			</ul>
-			<h2 v-if="global.sessionID === global.chat.currentChannel"><span v-html="common.chat.infoSessions.me"></span> ({{ global.chat.currentChannel.substring(0, 8) }}) !</h2>
-			<h3 v-else><span v-html="common.chat.infoSessions.others"></span> {{ global.chat.currentChannel.substring(0, 8) }}</h3>
-		</div>
-		<div class="chat--messagebox">
-			<div v-if="global.chat.messages.length > 0">
-				<ul>
-					<li v-for="message in global.chat.messages" class="chat--message" v-bind:class="{ 'is-reversed': !message.auth && !message.special }">
-						<time v-html="message.date"></time>
-						<div class="chat--user">{{ (message.special) ? "Orchard ID" : ((message.user) ? message.user : (global.chat.name) ? global.chat.name : common.me) }}</div>
-						<div v-html="message.message"></div>
-						<div class="chat--special" v-if="message.special === 'name' && !global.chat.nameExist && !global.me.id">
-							<input v-on:keyup.enter="sendName" v-bind:placeholder="common.chat.information.firstname" v-model="global.chat.name" type="text">
-							<button v-on:click="sendName" v-html="common.chat.validate"></button>
-						</div>
-						<div class="chat--special" v-if="message.special === 'email' && !global.chat.emailExist && !global.me.id">
-							<input v-bind:placeholder="common.chat.information.email" v-model="global.chat.email" type="text"> {{ common.separator }}
-							<input v-bind:placeholder="common.chat.information.phone" v-model="global.chat.phone" type="text">
-							<button v-on:click="sendEmail" v-html="common.chat.validate"></button>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div v-else>
-				<p v-html="common.chat.start"></p>
-			</div>
-		</div>
-		<footer class="chat--sendbox">
-			<div class="chat--sendarea">
-				<p>
-					<span v-if="chat.enterState" class="chat--typearea">
-						<input v-on:keyup.enter="sendMessage" v-model="chat.message" v-bind:placeholder="common.chat.send.placeholder" id="chat--textarea" class="chat--textarea">
-					</span>
-					<span v-else class="chat--typearea">
-						<textarea v-model="chat.message" v-bind:placeholder="common.chat.send.placeholder" id="chat--textarea" class="chat--textarea"></textarea>
-					</span>
-					<button v-on:click="sendMessage" class="chat--sendbox--controls--reply" v-html="common.chat.send.button"></button>
-				</p>
-			</div>
-			<div class="chat--sendbox--controls">
-
-				<div class="chat--sendbox--controls--options">
-					<label for="chat--sendbox--controls--withenter">
-						<input v-model="chat.enterState" type="checkbox" name="withenter" id="chat--sendbox--controls--withenter" class="chat--sendbox--controls--withenter">
-						<span v-html="common.chat.multilineTip"></span>
-					</label>
+	<height-transition>
+		<div v-if="global.chat.state" class="chat--chatbox" key="chat">
+			<header class="chat--overview">
+				<h1 v-html="common.chat.title"></h1>
+				<div v-html="common.chat.description"></div>
+			</header>
+			<height-transition>
+				<div v-if="global.me.id" class="chat--channelbox" key="channels">
+					<h2 v-html="common.chat.allDiscussions"></h2>
+					<ul>
+						<li v-for="channel in global.chat.channels" class="chat--channel" v-bind:class="{ 'is-active': channel.state, 'is-current': global.chat.currentChannel === channel.name }">
+							<span v-on:click="changeChannel(channel.name)" class="chat--channelbox--state">{{ (global.me.firstname && global.sessionID === channel.name) ? global.me.firstname : ((channel.user) ? channel.user : channel.name.substring(0, 8)) }}</span>
+							<span class="chat--channelbox--remove" v-if="!channel.state" v-on:click="removeChannel(channel.name)">X</span>
+						</li>
+					</ul>
+					<h2 v-if="global.sessionID === global.chat.currentChannel"><span v-html="common.chat.infoSessions.me"></span> ({{ global.chat.currentChannel.substring(0, 8) }}) !</h2>
+					<h3 v-else><span v-html="common.chat.infoSessions.others"></span> {{ global.chat.currentChannel.substring(0, 8) }}</h3>
+				</div>
+			</height-transition>
+			<div class="chat--messagebox">
+				<div v-if="global.chat.messages.length > 0">
+					<ul>
+						<li v-for="message in global.chat.messages" class="chat--message" v-bind:class="{ 'is-reversed': !message.auth && !message.special }">
+							<time v-html="message.date"></time>
+							<div class="chat--user">{{ (message.special) ? "Orchard ID" : ((message.user) ? message.user : (global.chat.name) ? global.chat.name : common.me) }}</div>
+							<div v-html="message.message"></div>
+							<div class="chat--special" v-if="message.special === 'name' && !global.chat.nameExist && !global.me.id">
+								<input v-on:keyup.enter="sendName" v-bind:placeholder="common.chat.information.firstname" v-model="global.chat.name" type="text">
+								<button v-on:click="sendName" v-html="common.chat.validate"></button>
+							</div>
+							<div class="chat--special" v-if="message.special === 'email' && !global.chat.emailExist && !global.me.id">
+								<input v-bind:placeholder="common.chat.information.email" v-model="global.chat.email" type="text"> {{ common.separator }}
+								<input v-bind:placeholder="common.chat.information.phone" v-model="global.chat.phone" type="text">
+								<button v-on:click="sendEmail" v-html="common.chat.validate"></button>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div v-else>
+					<p v-html="common.chat.start"></p>
 				</div>
 			</div>
-		</footer>
-	</div>
+			<footer class="chat--sendbox">
+				<div class="chat--sendarea">
+					<p>
+						<span v-if="chat.enterState" class="chat--typearea">
+							<input v-on:keyup.enter="sendMessage" v-model="chat.message" v-bind:placeholder="common.chat.send.placeholder" id="chat--textarea" class="chat--textarea">
+						</span>
+						<span v-else class="chat--typearea">
+							<textarea v-model="chat.message" v-bind:placeholder="common.chat.send.placeholder" id="chat--textarea" class="chat--textarea"></textarea>
+						</span>
+						<button v-on:click="sendMessage" class="chat--sendbox--controls--reply" v-html="common.chat.send.button"></button>
+					</p>
+				</div>
+				<div class="chat--sendbox--controls">
+
+					<div class="chat--sendbox--controls--options">
+						<label for="chat--sendbox--controls--withenter">
+							<input v-model="chat.enterState" type="checkbox" name="withenter" id="chat--sendbox--controls--withenter" class="chat--sendbox--controls--withenter">
+							<span v-html="common.chat.multilineTip"></span>
+						</label>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</height-transition>
 	<button v-on:click="toggleChat" class="chat--start">
 		<span v-if="!global.chat.state" v-html="common.chat.button.off"></span>
 		<span v-else v-html="common.chat.button.on"></span>

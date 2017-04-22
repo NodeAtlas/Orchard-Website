@@ -32,5 +32,5 @@
 			<li><a href="https://github.com/orchard-id" title="Orchard ID @ Github">Github</a></li>
 		</ul>
 	</footer>
-	<edit v-if="!common.isServer" v-bind:json="specific" v-bind:current="common.editSpecific"></edit>
+	<edit v-if="!common.isServer" v-bind:global="global" v-bind:file="$options.name" v-bind:json="specific" v-bind:current="common.editSpecific"></edit>
 </div>

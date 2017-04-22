@@ -39,6 +39,13 @@ Vue.directive('edit', {
 	}
 });
 
+Vue.component('height-transition', function (resolve) {
+	var model = require('views-models/animates/height-transition.js'),
+		template = require('views-models/animates/height-transition.htm!text');
+
+	resolve(model(template));
+});
+
 Vue.component('edit', function (resolve) {
 	var model = require('views-models/components/edit.js'),
 		template = require('views-models/components/edit.htm!text');
