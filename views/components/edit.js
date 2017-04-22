@@ -61,7 +61,8 @@ module.exports = function (template) {
 			},
 			toggleEdit: function () {
 				var jsonEditorJS,
-					jsonEditorCSS;
+					jsonEditorCSS,
+					min = document.getElementsByTagName('html')[0];
 
 				this.edit.state = !this.edit.state;
 
@@ -72,7 +73,7 @@ module.exports = function (template) {
 					jsonEditorCSS = document.createElement("link");
 					jsonEditorJS.async = true;
 					jsonEditorJS.defer = true;
-					jsonEditorJS.src = 'javascripts/vendors/jsoneditor.fr-fr.js';
+					jsonEditorJS.src = 'javascripts/vendors/jsoneditor.' + min.getAttribute('lang') + min.getAttribute('data-min') + '.js';
 					jsonEditorCSS.href = 'stylesheets/vendors/jsoneditor.css';
 					jsonEditorCSS.rel = 'stylesheet';
 					jsonEditorJS.addEventListener('load', () => {

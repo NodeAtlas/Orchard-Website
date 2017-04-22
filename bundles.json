@@ -2,7 +2,7 @@
 	"javascripts": {
 		"javascripts/framework.{version}.min.js": [
 			"javascripts/vendors/ga.min.js",
-			"node_modules/underscore/underscore.min.js",
+			"../node_modules/underscore/underscore-min.js",
 			"../node_modules/jshashes/hashes.min.js",
 			"../node_modules/velocity-animate/velocity.min.js",
 			"../node_modules/socket.io-client/dist/socket.io.min.js",
@@ -12,7 +12,9 @@
 			"../node_modules/vue-router/dist/vue-router.min.js",
 			"javascripts/boot.js"
 		],
-		"javascripts/common.{version}.min.js": ["javascripts/common.js"]
+		"javascripts/common.{version}.min.js": ["javascripts/common.js"],
+		"javascripts/vendors/jsoneditor.fr-fr.{version}.min.js": ["javascripts/vendors/jsoneditor.fr-fr.js"],
+		"javascripts/vendors/jsoneditor.en-us.{version}.min.js": ["javascripts/vendors/jsoneditor.en-us.js"]
 	},
 	"stylesheets": {
 		"stylesheets/common.{version}.min.css": [

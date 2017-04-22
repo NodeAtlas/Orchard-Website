@@ -16,7 +16,7 @@
 			},
 			"currentPage": {
 				"toggleButton": {
-					"on": "Fermer",
+					"on": "Close",
 					"off": "Locale Edit"
 				}
 			}
