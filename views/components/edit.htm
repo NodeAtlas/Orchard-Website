@@ -1,5 +1,5 @@
 <height-transition>
-	<aside key="edit" class="edit" v-bind:class="{ 'is-opened': edit.state, 'is-global': options && options.global }">
+	<aside key="edit" v-if="global.me.id" class="edit" v-bind:class="{ 'is-opened': edit.state, 'is-global': options && options.global }">
 		<button v-if="edit.state && edit.dirty" v-on:click="save" class="edit--save">
 			Sauver
 		</button>
