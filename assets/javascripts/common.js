@@ -109,3 +109,4 @@ vm.$mount('.layout');
 
 require("javascripts/app.js")(vm);
 require("javascripts/components/chat.js")(vm);
+require("javascripts/components/edit.js")(vm);

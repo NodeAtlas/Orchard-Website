@@ -1,6 +1,6 @@
 <div class="layout">
 	<transition name="fade-in-out">
-		<router-view v-bind:common="common" v-bind:global="global"></router-view>
+		<router-view ref="router" v-bind:common="common" v-bind:global="global"></router-view>
 	</transition>
 	<chat v-if="!common.isServer" ref="chat" v-bind:common="common" v-bind:global="global"></chat>
 	<edit v-if="!common.isServer" ref="edit" v-bind:global="global" v-bind:file="'common'" v-bind:json="common" v-bind:current="common.edit" v-bind:options="global.edit"></edit>

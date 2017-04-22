@@ -8,6 +8,7 @@ exports.setModules = function () {
 
 	NA.components = {};
 	NA.components.chat = require("./components/chat.js");
+	NA.components.edit = require("./components/edit.js");
 };
 
 exports.changeDom = function (next, locals, request, response) {
@@ -66,7 +67,8 @@ exports.changeDom = function (next, locals, request, response) {
 exports.setSockets = function () {
 	var NA = this,
 		io = NA.io,
-		chat = NA.components.chat;
+		chat = NA.components.chat,
+		edit = NA.components.edit;
 
 	io.on('connection', function (socket) {
 		var session = socket.request.session,
@@ -79,4 +81,5 @@ exports.setSockets = function () {
 	});
 
 	chat.setSockets.call(NA);
+	edit.setSockets.call(NA);
 };
