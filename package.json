@@ -50,6 +50,7 @@
 		"systemjs": "0.20.x",
 		"traceur": "0.0.x",
 		"jshashes": "1.0.x",
+		"underscore": "1.8.x",
 		"velocity-animate": "1.5.x"
 	},
 	"devDependencies": {

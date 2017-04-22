@@ -1,11 +1,11 @@
 <height-transition>
-	<aside key="edit" v-if="global.me.id" class="edit" v-bind:class="{ 'is-opened': edit.state, 'is-global': options && options.global }">
-		<button v-if="edit.state && edit.dirty" v-on:click="save" class="edit--save">
+	<aside key="edit" class="edit" v-bind:class="{ 'is-opened': edit.state, 'is-global': options && options.global }">
+		<button v-if="edit.state && options.dirty" v-on:click="save" class="edit--save">
 			Sauver
 		</button>
 		<button v-on:click="toggleEdit" class="edit--start">
-			<span v-show="!edit.state" v-html="current.button.off"></span>
-			<span v-show="edit.state" v-html="current.button.on"></span>
+			<span v-show="!edit.state" v-html="current.toggleButton.off"></span>
+			<span v-show="edit.state" v-html="current.toggleButton.on"></span>
 		</button>
 		<height-transition>
 			<div key="box" v-show="edit.state" class="edit--editbox"></div>

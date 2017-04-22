@@ -7,15 +7,15 @@
 			</header>
 			<height-transition>
 				<div v-if="global.me.id" class="chat--channelbox" key="channels">
-					<h2 v-html="common.chat.allDiscussions"></h2>
+					<h2 v-html="common.chat.admin.title"></h2>
 					<ul>
 						<li v-for="channel in global.chat.channels" class="chat--channel" v-bind:class="{ 'is-active': channel.state, 'is-current': global.chat.currentChannel === channel.name }">
 							<span v-on:click="changeChannel(channel.name)" class="chat--channelbox--state">{{ (global.me.firstname && global.sessionID === channel.name) ? global.me.firstname : ((channel.user) ? channel.user : channel.name.substring(0, 8)) }}</span>
 							<span class="chat--channelbox--remove" v-if="!channel.state" v-on:click="removeChannel(channel.name)">X</span>
 						</li>
 					</ul>
-					<h2 v-if="global.sessionID === global.chat.currentChannel"><span v-html="common.chat.infoSessions.me"></span> ({{ global.chat.currentChannel.substring(0, 8) }}) !</h2>
-					<h3 v-else><span v-html="common.chat.infoSessions.others"></span> {{ global.chat.currentChannel.substring(0, 8) }}</h3>
+					<h2 v-if="global.sessionID === global.chat.currentChannel"><span v-html="common.chat.admin.me"></span> ({{ global.chat.currentChannel.substring(0, 8) }}) !</h2>
+					<h3 v-else><span v-html="common.chat.admin.others"></span> {{ global.chat.currentChannel.substring(0, 8) }}</h3>
 				</div>
 			</height-transition>
 			<div class="chat--messagebox">
@@ -66,7 +66,7 @@
 		</div>
 	</height-transition>
 	<button v-on:click="toggleChat" class="chat--start">
-		<span v-if="!global.chat.state" v-html="common.chat.button.off"></span>
-		<span v-else v-html="common.chat.button.on"></span>
+		<span v-if="!global.chat.state" v-html="common.chat.toggleButton.off"></span>
+		<span v-else v-html="common.chat.toggleButton.on"></span>
 	</button>
 </aside>

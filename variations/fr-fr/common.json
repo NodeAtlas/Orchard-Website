@@ -1,0 +1,50 @@
+{
+	"meta": {
+		"title": "Orchard ID"
+	},
+	"body": {
+		"title": "Site web de Orchard ID",
+		"description": "Site web de la société Orchard ID",
+		"me": "Moi",
+		"separator": "et/ou",
+		"edit": {
+			"allPages": {
+				"toggleButton": {
+					"on": "Fermer",
+					"off": "Édition globale"
+				}
+			},
+			"currentPage": {
+				"toggleButton": {
+					"on": "Fermer",
+					"off": "Édition locale"
+				}
+			}
+		},
+		"chat": {
+			"title": "Orchard Instant Discussion",
+			"description": "<p>Posez vos questions ici et nous répondrons avant la fin de votre épisode de Game of Thrones !</p>",
+			"admin": {
+				"title": "Toutes les conversations",
+				"me": "C'est vous",
+				"others": "Session :"
+			},
+			"toggleButton": {
+				"on": "Fermer",
+				"off": "Une question ?"
+			},
+			"send": {
+				"button": "Envoyer",
+				"placeholder": "Écrire ici..."
+			},
+			"multilineTip": "Appuyer sur <strong>Entrer</strong> pour envoyer",
+			"start": "Écrivez pour démarrer la discussion",
+			"validate": "Valider",
+			"information": {
+				"firstname": "Votre prénom",
+				"phone": "Votre numéro",
+				"email": "Votre email"
+			}
+		}
+	}
+}

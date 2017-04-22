@@ -19,12 +19,14 @@ module.exports = function (common, template, router, webconfig) {
 			'chat': chat.model(chat.view)
 		},
 		data: {
-			common: common,
+			meta: common.meta,
+			common: common.body,
 			global: {
 				webconfig: webconfig,
 				me: {},
 				sessionID: "",
 				edit: {
+					dirty: false,
 					global: true,
 					isLoaded: false
 				},

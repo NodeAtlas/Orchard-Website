@@ -1,5 +1,5 @@
 /* jshint node: true */
-module.exports = function (specific, template, mixin) {
+module.exports = function (specific, template, mixin, options) {
 	return {
 		name: 'home',
 		template: template,
@@ -7,6 +7,7 @@ module.exports = function (specific, template, mixin) {
 		props: ['common', 'global'],
 		data: function () {
 			return {
+				options: options,
 				meta: specific.meta,
 				specific: specific.body
 			};

@@ -2,6 +2,7 @@
 	"javascripts": {
 		"javascripts/framework.{version}.min.js": [
 			"javascripts/vendors/ga.min.js",
+			"node_modules/underscore/underscore.min.js",
 			"../node_modules/jshashes/hashes.min.js",
 			"../node_modules/velocity-animate/velocity.min.js",
 			"../node_modules/socket.io-client/dist/socket.io.min.js",

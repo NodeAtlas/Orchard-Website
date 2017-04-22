@@ -10,7 +10,7 @@ module.exports = function (template) {
 			indentation: 4,
 			sortObjectKeys: false,
 			onChange: function () {
-				self.edit.dirty = true;
+				self.options.dirty = true;
 				var json;
 				if (editor) {
 					json = editor.get();
@@ -38,7 +38,6 @@ module.exports = function (template) {
 		data: function () {
 			return {
 				edit: {
-					dirty: false,
 					state: false,
 					isInit: false
 				}
@@ -46,7 +45,6 @@ module.exports = function (template) {
 		},
 		beforeUpdate: function () {
 			if (!this.global.me.id) {
-				this.edit.dirty = false;
 				this.edit.isInit = false;
 			}
 		},
@@ -56,9 +54,8 @@ module.exports = function (template) {
 				NA.socket.once('edit--save', () => {
 					Vue.nextTick(() => {
 						editor.destroy();
-						this.edit.dirty = false;
+						this.options.dirty = false;
 						createJson(this);
-						console.log("done");
 					});
 				});
 			},
@@ -84,6 +81,7 @@ module.exports = function (template) {
 					document.head.appendChild(jsonEditorCSS);
 					document.body.appendChild(jsonEditorJS);
 				}
+
 				if (!this.edit.isInit) {
 					this.edit.isInit = true;
 					createJson(this);

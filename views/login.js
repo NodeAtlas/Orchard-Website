@@ -1,6 +1,6 @@
 /* jshint node: true, esversion: 6 */
 /* global NA, Hashes */
-module.exports = function (specific, template, mixin) {
+module.exports = function (specific, template, mixin, options) {
 	return {
 		name: 'login',
 		template: template,
@@ -8,6 +8,7 @@ module.exports = function (specific, template, mixin) {
 		props: ['common', 'global'],
 		data: function () {
 			return {
+				options: options,
 				meta: specific.meta,
 				specific: specific.body,
 				email: undefined,

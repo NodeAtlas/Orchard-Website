@@ -1,50 +1,50 @@
 {
-	"title": "Orchard ID Website",
-	"description": "Website of Orchard ID Company",
-	"me": "Me",
-	"separator": "and/or",
-	"languages": [{
-		"title": "Site Internet de Orchard ID",
-		"content": "Fr"
-	}, {
-		"title": "Website of Orchard ID",
-		"content": "En"
-	}],
-	"edit": {
-		"button": {
-			"on": "Close",
-			"off": "Global Edit"
-		}
+	"meta": {
+		"title": "Orchard ID"
 	},
-	"editSpecific": {
-		"button": {
-			"on": "Fermer",
-			"off": "Locale Edit"
-		}
-	},
-	"chat": {
-		"title": "Orchard Instant Discussion",
-		"description": "<p>Ask what you need here and we will answer before the and of your Game of Thrones episode!</p>",
-		"allDiscussions": "All discussions",
-		"infoSessions": {
-			"me": "It's you",
-			"others": "Session:"
+	"body": {
+		"title": "Orchard ID Website",
+		"description": "Website of Orchard ID Company",
+		"me": "Me",
+		"separator": "and/or",
+		"edit": {
+			"allPages": {
+				"toggleButton": {
+					"on": "Close",
+					"off": "Global Edit"
+				}
+			},
+			"currentPage": {
+				"toggleButton": {
+					"on": "Fermer",
+					"off": "Locale Edit"
+				}
+			}
 		},
-		"button": {
-			"on": "Close",
-			"off": "A question?"
-		},
-		"multilineTip": "Press <strong>Enter</strong> to send",
-		"send": {
-			"button": "Send",
-			"placeholder": "Type here..."
-		},
-		"start": "Write to start discussion",
-		"validate": "Confirm",
-		"information": {
-			"firstname": "Your firstname",
-			"phone": "Your phone",
-			"email": "Your email"
+		"chat": {
+			"title": "Orchard Instant Discussion",
+			"description": "<p>Ask what you need here and we will answer before the and of your Game of Thrones episode!</p>",
+			"admin": {
+				"title": "All discussions",
+				"me": "It's you",
+				"others": "Session:"
+			},
+			"toggleButton": {
+				"on": "Close",
+				"off": "A question?"
+			},
+			"send": {
+				"button": "Send",
+				"placeholder": "Type here..."
+			},
+			"multilineTip": "Press <strong>Enter</strong> to send",
+			"start": "Write to start discussion",
+			"validate": "Confirm",
+			"information": {
+				"firstname": "Your firstname",
+				"phone": "Your phone",
+				"email": "Your email"
+			}
 		}
 	}
 }

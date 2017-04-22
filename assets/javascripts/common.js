@@ -13,7 +13,18 @@ var ua = document.body.getAttribute('data-ua'),
 	mixin = {
 		beforeRouteEnter: function (to, from, next) {
 			next(function (vm) {
+				var json = window.nextUpdates[vm.$options.name];
+				if (json) {
+					for (var i in json) {
+						if (json.hasOwnProperty(i)) {
+							Vue.set(vm.specific, i, json[i]);
+						}
+					}
+					window.nextUpdates[vm.$options.name] = undefined;
+				}
+
 				document.title = vm.meta.title;
+
 				if (ua) {
 					ga('send', 'pageview', to.path, {
 						title: vm.meta.title,
@@ -71,7 +82,8 @@ keys.forEach(function (key) {
 		name = key.split('_')[0],
 		model,
 		specific,
-		template;
+		template,
+		options;
 
 	route.path = webconfig.routes[key].url;
 
@@ -84,7 +96,10 @@ keys.forEach(function (key) {
 			model = files[0];
 			specific = files[1];
 			template = files[2];
-			resolve(model(specific, template, mixin));
+			options = {
+				dirty: false
+			};
+			resolve(model(specific, template, mixin, options));
 		});
 	});
 

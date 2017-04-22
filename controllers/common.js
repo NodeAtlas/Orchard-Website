@@ -5,6 +5,7 @@ exports.setModules = function () {
 	NA.models = {};
 	NA.models.User = require("../models/connectors/user.js");
 	NA.models.Chat = require("../models/connectors/chat.js");
+	NA.models.Edit = require("../models/connectors/edit.js");
 
 	NA.components = {};
 	NA.components.chat = require("./components/chat.js");
