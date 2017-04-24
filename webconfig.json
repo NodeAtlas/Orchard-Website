@@ -13,5 +13,6 @@
 	"routes": "routes.json",
 	"_robots": "noindex, nofollow",
 	"_min": false,
+	"_data": "data/",
 	"_options": "options.json"
 }

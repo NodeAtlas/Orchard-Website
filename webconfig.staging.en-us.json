@@ -16,5 +16,6 @@
 	"routes": "routes.en-us.json",
 	"_robots": "noindex, nofollow",
 	"_options": "options.en-us.json",
+	"_data": "data/",
 	"_min": true
 }

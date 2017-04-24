@@ -21,5 +21,6 @@
 	"_robots": "index, follow",
 	"_min": true,
 	"_options": "options.en-us.json",
+	"_data": "../verger.digital/data/",
 	"_ua": "UA-91358693-2"
 }
