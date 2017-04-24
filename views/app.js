@@ -1,5 +1,5 @@
 /* jshint node: true */
-/* global NA */
+/* global NA, Vue */
 module.exports = function (common, template, router, webconfig) {
 	var chat = {};
 
@@ -18,10 +18,16 @@ module.exports = function (common, template, router, webconfig) {
 		components: {
 			'chat': chat.model(chat.view)
 		},
+		mounted: function () {
+			setTimeout(function () {
+				document.body.classList.add('as-loaded-page');
+			}, 100);
+		},
 		data: {
 			meta: common.meta,
 			common: common.body,
 			global: {
+				isServer: common.isServer,
 				webconfig: webconfig,
 				me: {},
 				sessionID: "",
@@ -32,10 +38,10 @@ module.exports = function (common, template, router, webconfig) {
 				},
 				chat: {
 					messages: [],
-					state: undefined,
 					channels: [],
-					currentChannel: undefined,
 					name: "",
+					currentChannel: undefined,
+					state: undefined,
 					email: undefined,
 					phone: undefined,
 					nameExist: undefined,

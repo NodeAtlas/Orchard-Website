@@ -3,6 +3,7 @@
 		"title": "Orchard ID"
 	},
 	"body": {
+		"loading": "Loading...",
 		"title": "Orchard ID Website",
 		"description": "Website of Orchard ID Company",
 		"me": "Me",
