@@ -1,7 +1,6 @@
 /* jshint browser: true, esversion: 6 */
-/* global ga, System, Vue, VueRouter, require */
-var ua = document.body.getAttribute('data-ua'),
-	app = {
+/* global System, Vue, VueRouter, require */
+var app = {
 		template: require("views-models/app.htm!text"),
 		model: require("views-models/app.js")
 	},
@@ -10,43 +9,181 @@ var ua = document.body.getAttribute('data-ua'),
 		options: require("options.json!json"),
 		routes: require("routes.json!json")
 	},
-	mixin = {
-		beforeRouteEnter: function (to, from, next) {
-			next(function (vm) {
-				var json = window.nextUpdates[vm.$options.name];
-				if (json) {
-					for (var i in json) {
-						if (json.hasOwnProperty(i)) {
-							Vue.set(vm.specific, i, json[i]);
-						}
-					}
-					window.nextUpdates[vm.$options.name] = undefined;
-				}
-
-				document.title = vm.meta.title;
-
-				if (ua) {
-					ga('send', 'pageview', to.path, {
-						title: vm.meta.title,
-						location: location.href,
-						page: to.path
-					});
-				}
-			});
-		}
-	},
 	keys = Object.keys(webconfig.routes),
 	routes = [],
+	mixin,
 	router,
-	vm;
+	vm,
+	global = require("javascripts/app.js"),
+	edit = require("javascripts/components/edit.js"),
+	chat = require("javascripts/components/chat.js");
 
-Vue.directive('edit', {
-	bind: function (el, binding, vnode) {
-		el.addEventListener('click', function () {
-			console.log(el);
-			console.log(binding);
-			console.log(vnode);
-		}, false);
+mixin = {
+	beforeRouteEnter: function (to, from, next) {
+		next(function (vmComponent) {
+			global.setBeforeRouterEnter(vmComponent, to);
+			edit.setBeforeRouterEnter(vmComponent);
+
+			document.title = vmComponent.meta.title;
+		});
+	}
+};
+
+Vue.directive('draggable', {
+	bind: function (el, binding) {
+		var auth = function () { return true; },
+			startX, startY, initialX, initialY;
+
+		if (binding.value) {
+			auth = function (target) {
+				return [].filter.call(el.querySelectorAll(binding.value), function (element) {
+					return target === element;
+				}).length > 0;
+			};
+		}
+
+		function move(gesture) {
+			var deltaGestureX = gesture.clientX - initialX,
+				deltaGestureY = gesture.clientY - initialY,
+				deltaPositionX = startX + deltaGestureX,
+				deltaPositionY = startY + deltaGestureY,
+				limitX = parseInt(window.innerWidth - el.clientWidth, 10),
+				limitY = parseInt(window.innerHeight - el.clientHeight, 10);
+
+			if (deltaPositionY <= 0) {
+				el.style.top = '0px';
+			} else if (deltaPositionY >= limitY) {
+				el.style.top = limitY + 'px';
+			} else {
+				el.style.top = startY + deltaGestureY + 'px';
+			}
+
+			if (deltaPositionX <= 0) {
+				el.style.left = '0px';
+			} else if (deltaPositionX >= limitX) {
+				el.style.left = limitX + 'px';
+			} else {
+				el.style.left = startX + deltaGestureX + 'px';
+			}
+
+			return false;
+		}
+
+		function mousemove(e) {
+			move(e);
+		}
+
+		function mouseup() {
+			document.removeEventListener('mousemove', mousemove);
+			document.removeEventListener('mouseup', mouseup);
+		}
+
+		function touchmove(e) {
+			move(e.touches[0]);
+		}
+
+		function touchend() {
+			document.removeEventListener('touchmove', touchmove);
+			document.removeEventListener('touchend', touchend);
+		}
+
+		el.addEventListener('touchstart', function (e) {
+			if (auth(e.target)) {
+				startX = el.offsetLeft;
+				startY = el.offsetTop;
+				initialX = e.touches[0].clientX;
+				initialY = e.touches[0].clientY;
+				document.addEventListener('touchmove', touchmove);
+				document.addEventListener('touchend', touchend);
+			}
+		});
+
+		el.addEventListener('mousedown', function (e) {
+			if (auth(e.target)) {
+				startX = el.offsetLeft;
+				startY = el.offsetTop;
+				initialX = e.clientX;
+				initialY = e.clientY;
+				document.addEventListener('mousemove', mousemove);
+				document.addEventListener('mouseup', mouseup);
+				return false;
+			}
+		});
+	}
+});
+
+Vue.directive('drag-visible', {
+	bind: function (el, binding) {
+		var startX, startY, initialX, initialY;
+
+		function move() {
+			var box = el.querySelector(binding.value),
+				buttonLeftPosition = parseInt(el.style.left, 10),
+				buttonTopPosition = parseInt(el.style.top, 10),
+				boxWidth = ((box && box.clientWidth) || 0),
+				boxHeight = ((box && box.clientHeight) || 0),
+				leftSwitchLimit = buttonLeftPosition + el.clientWidth - boxWidth - 2 - 30,
+				rightSwitchLimit = buttonLeftPosition + boxWidth + 2 + 30,
+				topSwitchLimit = buttonTopPosition - boxHeight - 2 - 30,
+				bottomSwitchLimit = buttonTopPosition + el.clientHeight + boxHeight + 2 + 30;
+
+			if (leftSwitchLimit < 0) {
+				el.classList.add('to-right');
+			}
+
+			if (rightSwitchLimit > window.innerWidth) {
+				el.classList.remove('to-right');
+			}
+
+			if (topSwitchLimit < 0) {
+				el.classList.add('to-bottom');
+			}
+
+			if (bottomSwitchLimit > window.innerHeight) {
+				el.classList.remove('to-bottom');
+			}
+
+			console.log("move");
+
+			return false;
+		}
+
+		function mousemove(e) {
+			move(e);
+		}
+
+		function mouseup() {
+			document.removeEventListener('mousemove', mousemove);
+			document.removeEventListener('mouseup', mouseup);
+		}
+
+		function touchmove(e) {
+			move(e.touches[0]);
+		}
+
+		function touchend() {
+			document.removeEventListener('touchmove', touchmove);
+			document.removeEventListener('touchend', touchend);
+		}
+
+		el.addEventListener('touchstart', function (e) {
+			startX = el.offsetLeft;
+			startY = el.offsetTop;
+			initialX = e.touches[0].clientX;
+			initialY = e.touches[0].clientY;
+			document.addEventListener('touchmove', touchmove);
+			document.addEventListener('touchend', touchend);
+		});
+
+		el.addEventListener('mousedown', function (e) {
+			startX = el.offsetLeft;
+			startY = el.offsetTop;
+			initialX = e.clientX;
+			initialY = e.clientY;
+			document.addEventListener('mousemove', mousemove);
+			document.addEventListener('mouseup', mouseup);
+			return false;
+		});
 	}
 });
 
@@ -114,14 +251,11 @@ router = new VueRouter({
 	routes: routes
 });
 
-if (ua) {
-	ga('create', ua, 'auto');
-}
-
 vm = new Vue(app.model(common, app.template, router, webconfig));
 
 vm.$mount('.layout');
 
-require("javascripts/app.js")(vm);
-require("javascripts/components/chat.js")(vm);
-require("javascripts/components/edit.js")(vm);
+global.setTracking();
+global.setSockets(vm);
+edit.setSockets(vm);
+chat.setSockets(vm);

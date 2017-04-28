@@ -1,14 +1,17 @@
-<height-transition>
-	<aside key="edit" class="edit" v-bind:class="{ 'is-opened': edit.state, 'is-global': options && options.global }">
-		<button v-if="edit.state && options.dirty" v-on:click="save" class="edit--save">
-			Sauver
-		</button>
-		<button v-on:click="toggleEdit" class="edit--start">
-			<span v-show="!edit.state" v-html="current.toggleButton.off"></span>
-			<span v-show="edit.state" v-html="current.toggleButton.on"></span>
-		</button>
-		<height-transition>
-			<div key="box" v-show="edit.state" class="edit--editbox"></div>
-		</height-transition>
-	</aside>
-</height-transition>
+<aside v-draggable="'.edit--start span'" v-drag-visible="'.edit--editbox'" key="edit" class="edit" v-bind:class="{ 'is-opened': edit.state, 'is-global': options && options.global }">
+	<button v-on:mousedown="isMoved" v-on:mouseup="toggleEdit" class="edit--start">
+		<span v-show="!edit.state" v-html="current.toggleButton.off"></span>
+		<span v-show="edit.state" v-html="current.toggleButton.on"></span>
+	</button>
+	<height-transition>
+		<div key="box" v-show="edit.state" class="edit--editbox">
+			<span class="edit--editbox--set-body" v-bind:class="{ 'is-current': edit.tab === 'body' }" v-on:click="edit.tab = 'body'">Data</span>
+			<span class="edit--editbox--set-meta" v-bind:class="{ 'is-current': edit.tab === 'meta' }" v-on:click="edit.tab = 'meta'">Meta</span>
+			<button v-if="edit.state && options.dirty" v-on:click="save" class="edit--save">
+				Sauver
+			</button>
+			<div v-show="edit.tab === 'body'" class="edit--editbox--body"></div>
+			<div v-show="edit.tab === 'meta'" class="edit--editbox--meta"></div>
+		</div>
+	</height-transition>
+</aside>

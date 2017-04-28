@@ -7,11 +7,11 @@ exports.setSockets = function () {
 	io.on('connection', function (socket) {
 		var session = socket.request.session;
 
-		socket.on('edit--save', function (file, json) {
+		socket.on('edit--save', function (file, body, meta) {
 			if (session.user) {
-				Edit.save.call(NA, file, json, function () {
+				Edit.save.call(NA, file, body, meta, function () {
 					socket.emit('edit--save');
-					socket.broadcast.emit('edit--save', file, json);
+					socket.broadcast.emit('edit--save', file, body, meta);
 				});
 			}
 		});

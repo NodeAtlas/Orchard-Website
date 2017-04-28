@@ -1,5 +1,5 @@
 /* globals exports */
-exports.save = function (file, json, next) {
+exports.save = function (file, body, meta, next) {
 	var NA = this,
 		fs = NA.modules.fs,
 		path = NA.modules.path,
@@ -8,7 +8,8 @@ exports.save = function (file, json, next) {
 	fs.readFile(pathfile, "utf-8", function (err, result) {
 		var content = JSON.parse(result);
 
-		content.body = json;
+		content.meta = meta;
+		content.body = body;
 
 		fs.writeFile(pathfile, JSON.stringify(content, undefined, '	'), function () {
 			next();

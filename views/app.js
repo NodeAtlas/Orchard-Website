@@ -1,5 +1,5 @@
 /* jshint node: true */
-/* global NA, Vue */
+/* global NA */
 module.exports = function (common, template, router, webconfig) {
 	var chat = {};
 

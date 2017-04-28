@@ -1,7 +1,6 @@
 /* jshint node: true, esversion: 6 */
 /* global NA */
-module.exports = function (vm) {
-
+exports.setSockets = function (vm) {
 	NA.socket.emit('chat--init');
 
 	NA.socket.on('chat--init', function (chat) {

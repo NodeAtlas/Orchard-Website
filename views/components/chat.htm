@@ -1,4 +1,8 @@
-<aside class="chat">
+<aside v-draggable="'.chat--start span'" v-drag-visible="'.chat--chatbox'" class="chat">
+	<button v-on:mousedown="isMoved" v-on:mouseup="toggleChat" class="chat--start">
+		<span v-if="!global.chat.state" v-html="common.chat.toggleButton.off"></span>
+		<span v-else v-html="common.chat.toggleButton.on"></span>
+	</button>
 	<height-transition>
 		<div v-if="global.chat.state" class="chat--chatbox" key="chat">
 			<header class="chat--overview">
@@ -64,8 +68,4 @@
 			</footer>
 		</div>
 	</height-transition>
-	<button v-on:click="toggleChat" class="chat--start">
-		<span v-if="!global.chat.state" v-html="common.chat.toggleButton.off"></span>
-		<span v-else v-html="common.chat.toggleButton.on"></span>
-	</button>
 </aside>

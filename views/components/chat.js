@@ -26,17 +26,29 @@ module.exports = function (template) {
 			removeChannel: function (channel) {
 				NA.socket.emit('chat--remove-channel', channel);
 			},
+			isMoved: function () {
+				var currentStyle = getComputedStyle(this.$el);
+				this.xPosition = currentStyle.left;
+				this.yPosition = currentStyle.top;
+			},
 			toggleChat: function () {
-				this.global.chat.state = !this.global.chat.state;
-				if (!this.chat.isInit) {
-					this.chat.isInit = true;
-					NA.socket.emit('chat--init-message', this.global.chat.currentChannel);
-					NA.socket.once('chat--init-message', (messages, channels) => {
-						this.global.chat.channels = channels;
-						this.global.chat.channels.sort(window.sortChannels);
-						this.global.chat.messages = messages;
-						window.scrollToBottom(this);
-					});
+				var currentStyle = getComputedStyle(this.$el);
+
+				if (
+					currentStyle.left === this.xPosition &&
+					currentStyle.top === this.yPosition
+				   ) {
+					this.global.chat.state = !this.global.chat.state;
+					if (!this.chat.isInit) {
+						this.chat.isInit = true;
+						NA.socket.emit('chat--init-message', this.global.chat.currentChannel);
+						NA.socket.once('chat--init-message', (messages, channels) => {
+							this.global.chat.channels = channels;
+							this.global.chat.channels.sort(window.sortChannels);
+							this.global.chat.messages = messages;
+							window.scrollToBottom(this);
+						});
+					}
 				}
 				Vue.nextTick(() => {
 					window.scrollToBottom(this);
