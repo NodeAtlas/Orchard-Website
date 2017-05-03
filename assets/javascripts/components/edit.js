@@ -1,6 +1,8 @@
 /* jshint node: true, esversion: 6 */
 /* global NA, Vue */
 exports.setBeforeRouterEnter = function (vmComponent) {
+	window.nextUpdates = window.nextUpdates || {};
+
 	var json = window.nextUpdates[vmComponent.$options.name],
 		i,
 		j;

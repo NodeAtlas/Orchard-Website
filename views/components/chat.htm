@@ -18,6 +18,7 @@
 							<span class="chat--channelbox--remove" v-if="!channel.state" v-on:click="removeChannel(channel.name)">X</span>
 						</li>
 					</ul>
+					<alert-message key="alert" v-on:close="chat.alertDeleteChannel = false" v-bind:displayed="chat.alertDeleteChannel" v-bind:current="common.chat.admin.removeAlert"></alert-message>
 					<h2 v-if="global.sessionID === global.chat.currentChannel"><span v-html="common.chat.admin.me"></span> ({{ global.chat.currentChannel.substring(0, 8) }}) !</h2>
 					<h3 v-else><span v-html="common.chat.admin.others"></span> {{ global.chat.currentChannel.substring(0, 8) }}</h3>
 				</div>

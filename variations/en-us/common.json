@@ -28,7 +28,12 @@
 			"admin": {
 				"title": "All discussions",
 				"me": "It's you",
-				"others": "Session:"
+				"others": "Session:",
+				"removeAlert": {
+					"title": "Supprimer ce canal ?",
+					"message": "<p>Vous êtes sur le canal en question. Vous allez être redirigé sur un autre canal.</p>",
+					"ok": "D'accord"
+				}
 			},
 			"toggleButton": {
 				"on": "Close",

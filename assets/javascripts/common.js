@@ -26,6 +26,10 @@ mixin = {
 
 			document.title = vmComponent.meta.title;
 		});
+	},
+	beforeRouteLeave: function (to, from, next) {
+		document.body.classList.add('as-loaded-page');
+		next();
 	}
 };
 
@@ -143,8 +147,6 @@ Vue.directive('drag-visible', {
 				el.classList.remove('to-bottom');
 			}
 
-			console.log("move");
-
 			return false;
 		}
 
@@ -201,6 +203,29 @@ Vue.component('edit', function (resolve) {
 	resolve(model(template));
 });
 
+Vue.component('alert-message', function (resolve) {
+	var model = require('views-models/components/alert-message.js'),
+		template = require('views-models/components/alert-message.htm!text');
+
+	resolve(model(template));
+});
+
+window.replaceData = function (source, replacement) {
+	var parsed = parseHTML(source);
+
+	function parseHTML(htmlString) {
+		var body = document.implementation.createHTMLDocument().body;
+		body.innerHTML = htmlString;
+		return body.childNodes;
+	}
+
+	[].forEach.call(parsed[0].querySelectorAll("[data-replace]"), function (item) {
+		item.innerHTML = replacement[item.getAttribute('data-replace')];
+	});
+
+	return parsed[0].outerHTML;
+};
+
 window.scrollToBottom = function (vm) {
 	var area = document.getElementsByClassName("chat--messagebox")[0];
 	if (area && vm.global.chat.state) {
@@ -223,6 +248,22 @@ keys.forEach(function (key) {
 		options;
 
 	route.path = webconfig.routes[key].url;
+
+	/*if (name === 'home') {
+		route.component = Vue.component('home', require('views-models/home.js')(require('variations/home.json!json'), require('views-models/home.htm!text'), mixin, {
+			dirty: false
+		}));
+	}
+	if (name === 'login') {
+		route.component = Vue.component('login', require('views-models/login.js')(require('variations/login.json!json'), require('views-models/login.htm!text'), mixin, {
+			dirty: false
+		}));
+	}
+	if (name === 'error') {
+		route.component = Vue.component('error', require('views-models/error.js')(require('variations/error.json!json'), require('views-models/error.htm!text'), mixin, {
+			dirty: false
+		}));
+	}*/
 
 	route.component = Vue.component(name, function (resolve) {
 		Promise.all([

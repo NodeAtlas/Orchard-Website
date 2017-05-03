@@ -1,23 +1,21 @@
 @font-face {
 	font-family: 'Regular';
+	font-weight: 100;
 	src: url('../media/fonts/regular-light.eot?#iefix') format('embedded-opentype'),
 		 url('../media/fonts/regular-light.otf')  format('opentype'),
 		 url('../media/fonts/regular-light.woff') format('woff'),
 		 url('../media/fonts/regular-light.ttf')  format('truetype'),
 		 url('../media/fonts/regular-light.svg#regular-light') format('svg');
-	font-weight: lighter;
-	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Regular';
+	font-weight: bold;
 	src: url('../media/fonts/regular-bold.eot?#iefix') format('embedded-opentype'),
 		 url('../media/fonts/regular-bold.otf')  format('opentype'),
 		 url('../media/fonts/regular-bold.woff') format('woff'),
 		 url('../media/fonts/regular-bold.ttf')  format('truetype'),
 		 url('../media/fonts/regular-bold.svg#regular-bold') format('svg');
-	font-weight: bold;
-	font-style: normal;
 }
 
 html
@@ -40,6 +38,25 @@ a
 	text-decoration none
 a:hover
 	text-decoration underline
+
+button
+	transition opacity .5s ease
+	font-family inherit
+	font-size inherit
+	color inherit
+	border 1px solid #95989A
+	background-color inherit
+	padding .6rem 2rem
+	opacity .8
+	background-color #FFF
+	cursor pointer
+	&:hover
+		opacity 1
+	&.invalid
+		opacity .2
+		cursor not-allowed
+	&:focus
+		outline -webkit-focus-ring-color auto 0
 
 .layout
 	-webkit-box-sizing border-box
@@ -75,9 +92,61 @@ a:hover
 	margin 40px 30px
 	transition opacity .5s ease
 
-.as-loaded-page
+.as-mounted-page
 	.loading
 		opacity 0
+
+.alert-message
+	opacity 0
+	z-index -1
+	transition opacity 1s ease
+	&.is-displayed
+		opacity 1
+
+	position fixed
+	top 0
+	left 0
+	width 100%
+	height 100%
+	background: rgba(255, 255, 255, 0.8)
+	&--outer
+		position absolute
+		top 50%
+		left 50%
+		transform translate(-50%, -50%)
+		background: #ff3f74;
+		background: -moz-linear-gradient(-45deg, #ff3f74 0%, #fee140 100%);
+		background: -webkit-linear-gradient(-45deg, #ff3f74 0%,#fee140 100%);
+		background: linear-gradient(135deg, #ff3f74 0%,#fee140 100%);
+		width 100%
+	&--inner
+		box-sizing border-box
+		max-width 768px
+		margin 0 auto
+		padding 0 8px
+	p
+		font-size inherit
+		font-size: 1.8rem;
+		font-weight lighter
+		color #4f4f4f
+		font-family Regular, Arial, sans-serif
+		letter-spacing 0.04rem
+		color #fff;
+
+	h1
+		font-family inherit
+		font-weight lighter
+		font-size 3.2rem
+		line-height 1em
+		color #fff
+		&::after
+			content ""
+			display block
+			border-top 1px solid #fff
+			width 2rem
+			margin-top 1.4rem
+	&--actions
+		margin-bottom 2em;
 
 .edit
 	display none
@@ -225,6 +294,7 @@ a:hover
 .error
 .home
 	box-sizing border-box
+	overflow hidden
 	@media (min-width 768px)
 		position absolute
 		top 0
@@ -381,24 +451,6 @@ a:hover
 		form
 			margin-bottom 3rem
 
-		button
-			transition opacity .5s ease
-			font-family inherit
-			font-size inherit
-			color inherit
-			border 1px solid #95989A
-			background-color inherit
-			padding .6rem 2rem
-			margin-top 1.8rem
-			opacity .7
-			&:hover
-				opacity 1
-			&.invalid
-				opacity .2
-				cursor not-allowed
-			&:focus
-				outline -webkit-focus-ring-color auto 0
-
 	&--form
 		.field
 			position relative
@@ -424,6 +476,9 @@ a:hover
 					outline -webkit-focus-ring-color auto 0
 					color #00a00c
 					border-color #00a00c
+
+			button
+				margin-top 1.8rem
 
 			&.empty
 				label

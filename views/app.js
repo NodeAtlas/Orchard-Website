@@ -20,7 +20,7 @@ module.exports = function (common, template, router, webconfig) {
 		},
 		mounted: function () {
 			setTimeout(function () {
-				document.body.classList.add('as-loaded-page');
+				document.body.classList.add('as-mounted-page');
 			}, 100);
 		},
 		data: {

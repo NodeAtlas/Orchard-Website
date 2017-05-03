@@ -28,7 +28,12 @@
 			"admin": {
 				"title": "Toutes les conversations",
 				"me": "C'est vous",
-				"others": "Session :"
+				"others": "Session :",
+				"removeAlert": {
+					"title": "Suppression du canal",
+					"message": "<p>La discussion <span data-replace=\"labelChannel\"></span> a été fermée. Vous êtes maintenant avec <span data-replace=\"labelNextChannel\"></span>.</p>",
+					"ok": "D'accord"
+				}
 			},
 			"toggleButton": {
 				"on": "Fermer",

@@ -10,7 +10,8 @@ module.exports = function (template) {
 				chat: {
 					isInit: false,
 					message: "",
-					enterState: true
+					enterState: true,
+					alertDeleteChannel: false
 				}
 			};
 		},
@@ -33,6 +34,9 @@ module.exports = function (template) {
 			},
 			toggleChat: function () {
 				var currentStyle = getComputedStyle(this.$el);
+
+				//this.$el.dispatchEvent(new Event("touchmove"));
+				//this.$el.dispatchEvent(new Event("mousemove"));
 
 				if (
 					currentStyle.left === this.xPosition &&

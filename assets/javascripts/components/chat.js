@@ -73,7 +73,11 @@ exports.setSockets = function (vm) {
 		});
 		labelNextChannel = vm.global.chat.channels[0].name.substring(0, 8);
 		if (vm.global.chat.currentChannel === channel) {
-			alert(`La discussion ${labelChannel} a été fermée. Vous êtes maintenant avec ${labelNextChannel}.`);
+			vm.common.chat.admin.removeAlert.message = window.replaceData(vm.common.chat.admin.removeAlert.message, {
+				labelChannel: labelChannel,
+				labelNextChannel: labelNextChannel
+			});
+			vm.$refs.chat.chat.alertDeleteChannel = true;
 			vm.$refs.chat.changeChannel(vm.global.chat.channels[0].name);
 		}
 
