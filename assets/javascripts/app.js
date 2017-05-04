@@ -21,6 +21,7 @@ exports.setSockets = function (vm) {
 	NA.socket.emit('app--init');
 
 	NA.socket.on('app--init', function (sessionID, me) {
+		vm.global.loaded = true;
 		vm.global.me = me;
 		vm.global.sessionID = sessionID;
 	});

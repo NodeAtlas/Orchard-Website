@@ -29,7 +29,7 @@
 		<? } ?>
 	</head>
 	<body data-ua='<?= webconfig._ua ?>'>
-		<div class="layout"></div>
+		<!--vue-ssr-outlet-->
 		<? if (webconfig._min) { ?>
 		<script src="javascripts/framework.<?= webconfig.version ?>.min.js" data-main="javascripts/common.<?= webconfig.version ?>.min.js" id="systemjs"></script>
 		<? } else { ?>

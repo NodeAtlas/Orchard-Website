@@ -17,7 +17,9 @@ exports.changeDom = function (next, locals, request, response) {
 		Vue = require("vue"),
 		VueRouter = require("vue-router"),
 		renderers = require("vue-server-renderer"),
-		renderer = renderers.createRenderer(),
+		renderer = renderers.createRenderer({
+			template: locals.dom
+		}),
 		fs = NA.modules.fs,
 		path = NA.modules.path,
 		view = path.join(NA.serverPath, NA.webconfig.viewsRelativePath, locals.routeParameters.view + ".htm"),
@@ -30,13 +32,10 @@ exports.changeDom = function (next, locals, request, response) {
 	Vue.use(VueRouter);
 
 	fs.readFile(view, "utf-8",  function (error, template) {
-		var component = Vue.component('all', require(model)(specific, template));
-		Vue.component('height-transition', { template: '<div><slot></slot></div>' });
+		var component = Vue.component(locals.routeParameters.view, require(model)(specific, template));
+		Vue.component('height-transition', { template: '<span><slot></slot></span>' });
 		fs.readFile(appView, "utf-8", function (error, template) {
-			var layoutSections = locals.dom.split('<div class="layout"></div>'),
-				preAppHTML = layoutSections[0],
-				postAppHTML = layoutSections[1],
-				router = new VueRouter({
+			var router = new VueRouter({
 					routes: [{
 						path: locals.routeParameters.url,
 						component: component,
@@ -48,18 +47,16 @@ exports.changeDom = function (next, locals, request, response) {
 					options: require(path.join(NA.serverPath, NA.webconfig._options)),
 					routes: NA.webconfig.routes
 				},
-				stream = renderer.renderToStream(new Vue(require(appModel)(common, template, router, webconfig)));
+				stream = renderer.renderToStream(new Vue(require(appModel)(common, template, router, webconfig)), locals);
 
 			router.push(locals.routeParameters.url);
-
-			response.write(preAppHTML);
 
 			stream.on('data', function (chunk) {
 				response.write(chunk);
 			});
 
 			stream.on('end', function () {
-				response.end(postAppHTML);
+				response.end();
 			});
 		});
 	});

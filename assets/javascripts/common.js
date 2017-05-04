@@ -34,17 +34,8 @@ mixin = {
 };
 
 Vue.directive('draggable', {
-	bind: function (el, binding) {
-		var auth = function () { return true; },
-			startX, startY, initialX, initialY;
-
-		if (binding.value) {
-			auth = function (target) {
-				return [].filter.call(el.querySelectorAll(binding.value), function (element) {
-					return target === element;
-				}).length > 0;
-			};
-		}
+	bind: function (el) {
+		var startX, startY, initialX, initialY;
 
 		function move(gesture) {
 			var deltaGestureX = gesture.clientX - initialX,
@@ -54,6 +45,7 @@ Vue.directive('draggable', {
 				limitX = parseInt(window.innerWidth - el.clientWidth, 10),
 				limitY = parseInt(window.innerHeight - el.clientHeight, 10);
 
+			el.style.bottom = 'auto';
 			if (deltaPositionY <= 0) {
 				el.style.top = '0px';
 			} else if (deltaPositionY >= limitY) {
@@ -62,6 +54,7 @@ Vue.directive('draggable', {
 				el.style.top = startY + deltaGestureY + 'px';
 			}
 
+			el.style.right = 'auto';
 			if (deltaPositionX <= 0) {
 				el.style.left = '0px';
 			} else if (deltaPositionX >= limitX) {
@@ -92,26 +85,22 @@ Vue.directive('draggable', {
 		}
 
 		el.addEventListener('touchstart', function (e) {
-			if (auth(e.target)) {
-				startX = el.offsetLeft;
-				startY = el.offsetTop;
-				initialX = e.touches[0].clientX;
-				initialY = e.touches[0].clientY;
-				document.addEventListener('touchmove', touchmove);
-				document.addEventListener('touchend', touchend);
-			}
+			startX = el.offsetLeft;
+			startY = el.offsetTop;
+			initialX = e.touches[0].clientX;
+			initialY = e.touches[0].clientY;
+			document.addEventListener('touchmove', touchmove);
+			document.addEventListener('touchend', touchend);
 		});
 
 		el.addEventListener('mousedown', function (e) {
-			if (auth(e.target)) {
-				startX = el.offsetLeft;
-				startY = el.offsetTop;
-				initialX = e.clientX;
-				initialY = e.clientY;
-				document.addEventListener('mousemove', mousemove);
-				document.addEventListener('mouseup', mouseup);
-				return false;
-			}
+			startX = el.offsetLeft;
+			startY = el.offsetTop;
+			initialX = e.clientX;
+			initialY = e.clientY;
+			document.addEventListener('mousemove', mousemove);
+			document.addEventListener('mouseup', mouseup);
+			return false;
 		});
 	}
 });
@@ -250,22 +239,77 @@ keys.forEach(function (key) {
 	route.path = webconfig.routes[key].url;
 
 	/*if (name === 'home') {
-		route.component = Vue.component('home', require('views-models/home.js')(require('variations/home.json!json'), require('views-models/home.htm!text'), mixin, {
-			dirty: false
-		}));
+		model = require('views-models/home.js');
+		specific = require('variations/home.json!json');
+		template = require('views-models/home.htm!text');
+		route.component = Vue.component('home', model(specific, template, mixin, options));
 	}
 	if (name === 'login') {
-		route.component = Vue.component('login', require('views-models/login.js')(require('variations/login.json!json'), require('views-models/login.htm!text'), mixin, {
-			dirty: false
-		}));
+		model = require('views-models/login.js');
+		specific = require('variations/login.json!json');
+		template = require('views-models/login.htm!text');
+		route.component = Vue.component('home', model(specific, template, mixin, options));
 	}
 	if (name === 'error') {
-		route.component = Vue.component('error', require('views-models/error.js')(require('variations/error.json!json'), require('views-models/error.htm!text'), mixin, {
-			dirty: false
-		}));
+		model = require('views-models/error.js');
+		specific = require('variations/error.json!json');
+		template = require('views-models/error.htm!text');
+		route.component = Vue.component('home', model(specific, template, mixin, options));
 	}*/
 
-	route.component = Vue.component(name, function (resolve) {
+	if (name === 'home') {
+		route.component = Vue.component(name, function (resolve) {
+			Promise.all([
+				System.import('views-models/home.js'),
+				System.import('variations/home.json!json'),
+				System.import('views-models/home.htm!text')
+			]).then(function (files) {
+				model = files[0];
+				specific = files[1];
+				template = files[2];
+				options = {
+					dirty: false
+				};
+				resolve(model(specific, template, mixin, options));
+			});
+		});
+	}
+	if (name === 'login') {
+		route.component = Vue.component(name, function (resolve) {
+			Promise.all([
+				System.import('views-models/login.js'),
+				System.import('variations/login.json!json'),
+				System.import('views-models/login.htm!text')
+			]).then(function (files) {
+				model = files[0];
+				specific = files[1];
+				template = files[2];
+				options = {
+					dirty: false
+				};
+				resolve(model(specific, template, mixin, options));
+			});
+		});
+	}
+	if (name === 'error') {
+		route.component = Vue.component(name, function (resolve) {
+			Promise.all([
+				System.import('views-models/error.js'),
+				System.import('variations/error.json!json'),
+				System.import('views-models/error.htm!text')
+			]).then(function (files) {
+				model = files[0];
+				specific = files[1];
+				template = files[2];
+				options = {
+					dirty: false
+				};
+				resolve(model(specific, template, mixin, options));
+			});
+		});
+	}
+
+	/*route.component = Vue.component(name, function (resolve) {
 		Promise.all([
 			System.import('views-models/' + name + '.js'),
 			System.import('variations/' + name + '.json!json'),
@@ -279,7 +323,7 @@ keys.forEach(function (key) {
 			};
 			resolve(model(specific, template, mixin, options));
 		});
-	});
+	});*/
 
 	route.props = ['common', 'global'];
 
@@ -291,6 +335,8 @@ router = new VueRouter({
 	base: '/',
 	routes: routes
 });
+
+console.log(router);
 
 vm = new Vue(app.model(common, app.template, router, webconfig));
 

@@ -1,5 +1,5 @@
 /* global System */
-document.getElementsByClassName('layout')[0].removeAttribute('server-rendered');
+//document.getElementsByClassName('layout')[0].removeAttribute('server-rendered');
 System.config({
 	defaultExtension: true,
 	baseURL: document.getElementsByTagName("base")[0].getAttribute("href"),

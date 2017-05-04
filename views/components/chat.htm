@@ -23,7 +23,7 @@
 					<h3 v-else><span v-html="common.chat.admin.others"></span> {{ global.chat.currentChannel.substring(0, 8) }}</h3>
 				</div>
 			</height-transition>
-			<div class="chat--messagebox">
+			<div class="chat--messagebox" v-bind:class="{ 'is-small': global.me.id }">
 				<div v-if="global.chat.messages.length > 0">
 					<ul>
 						<li v-for="message in global.chat.messages" class="chat--message" v-bind:class="{ 'is-reversed': !message.auth && !message.special }">

@@ -1,0 +1,22 @@
+{
+	"messages": [
+		{
+			"user": "",
+			"message": "Posez vos questions et quelqu'un viendra y répondre !",
+			"special": "message",
+			"date": 1493823154499
+		},
+		{
+			"user": "",
+			"message": "Comment vous appelez-vous ?",
+			"special": "name",
+			"date": 1493823162509
+		},
+		{
+			"user": "",
+			"message": "Si vous ne pouvez pas attendre plus longtemps, vous pouvez nous laisser votre adresse email ou votre numéro de téléphone pour être recontacté.",
+			"special": "email",
+			"date": 1493823206494
+		}
+	]
+}

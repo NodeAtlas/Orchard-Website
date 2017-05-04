@@ -4,8 +4,7 @@ exports.setBeforeRouterEnter = function (vmComponent) {
 	window.nextUpdates = window.nextUpdates || {};
 
 	var json = window.nextUpdates[vmComponent.$options.name],
-		i,
-		j;
+		i, j;
 
 	if (json) {
 		for (i in json.body) {
