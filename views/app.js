@@ -18,16 +18,11 @@ module.exports = function (common, template, router, webconfig) {
 		components: {
 			'chat': chat.model(chat.view)
 		},
-		mounted: function () {
-			setTimeout(function () {
-				document.body.classList.add('as-mounted-page');
-			}, 100);
-		},
 		data: {
 			meta: common.meta,
 			common: common.body,
+			isClient: false,
 			global: {
-				isServer: common.isServer,
 				webconfig: webconfig,
 				me: {},
 				sessionID: "",

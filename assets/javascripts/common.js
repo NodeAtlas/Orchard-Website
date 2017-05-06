@@ -123,7 +123,7 @@ vm = new Vue(app.model(common, app.template, router, webconfig));
 
 router.onReady(function () {
 	vm.$mount('.layout');
-	document.body.classList.add('as-loaded-page');
+	Vue.set(vm.global, 'isClient', true);
 });
 
 global.setTracking();

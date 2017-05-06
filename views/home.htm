@@ -32,5 +32,5 @@
 			<li><a href="https://github.com/orchard-id" title="Orchard ID @ Github">Github</a></li>
 		</ul>
 	</footer>
-	<edit v-if="global.me.id && !global.isServer" v-bind:global="global" v-bind:file="$options.name" v-bind:meta="meta" v-bind:body="specific" v-bind:current="common.edit.currentPage" v-bind:options="options"></edit>
+	<edit v-if="global.isClient && global.me.id" v-bind:global="global" v-bind:file="$options.name" v-bind:meta="meta" v-bind:body="specific" v-bind:current="common.edit.currentPage" v-bind:options="options"></edit>
 </div>

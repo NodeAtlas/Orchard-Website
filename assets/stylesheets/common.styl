@@ -92,7 +92,7 @@ button
 	margin 40px 30px
 	transition opacity .5s ease
 
-.as-mounted-page
+.as-loaded-page
 	.loading
 		opacity 0
 
@@ -512,21 +512,20 @@ button
 	color #d9534f
 	font-size .6em
 
-.as-loaded-page
-	.fade-in-out-enter
-	.fade-in-out-leave-to
-		@media (min-width 768px)
-			opacity 0
-			transform rotateX(180deg)
-	.fade-in-out-leave-active
-	.fade-in-out-enter-active
-		@media (min-width 768px)
-			transition opacity 2s, transform 2s
-	.fade-in-out-enter-to
-	.fade-in-out-leave
-		@media (min-width 768px)
-			opacity 1
-			transform rotateX(0)
+.fade-in-out-enter
+.fade-in-out-leave-to
+	@media (min-width 768px)
+		opacity 0
+		transform rotateX(180deg)
+.fade-in-out-leave-active
+.fade-in-out-enter-active
+	@media (min-width 768px)
+		transition opacity 2s, transform 2s
+.fade-in-out-enter-to
+.fade-in-out-leave
+	@media (min-width 768px)
+		opacity 1
+		transform rotateX(0)
 
 .height-transition-enter
 .height-transition-leave-to
