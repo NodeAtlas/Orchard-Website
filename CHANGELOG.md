@@ -1,3 +1,24 @@
+## 0.9.0 ##
+
+Update:
+
+- Full Vue functionnalities added.
+
+
+## 0.8.0 ##
+
+Bugfix:
+
+- Async behavior.
+
+
+## 0.7.0 ##
+
+Bugfix:
+
+- Async behavior.
+
+
 ## 0.6.0 ##
 
 Update:

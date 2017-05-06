@@ -122,7 +122,7 @@ et le site sera disponible à l'adresse *http://localhost:57777/*
 
 ### Rejoindre ###
 
-L'environnement de préproduction est visible à l'adresse : 
+L'environnement de préproduction est visible à l'adresse :
 
 - https://website-haeresis.c9users.io/
 
@@ -171,7 +171,7 @@ $ git checkout 13b55fbdb8b4ba332becb15ebe54187464aae179
 
 ## Environnement de production ##
 
-L'environnement de production est visible à l'adresse : 
+L'environnement de production est visible à l'adresse :
 
 - http://www.orchard-id.fr/
 

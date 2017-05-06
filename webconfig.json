@@ -1,6 +1,7 @@
 {
 	"stylus": {
-		"files": "stylus.json"
+		"files": "stylus.json",
+		"autoprefix": true
 	},
 	"httpPort": 7776,
 	"languageCode": "fr-fr",
@@ -10,7 +11,8 @@
 	"bundles": "bundles.json",
 	"statics": "statics.json",
 	"routes": "routes.json",
-	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow",
-	"_min": false
+	"_min": false,
+	"_data": "data/",
+	"_options": "options.json"
 }

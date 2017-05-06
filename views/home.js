@@ -1,14 +1,16 @@
 /* jshint node: true */
-module.exports = function (specific, template, mixin) {
+module.exports = function (specific, template, mixin, options) {
 	return {
-	    template: template,
-	    mixins: (mixin) ? [mixin] : undefined,
-		props: ['common'],
-	    data: function () {
-	    	return {
-	    		meta: specific.meta,
-	    		specific: specific.body
-		    };
-	  	}
+		name: 'home',
+		template: template,
+		mixins: (mixin) ? [mixin] : undefined,
+		props: ['common', 'global'],
+		data: function () {
+			return {
+				options: options,
+				meta: specific.meta,
+				specific: specific.body
+			};
+		}
 	};
 };

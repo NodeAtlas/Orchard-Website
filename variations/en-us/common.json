@@ -1,5 +1,56 @@
 {
-	"title": "Orchard ID Website",
-	"description": "Website of Orchard ID Company",
-	"menu": ["", "is-selected"]
+	"meta": {
+		"title": "Orchard ID"
+	},
+	"body": {
+		"loading": "Loading...",
+		"title": "Orchard ID Website",
+		"description": "Website of Orchard ID Company",
+		"me": "Me",
+		"separator": "and/or",
+		"edit": {
+			"allPages": {
+				"toggleButton": {
+					"on": "Close",
+					"off": "Global Edit"
+				}
+			},
+			"currentPage": {
+				"toggleButton": {
+					"on": "Close",
+					"off": "Locale Edit"
+				}
+			}
+		},
+		"chat": {
+			"title": "Orchard Instant Discussion",
+			"description": "<p>Ask what you need here and we will answer before the and of your Game of Thrones episode!</p>",
+			"admin": {
+				"title": "All discussions",
+				"me": "It's you",
+				"others": "Session:",
+				"removeAlert": {
+					"title": "Supprimer ce canal ?",
+					"message": "<p>Vous êtes sur le canal en question. Vous allez être redirigé sur un autre canal.</p>",
+					"ok": "D'accord"
+				}
+			},
+			"toggleButton": {
+				"on": "Close",
+				"off": "A question?"
+			},
+			"send": {
+				"button": "Send",
+				"placeholder": "Type here..."
+			},
+			"multilineTip": "Press <strong>Enter</strong> to send",
+			"start": "Write to start discussion",
+			"validate": "Confirm",
+			"information": {
+				"firstname": "Your firstname",
+				"phone": "Your phone",
+				"email": "Your email"
+			}
+		}
+	}
 }

@@ -3,8 +3,15 @@
 		"title": "Welcome at Orchard ID!",
 		"description": "Orchard ID is a collaborative communication agency guiding you for your communication strategy."
 	},
-	"body": {	
+	"body": {
 		"title": "Orchard ID",
-		"content": "<p>Bonjour.</p><p>We are a collaborative and freedom-form communication agency guiding you, from the idea inside of you to the implementation of communication strategy, for all media which will make sense for your brand.</p><p><a href='https://github.com/Orchard-ID/Orchard-DocumentsPublics/raw/master/Pdf/presentation-web.pdf' target='_blank'>Learn more (French)<img src='media/images/arrow.svg' alt='Learn more' class='arrow'></a></p>"
+		"content": "<p>Bonjour.</p><p>We are a collaborative and freedom-form communication agency guiding you, from the idea inside of you to the implementation of communication strategy, for all media which will make sense for your brand.</p><p><a href='https://github.com/Orchard-ID/Orchard-DocumentsPublics/raw/master/Pdf/presentation-web.pdf' target='_blank'>Learn more (French)<img src='media/images/arrow.svg' alt='Learn more' class='arrow'></a></p>",
+		"languages": [{
+		"title": "Site Internet de Orchard ID",
+			"content": "Fr"
+		}, {
+			"title": "Website of Orchard ID",
+			"content": "En"
+		}]
 	}
 }

@@ -12,13 +12,15 @@
 	"controller": "common.js",
 	"view": "layout.htm",
 	"bundles": "bundles.json",
-	"stylus": { 
-		"files": "stylus.json"
+	"stylus": {
+		"files": "stylus.json",
+		"autoprefix": true
 	},
 	"statics": "statics.en-us.json",
 	"routes": "routes.en-us.json",
-	"pageNotFound": "error_en-us",
 	"_robots": "index, follow",
 	"_min": true,
+	"_options": "options.en-us.json",
+	"_data": "../verger.digital/data/",
 	"_ua": "UA-91358693-2"
 }

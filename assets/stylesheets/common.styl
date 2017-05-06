@@ -1,234 +1,547 @@
 @font-face {
-    font-family: 'Regular';
-    src: url('../media/fonts/regular-light.eot?#iefix') format('embedded-opentype'),
-         url('../media/fonts/regular-light.otf')  format('opentype'),
-         url('../media/fonts/regular-light.woff') format('woff'), 
-         url('../media/fonts/regular-light.ttf')  format('truetype'),
-         url('../media/fonts/regular-light.svg#regular-light') format('svg');
-    font-weight: lighter;
-    font-style: normal;
+	font-family: 'Regular';
+	font-weight: 100;
+	src: url('../media/fonts/regular-light.eot?#iefix') format('embedded-opentype'),
+		 url('../media/fonts/regular-light.otf')  format('opentype'),
+		 url('../media/fonts/regular-light.woff') format('woff'),
+		 url('../media/fonts/regular-light.ttf')  format('truetype'),
+		 url('../media/fonts/regular-light.svg#regular-light') format('svg');
 }
 
 @font-face {
-    font-family: 'Regular';
-    src: url('../media/fonts/regular-bold.eot?#iefix') format('embedded-opentype'),
-         url('../media/fonts/regular-bold.otf')  format('opentype'),
-         url('../media/fonts/regular-bold.woff') format('woff'),
-         url('../media/fonts/regular-bold.ttf')  format('truetype'), 
-         url('../media/fonts/regular-bold.svg#regular-bold') format('svg');
-    font-weight: bold;
-    font-style: normal;
+	font-family: 'Regular';
+	font-weight: bold;
+	src: url('../media/fonts/regular-bold.eot?#iefix') format('embedded-opentype'),
+		 url('../media/fonts/regular-bold.otf')  format('opentype'),
+		 url('../media/fonts/regular-bold.woff') format('woff'),
+		 url('../media/fonts/regular-bold.ttf')  format('truetype'),
+		 url('../media/fonts/regular-bold.svg#regular-bold') format('svg');
 }
 
-html,
+html
 body
-    font-size 62.5%
-    
+	font-size 62.5%
+
 body
-    margin 0
-    padding 0
-    font-size 1.8rem
-    font-weight lighter
-    color #4f4f4f
-    font-family Regular, Arial, sans-serif
-    width 100%
-    height 100%
-    letter-spacing .04rem
+	margin 0
+	padding 0
+	font-size 1.8rem
+	font-weight lighter
+	color #4f4f4f
+	font-family Regular, Arial, sans-serif
+	width 100%
+	height 100%
+	letter-spacing .04rem
 
 a
-    color #4f4f4f
-    text-decoration none
+	color #4f4f4f
+	text-decoration none
 a:hover
-    text-decoration underline
-    
+	text-decoration underline
+
+button
+	transition opacity .5s ease
+	font-family inherit
+	font-size inherit
+	color inherit
+	border 1px solid #95989A
+	background-color inherit
+	padding .6rem 2rem
+	opacity .8
+	background-color #FFF
+	cursor pointer
+	&:hover
+		opacity 1
+	&.invalid
+		opacity .2
+		cursor not-allowed
+	&:focus
+		outline -webkit-focus-ring-color auto 0
+
 .layout
-    -webkit-box-sizing border-box
-    -moz-box-sizing border-box
-    box-sizing border-box
-    @media (min-width 768px)
-        position absolute
-        top 0
-        left 0 
-        height 100%
-        width 100%
+	-webkit-box-sizing border-box
+	-moz-box-sizing border-box
+	box-sizing border-box
+	@media (min-width 768px)
+		position absolute
+		top 0
+		left 0
+		height 100%
+		width 100%
 
-    &::before
-        content ""
-        display block
-        position absolute
-        left 0
-        width .8rem
-        height 100%
-        background-color #080
-        background rgba(254,225,64,1);
-        background -moz-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
-        background -webkit-gradient(left top, left bottom, color-stop(0%, rgba(254,225,64,1)), color-stop(100%, rgba(255,63,117,1)))
-        background -webkit-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
-        background -o-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
-        background -ms-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
-        background linear-gradient(to bottom, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
+	&::before
+		content ""
+		display block
+		position fixed
+		left 0
+		width .8rem
+		height 100%
+		background-color #080
+		background rgba(254,225,64,1)
+		background -moz-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
+		background -webkit-gradient(left top, left bottom, color-stop(0%, rgba(254,225,64,1)), color-stop(100%, rgba(255,63,117,1)))
+		background -webkit-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
+		background -o-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
+		background -ms-linear-gradient(top, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
+		background linear-gradient(to bottom, rgba(254,225,64,1) 0%, rgba(255,63,117,1) 100%)
 
+.loading
+	position fixed;
+	opacity 1
+	font-size 3rem
+	margin 40px 30px
+	transition opacity .5s ease
+
+.as-loaded-page
+	.loading
+		opacity 0
+
+.alert-message
+	opacity 0
+	z-index -1
+	transition opacity 1s ease
+	&.is-displayed
+		opacity 1
+
+	position fixed
+	top 0
+	left 0
+	background: rgba(255, 255, 255, 0.8)
+	&--outer
+		position absolute
+		top 50%
+		left 50%
+		transform translate(-50%, -50%)
+		background: #ff3f74;
+		background: -moz-linear-gradient(-45deg, #ff3f74 0%, #fee140 100%);
+		background: -webkit-linear-gradient(-45deg, #ff3f74 0%,#fee140 100%);
+		background: linear-gradient(135deg, #ff3f74 0%,#fee140 100%);
+		width 100%
+	&--inner
+		box-sizing border-box
+		max-width 768px
+		margin 0 auto
+		padding 0 8px
+	p
+		font-size inherit
+		font-size: 1.8rem;
+		font-weight lighter
+		color #4f4f4f
+		font-family Regular, Arial, sans-serif
+		letter-spacing 0.04rem
+		color #fff;
+
+	h1
+		font-family inherit
+		font-weight lighter
+		font-size 3.2rem
+		line-height 1em
+		color #fff
+		&::after
+			content ""
+			display block
+			border-top 1px solid #fff
+			width 2rem
+			margin-top 1.4rem
+	&--actions
+		margin-bottom 2em;
+
+.edit
+	display none
+	@media (min-width 768px)
+		display block
+	font-size .8em
+	position fixed
+	top 48px
+	right 10px
+	text-align right
+	&.is-opened
+		z-index 2
+	&.is-global
+		top 10px
+	&--editbox
+		position absolute
+		width 470px
+		background-color #fff
+		opacity .8
+		height 300px
+		padding 8px
+		text-align left
+		border 1px solid #000
+		bottom 100%
+		right 0
+
+		&--set-meta
+		&--set-body
+			display inline-block
+			padding 2px
+			-webkit-border-radius 4px
+			border-radius 4px
+			margin 2px
+			border 1px solid #080
+			color #080
+			cursor pointer
+			&.is-current
+				color #fff
+				background-color #080
+
+	&.to-right
+		& ^[0]--editbox
+			left 0
+			right auto
+	&.to-bottom
+		& ^[0]--editbox
+			top 100%
+			bottom auto
+
+.chat
+	font-size .8em
+	position fixed
+	right 10px
+	bottom 10px
+	text-align right
+
+	h1, h2, p
+		margin 0 0 4px
+
+	&--special
+		margin 8px
+		padding 8px
+		border 1px dashed #ccc;
+
+	&--user
+		font-weight bold
+
+	&--message
+		list-style-type none
+		box-sizing border-box
+		background-color #eee
+		width 80%
+		margin 4px
+		border-radius 8px
+		padding 8px
+		time
+			float right
+			font-size .8rem
+		&.is-reversed
+			margin-left 20%
+
+	&--channel
+		display inline-block
+		padding 2px
+		-webkit-border-radius 4px
+		border-radius 4px
+		margin 2px
+		border 1px solid #F00
+		color #F00
+		cursor pointer
+		&.is-current
+			color #fff
+			background-color #F00
+		&.is-active
+			border 1px solid #080
+			color #080
+			&.is-current
+				color #fff
+				background-color #080
+
+	&--channelbox
+	&--messagebox
+		ul
+			padding 0
+			margin 0
+			transition max-height .5s ease
+		overflow auto
+
+	&--messagebox
+		ul
+			max-height 250px
+		&.is-small
+			ul
+				max-height 200px
+
+	&--channelbox
+		font-size 1.2rem
+		&--remove
+			opacity .5
+			cursor pointer
+			background-color #F00
+			color #FFF
+			font-weight bold
+			padding 0 4px
+			-webkit-border-radius 50%
+			border-radius 50%
+			&:hover
+				opacity 1
+
+	&.to-right
+		& ^[0]--chatbox
+			left 0
+			right auto
+	&.to-bottom
+		& ^[0]--chatbox
+			top 100%
+			bottom auto
+
+	&--chatbox
+		box-sizing border-box
+		position absolute
+		bottom 100%
+		right 0
+		background-color #fff
+		padding 8px
+		text-align left
+		border 1px solid #000
+		overflow hidden
+		@media (min-width 420px)
+			width 370px
+			height 400px
+
+	&--sendbox--controls--withenter
+		font-size 1rem
+
+.login
 .error
 .home
-    -webkit-box-sizing border-box
-    -moz-box-sizing border-box
-    box-sizing border-box
-    @media (min-width 768px)
-        position absolute
-        top 0
-        left 0
-        width 100%
-        height 100%
-    
-    &--navigation
-        -webkit-box-sizing border-box
-        -moz-box-sizing border-box
-        box-sizing border-box
-        position absolute
-        left 3.2rem
-        top 2rem
-        font-size 1.8rem 
-        
-        @media (min-width 768px)
-            font-size 1.2rem
-        
-        .is-selected
-            display none
-            @media (min-width 768px)
-                display inline 
-                a
-                    font-weight bold
+	box-sizing border-box
+	overflow hidden
+	@media (min-width 768px)
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
 
-        ul
-            margin 0
-            padding 0
-            list-style-type none 
+	&--navigation
+		box-sizing border-box
+		position absolute
+		left 3.2rem
+		top 2rem
+		font-size 1.8rem
 
-        li
-            @media (min-width 768px)
-                &:nth-child(1)::after
-                    content " -"
-            display inline-block
- 
-    &--logo
-        -webkit-box-sizing border-box
-        -moz-box-sizing border-box
-        box-sizing border-box
-        padding-top 20px 
-        display none
+		@media (min-width 768px)
+			font-size 1.2rem
 
-        img
-            max-width 180px
-            display block
-            margin 0 auto
-            padding 0 3.0rem
-            
-        @media (min-width 768px)
-            padding-top 0 
-            position absolute
-            top 47%
-            left 28%
-            width 25%
-            -webkit-transform translate(-50%, -50%)
-            -moz-transform translate(-50%, -50%)
-            -ms-transform translate(-50%, -50%)
-            -o-transform translate(-50%, -50%)
-            transform translate(-50%, -50%)
-            display block
+		.is-selected
+			display none
+			@media (min-width 768px)
+				display inline
+				a
+					font-weight bold
 
-            img
-                padding 0
-                max-width none
+		ul
+			margin 0
+			padding 0
+			list-style-type none
 
-    &--content
-        -webkit-box-sizing border-box
-        -moz-box-sizing border-box
-        box-sizing border-box
-        padding 7rem 0rem 2rem
+		li
+			@media (min-width 768px)
+				&:nth-child(1)::after
+					content " -"
+			display inline-block
 
-        img
-            max-width 210px
-        
-        h1
-        p
-            padding 0 3.0rem
+	&--logo
+		box-sizing border-box
+		padding-top 20px
+		display none
 
-        .arrow 
-            max-width 3.2rem
-            vertical-align middle
-            margin 0 0.8rem
-        
-        @media (min-width 768px)
-            position absolute
-            top 47%
-            left 72%
-            width 32%
-            -webkit-transform translate(-50%, -50%)
-            -moz-transform translate(-50%, -50%)
-            -ms-transform translate(-50%, -50%)
-            -o-transform translate(-50%, -50%)
-            transform translate(-50%, -50%)
-            
-            img
-                max-width none
-            
-            p
-                padding 0  
+		img
+			max-width 180px
+			display block
+			margin 0 auto
+			padding 0 3.0rem
 
-            h1
-                padding 0
-                width 70%
-        
-    &--infos
-        -webkit-box-sizing border-box
-        -moz-box-sizing border-box
-        box-sizing border-box
-        font-size 1.2rem
-        
-        padding 0 3.0rem
-        
-        @media (min-width 768px)
-            padding 0
-            position absolute
-            left 3.2rem
-            bottom 2rem
-            
-        &--identity       
-        &--contacts
-        &--networks
-            margin 0
-            padding 0
-            list-style-type none 
-            float left
-            margin-top 2.4em 
-            margin-right 2.4rem
+		@media (min-width 768px)
+			padding-top 0
+			position absolute
+			top 47%
+			left 28%
+			width 25%
+			transform translate(-50%, -50%)
+			display block
 
-        &--contacts
-            margin-right 1rem
-            @media (min-width 768px)
-                margin-right 2.4rem
-            
-        &--networks
-            clear left
-            margin-bottom 2rem
-            @media (min-width 768px)
-                clear none
-                margin-bottom 0 
+			img
+				padding 0
+				max-width none
+
+	&--content
+		-webkit-box-sizing border-box
+		-moz-box-sizing border-box
+		box-sizing border-box
+		padding 7rem 0rem 2rem
+
+		img
+			max-width 210px
+
+		h1
+			font-family inherit
+			font-weight lighter
+			font-size 4rem
+			line-height 1em
+			color #000
+			&::after
+				content ""
+				display block
+				border-top 1px solid #000
+				width 2rem
+				margin-top 1.4rem
+
+		h1
+		p
+		form
+			padding 0 3.0rem
+
+		.arrow
+			max-width 3.2rem
+			vertical-align middle
+			margin 0 0.8rem
+
+		@media (min-width 768px)
+			position absolute
+			top 47%
+			left 72%
+			width 32%
+			transform translate(-50%, -50%)
+
+			img
+				max-width none
+
+			h1
+			p
+			form
+				padding 0
+
+	&--infos
+		box-sizing border-box
+		font-size 1.2rem
+
+		padding 0 3.0rem
+
+		@media (min-width 768px)
+			padding 0
+			position absolute
+			left 3.2rem
+			bottom 2rem
+
+		&--identity
+		&--contacts
+		&--networks
+			margin 0
+			padding 0
+			list-style-type none
+			float left
+			margin-top 2.4em
+			margin-right 2.4rem
+
+		&--contacts
+			margin-right 1rem
+			@media (min-width 768px)
+				margin-right 2.4rem
+
+		&--networks
+			clear left
+			margin-bottom 2rem
+			@media (min-width 768px)
+				clear none
+				margin-bottom 0
+
+.home
+	&--content
+		h1
+			&::after
+				display none
 
 
-.fade-in-out-enter,
+		@media (min-width 768px)
+			h1
+				width 70%
+
+.login
+	&--content
+		form
+			margin-bottom 3rem
+
+	&--form
+		.field
+			position relative
+			label
+				transition top .5s ease, opacity .5s ease
+				opacity 1
+				position absolute
+				font-family inherit
+				top 0
+				font-size 1.2rem
+
+			input
+				transition color 1s ease, border-color 1s ease, padding .5s ease
+				border 0
+				border-bottom 1px solid #95989A
+				font-family inherit
+				font-size inherit
+				padding 1.4rem 0 0.2rem
+				margin-bottom 1.4rem
+				display block
+				width 100%
+				&:focus
+					outline -webkit-focus-ring-color auto 0
+					color #00a00c
+					border-color #00a00c
+
+			button
+				margin-top 1.8rem
+
+			&.empty
+				label
+					top 10px
+					opacity 0
+				input
+					padding .8rem 0
+			.errors
+				position absolute
+				top calc(100% + 2px)
+				right 0
+
+		.invalid
+			input
+				&:focus
+					outline -webkit-focus-ring-color auto 0
+					color #d9534f
+					border-color #d9534f
+
+.errors
+	color #d9534f
+	font-size .6em
+
+.fade-in-out-enter
 .fade-in-out-leave-to
-    @media (min-width 768px)
-        opacity 0
-        transform rotateX(180deg)
-
-.fade-in-out-leave-active,
+	@media (min-width 768px)
+		opacity 0
+		transform rotateX(180deg)
+.fade-in-out-leave-active
 .fade-in-out-enter-active
-    @media (min-width 768px)
-        transition opacity 2s, transform 2s
-
+	@media (min-width 768px)
+		transition opacity 2s, transform 2s
 .fade-in-out-enter-to
 .fade-in-out-leave
-    @media (min-width 768px)
-        opacity: 1
-        transform: rotateX(0)
+	@media (min-width 768px)
+		opacity 1
+		transform rotateX(0)
+
+.height-transition-enter
+.height-transition-leave-to
+	opacity 0
+	overflow hidden
+
+.height-transition-leave-active
+.height-transition-enter-active
+	transition opacity .5s
+	overflow hidden
+
+.height-transition-enter-to
+.height-transition-leave
+	opacity 1
+	overflow hidden
+
+.jsoneditor-outer.jsoneditor-outer {
+	height 270px;
+}

@@ -4,8 +4,14 @@
 		"view": "home",
 		"variation": "home.json"
 	},
+	"login_fr-fr": {
+		"url": "/espace-membres/",
+		"view": "login",
+		"controller": "login.js",
+		"variation": "login.json"
+	},
 	"error_fr-fr": {
-		"url": "/page-inexistante/",
+		"url": "/*",
 		"view": "error",
 		"variation": "error.json",
 		"statusCode": 404

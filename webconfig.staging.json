@@ -8,12 +8,14 @@
 	"controller": "common.js",
 	"view": "layout.htm",
 	"bundles": "bundles.json",
-	"stylus": { 
-		"files": "stylus.json"
+	"stylus": {
+		"files": "stylus.json",
+		"autoprefix": true
 	},
 	"statics": "statics.json",
 	"routes": "routes.json",
-	"pageNotFound": "error_fr-fr",
 	"_robots": "noindex, nofollow",
+	"_options": "options.json",
+	"_data": "data/",
 	"_min": true
 }

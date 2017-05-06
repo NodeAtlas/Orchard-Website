@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?= (languageCode) ? languageCode : 'fr-fr' ?>">
+<html lang="<?= (languageCode) ? languageCode : 'fr-fr' ?>" data-min="<?= (webconfig._min) ? '.' + webconfig.version + '.min' : ''; ?>">
 	<head>
 		<meta charset="utf-8" />
 		<base href="<?= urlBasePath ?>/" />
@@ -22,6 +22,8 @@
 		<link rel="icon" type="image/png" sizes="96x96" href="media/favicon-96x96.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
 
+		<link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png">
+
 		<? if (webconfig._min) { ?>
 		<link rel="stylesheet" href="stylesheets/common.<?= webconfig.version ?>.min.css">
 		<? } else { ?>
@@ -29,16 +31,18 @@
 		<? } ?>
 	</head>
 	<body data-ua='<?= webconfig._ua ?>'>
-		<div class="layout"></div>
+		<!--vue-ssr-outlet-->
 		<? if (webconfig._min) { ?>
-		<script src="javascripts/framework.<?= webconfig.version ?>.min.js" data-main="javascripts/main.<?= webconfig.version ?>.min.js" id="systemjs"></script>
+		<script src="javascripts/framework.<?= webconfig.version ?>.min.js" data-main="javascripts/common.<?= webconfig.version ?>.min.js" id="systemjs"></script>
 		<? } else { ?>
 		<script src="socket.io/socket.io.js"></script>
 		<script src="node-atlas/socket.io.js"></script>
-		<script src="javascripts/vendor/system.js"></script>
-		<script src="javascripts/vendor/vue.js"></script>
-		<script src="javascripts/vendor/vue.router.js"></script>
-		<script src="javascripts/common.js" data-main="javascripts/main.js" id="systemjs"></script>
+		<script src="javascripts/vendors/jshashes.js"></script>
+		<script src="javascripts/vendors/velocity.js"></script>
+		<script src="javascripts/vendors/system.js"></script>
+		<script src="javascripts/vendors/vue.js"></script>
+		<script src="javascripts/vendors/vue.router.js"></script>
+		<script src="javascripts/boot.js" data-main="javascripts/common.js" id="systemjs"></script>
 		<? } ?>
 	</body>
 </html>

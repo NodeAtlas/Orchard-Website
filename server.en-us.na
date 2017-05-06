@@ -1,3 +1,4 @@
-require("node-atlas")().run({
+global.NA = new require("node-atlas")();
+global.NA.run({
 	"webconfig": "webconfig.en-us.json"
 });
