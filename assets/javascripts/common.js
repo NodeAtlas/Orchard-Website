@@ -15,8 +15,8 @@ var app = {
 	router,
 	vm,
 	global = require("javascripts/app.js"),
-	edit = require("javascripts/components/edit.js"),
-	chat = require("javascripts/components/chat.js");
+	edit = require("javascripts/modules/edit.js"),
+	chat = require("javascripts/modules/chat.js");
 
 mixin = {
 	beforeRouteEnter: function (to, from, next) {
@@ -26,157 +26,11 @@ mixin = {
 
 			document.title = vmComponent.meta.title;
 		});
-	},
-	beforeRouteLeave: function (to, from, next) {
-		document.body.classList.add('as-loaded-page');
-		next();
 	}
 };
 
-Vue.directive('draggable', {
-	bind: function (el) {
-		var startX, startY, initialX, initialY;
-
-		function move(gesture) {
-			var deltaGestureX = gesture.clientX - initialX,
-				deltaGestureY = gesture.clientY - initialY,
-				deltaPositionX = startX + deltaGestureX,
-				deltaPositionY = startY + deltaGestureY,
-				limitX = parseInt(window.innerWidth - el.clientWidth, 10),
-				limitY = parseInt(window.innerHeight - el.clientHeight, 10);
-
-			el.style.bottom = 'auto';
-			if (deltaPositionY <= 0) {
-				el.style.top = '0px';
-			} else if (deltaPositionY >= limitY) {
-				el.style.top = limitY + 'px';
-			} else {
-				el.style.top = startY + deltaGestureY + 'px';
-			}
-
-			el.style.right = 'auto';
-			if (deltaPositionX <= 0) {
-				el.style.left = '0px';
-			} else if (deltaPositionX >= limitX) {
-				el.style.left = limitX + 'px';
-			} else {
-				el.style.left = startX + deltaGestureX + 'px';
-			}
-
-			return false;
-		}
-
-		function mousemove(e) {
-			move(e);
-		}
-
-		function mouseup() {
-			document.removeEventListener('mousemove', mousemove);
-			document.removeEventListener('mouseup', mouseup);
-		}
-
-		function touchmove(e) {
-			move(e.touches[0]);
-		}
-
-		function touchend() {
-			document.removeEventListener('touchmove', touchmove);
-			document.removeEventListener('touchend', touchend);
-		}
-
-		el.addEventListener('touchstart', function (e) {
-			startX = el.offsetLeft;
-			startY = el.offsetTop;
-			initialX = e.touches[0].clientX;
-			initialY = e.touches[0].clientY;
-			document.addEventListener('touchmove', touchmove);
-			document.addEventListener('touchend', touchend);
-		});
-
-		el.addEventListener('mousedown', function (e) {
-			startX = el.offsetLeft;
-			startY = el.offsetTop;
-			initialX = e.clientX;
-			initialY = e.clientY;
-			document.addEventListener('mousemove', mousemove);
-			document.addEventListener('mouseup', mouseup);
-			return false;
-		});
-	}
-});
-
-Vue.directive('drag-visible', {
-	bind: function (el, binding) {
-		var startX, startY, initialX, initialY;
-
-		function move() {
-			var box = el.querySelector(binding.value),
-				buttonLeftPosition = parseInt(el.style.left, 10),
-				buttonTopPosition = parseInt(el.style.top, 10),
-				boxWidth = ((box && box.clientWidth) || 0),
-				boxHeight = ((box && box.clientHeight) || 0),
-				leftSwitchLimit = buttonLeftPosition + el.clientWidth - boxWidth - 2 - 30,
-				rightSwitchLimit = buttonLeftPosition + boxWidth + 2 + 30,
-				topSwitchLimit = buttonTopPosition - boxHeight - 2 - 30,
-				bottomSwitchLimit = buttonTopPosition + el.clientHeight + boxHeight + 2 + 30;
-
-			if (leftSwitchLimit < 0) {
-				el.classList.add('to-right');
-			}
-
-			if (rightSwitchLimit > window.innerWidth) {
-				el.classList.remove('to-right');
-			}
-
-			if (topSwitchLimit < 0) {
-				el.classList.add('to-bottom');
-			}
-
-			if (bottomSwitchLimit > window.innerHeight) {
-				el.classList.remove('to-bottom');
-			}
-
-			return false;
-		}
-
-		function mousemove(e) {
-			move(e);
-		}
-
-		function mouseup() {
-			document.removeEventListener('mousemove', mousemove);
-			document.removeEventListener('mouseup', mouseup);
-		}
-
-		function touchmove(e) {
-			move(e.touches[0]);
-		}
-
-		function touchend() {
-			document.removeEventListener('touchmove', touchmove);
-			document.removeEventListener('touchend', touchend);
-		}
-
-		el.addEventListener('touchstart', function (e) {
-			startX = el.offsetLeft;
-			startY = el.offsetTop;
-			initialX = e.touches[0].clientX;
-			initialY = e.touches[0].clientY;
-			document.addEventListener('touchmove', touchmove);
-			document.addEventListener('touchend', touchend);
-		});
-
-		el.addEventListener('mousedown', function (e) {
-			startX = el.offsetLeft;
-			startY = el.offsetTop;
-			initialX = e.clientX;
-			initialY = e.clientY;
-			document.addEventListener('mousemove', mousemove);
-			document.addEventListener('mouseup', mouseup);
-			return false;
-		});
-	}
-});
+Vue.directive('draggable', require('views-models/directives/draggable.js')());
+Vue.directive('drag-visible', require('views-models/directives/drag-visible.js')());
 
 Vue.component('height-transition', function (resolve) {
 	var model = require('views-models/animates/height-transition.js'),
@@ -238,78 +92,7 @@ keys.forEach(function (key) {
 
 	route.path = webconfig.routes[key].url;
 
-	/*if (name === 'home') {
-		model = require('views-models/home.js');
-		specific = require('variations/home.json!json');
-		template = require('views-models/home.htm!text');
-		route.component = Vue.component('home', model(specific, template, mixin, options));
-	}
-	if (name === 'login') {
-		model = require('views-models/login.js');
-		specific = require('variations/login.json!json');
-		template = require('views-models/login.htm!text');
-		route.component = Vue.component('home', model(specific, template, mixin, options));
-	}
-	if (name === 'error') {
-		model = require('views-models/error.js');
-		specific = require('variations/error.json!json');
-		template = require('views-models/error.htm!text');
-		route.component = Vue.component('home', model(specific, template, mixin, options));
-	}*/
-
-	if (name === 'home') {
-		route.component = Vue.component(name, function (resolve) {
-			Promise.all([
-				System.import('views-models/home.js'),
-				System.import('variations/home.json!json'),
-				System.import('views-models/home.htm!text')
-			]).then(function (files) {
-				model = files[0];
-				specific = files[1];
-				template = files[2];
-				options = {
-					dirty: false
-				};
-				resolve(model(specific, template, mixin, options));
-			});
-		});
-	}
-	if (name === 'login') {
-		route.component = Vue.component(name, function (resolve) {
-			Promise.all([
-				System.import('views-models/login.js'),
-				System.import('variations/login.json!json'),
-				System.import('views-models/login.htm!text')
-			]).then(function (files) {
-				model = files[0];
-				specific = files[1];
-				template = files[2];
-				options = {
-					dirty: false
-				};
-				resolve(model(specific, template, mixin, options));
-			});
-		});
-	}
-	if (name === 'error') {
-		route.component = Vue.component(name, function (resolve) {
-			Promise.all([
-				System.import('views-models/error.js'),
-				System.import('variations/error.json!json'),
-				System.import('views-models/error.htm!text')
-			]).then(function (files) {
-				model = files[0];
-				specific = files[1];
-				template = files[2];
-				options = {
-					dirty: false
-				};
-				resolve(model(specific, template, mixin, options));
-			});
-		});
-	}
-
-	/*route.component = Vue.component(name, function (resolve) {
+	route.component = function (resolve) {
 		Promise.all([
 			System.import('views-models/' + name + '.js'),
 			System.import('variations/' + name + '.json!json'),
@@ -323,7 +106,7 @@ keys.forEach(function (key) {
 			};
 			resolve(model(specific, template, mixin, options));
 		});
-	});*/
+	};
 
 	route.props = ['common', 'global'];
 
@@ -336,11 +119,12 @@ router = new VueRouter({
 	routes: routes
 });
 
-console.log(router);
-
 vm = new Vue(app.model(common, app.template, router, webconfig));
 
-vm.$mount('.layout');
+router.onReady(function () {
+	vm.$mount('.layout');
+	document.body.classList.add('as-loaded-page');
+});
 
 global.setTracking();
 global.setSockets(vm);
