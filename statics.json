@@ -8,6 +8,6 @@
 	"/javascripts/vendors/system.js": "node_modules/systemjs/dist/system.js",
 	"/views-models": "views/",
 	"/variations": "variations/fr-fr/",
-	"/options.json": "options.json",
-	"/routes.json": "routes.json"
+	"/routes.json": "routes.json",
+	"/options.json": "options.json"
 }
