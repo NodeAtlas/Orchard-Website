@@ -2,7 +2,7 @@
 var websiteLanguage = document.getElementsByTagName('html')[0].getAttribute('lang').substring(0, 2);
 	navigatorLanguage = window.navigator.userLanguage || window.navigator.language;
 
-if (websiteLanguage === 'en' && navigatorLanguage.indexOf('fr') !== -1 && document.referrer.indexOf('://www.orchard-id.fr/')) {
+if (websiteLanguage === 'en' && navigatorLanguage.indexOf('fr') !== -1 && document.referrer.indexOf('://www.orchard-id.fr/') === -1) {
 	location.href = 'https://www.orchard-id.fr/';
 }
 
