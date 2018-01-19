@@ -10,8 +10,6 @@
 		"debugfr": "node --inspect server.na --browse",
 		"starten": "node server.en-us.na --browse",
 		"startfr": "node server.na --browse",
-		"watchen": "gulp --gulpfile gulpfile.en-us.js",
-		"watchfr": "gulp",
 		"postinstall": "node-atlas --generate --webconfig webconfig.production.json"
 	},
 	"repository": {
@@ -49,6 +47,7 @@
 	"dependencies": {
 		"jshashes": "1.0.x",
 		"socket.io": "1.7.x",
+		"node-atlas": "^2.0.0-beta60",
 		"systemjs": "0.20.x",
 		"traceur": "0.0.x",
 		"underscore": "1.8.x",
