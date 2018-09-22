@@ -1,8 +1,5 @@
 {
 	"cache": true,
-	"socketServerOptions": {
-		"transports": ["polling"]
-	},
 	"httpSecure": true,
 	"httpPort": 7777,
 	"urlPort": 443,
@@ -21,6 +18,6 @@
 	"_robots": "index, follow",
 	"_min": true,
 	"_options": "options.en-us.json",
-	"_data": "../verger.digital/data/",
+	"_data": "data/",
 	"_ua": "UA-91358693-2"
 }
