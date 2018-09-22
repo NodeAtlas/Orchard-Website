@@ -10,6 +10,7 @@
 		"debugfr": "node --inspect server.na --browse",
 		"starten": "node server.en-us.na --browse",
 		"startfr": "node server.na --browse",
+		"prodfr": "node www.orchard-id.fr.na",
 		"postinstall": "node-atlas --generate --webconfig webconfig.production.json"
 	},
 	"repository": {
