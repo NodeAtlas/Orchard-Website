@@ -10,6 +10,8 @@
 		"debugfr": "node --inspect server.na --browse",
 		"starten": "node server.en-us.na --browse",
 		"startfr": "node server.na --browse",
+		"proden": "node www.orchard-id.com.na --browse",
+		"prodfr": "node www.orchard-id.fr.na --browse",
 		"postinstall": "node-atlas --generate --webconfig webconfig.production.json"
 	},
 	"repository": {
@@ -45,9 +47,10 @@
 		"url": "https://github.com/Orchard-ID/Orchard-Website/issues"
 	},
 	"dependencies": {
+		"connect-redis": "3.3.x",
 		"jshashes": "1.0.x",
-		"socket.io": "1.7.x",
 		"node-atlas": "^2.0.0-beta62",
+		"socket.io": "1.7.x",
 		"systemjs": "0.20.x",
 		"traceur": "0.0.x",
 		"underscore": "1.8.x",

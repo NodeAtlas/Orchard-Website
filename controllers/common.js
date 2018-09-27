@@ -2,6 +2,8 @@
 exports.setModules = function () {
 	var NA = this;
 
+	NA.modules.RedisStore = require('connect-redis');
+
 	NA.models = {};
 	NA.models.User = require("../models/connectors/user.js");
 	NA.models.Chat = require("../models/connectors/chat.js");
@@ -9,6 +11,16 @@ exports.setModules = function () {
 
 	NA.modules.chat = require("./modules/chat.js");
 	NA.modules.edit = require("./modules/edit.js");
+};
+
+exports.setSessions = function (next) {
+	var NA = this,
+		session = NA.modules.session,
+		RedisStore = NA.modules.RedisStore(session);
+
+	NA.sessionStore = new RedisStore();
+
+	next();
 };
 
 exports.changeDom = function (next, locals, request, response) {
