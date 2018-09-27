@@ -1,12 +1,9 @@
 {
 	"cache": true,
-	"socketServerOptions": {
-		"transports": ["polling"]
-	},
 	"httpSecure": true,
 	"httpPort": 7778,
+	"httpHostname": "www.orchard-id.fr",
 	"urlPort": 443,
-	"urlHostname": "www.orchard-id.fr",
 	"languageCode": "fr-fr",
 	"variation": "common.json",
 	"controller": "common.js",
@@ -21,6 +18,6 @@
 	"_robots": "index, follow",
 	"_min": true,
 	"_options": "options.json",
-	"_data": "../verger.digital/data/",
+	"_data": "data/",
 	"_ua": "UA-91358693-3"
 }
